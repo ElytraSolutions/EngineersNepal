@@ -1,0 +1,60 @@
+from django.db import models
+from django.contrib.auth import get_user_model
+from django.urls import reverse
+from ckeditor.fields import RichTextField
+from ckeditor_uploader.fields import RichTextUploadingField
+from django.template.defaultfilters import slugify
+from django.conf import settings 
+User=get_user_model()
+# Create your models here.
+
+class Author(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    firstname=models.CharField(max_length=40)
+    lastname=models.CharField(max_length=40)
+    middlename=models.CharField(max_length=40, null=True, blank=True)
+    profile_picture = models.ImageField(default='default.jpg', upload_to='profilepics')
+    bio=models.TextField(max_length=300, blank=True, null=True)
+    facebook_link=models.URLField(blank=True, null=True)
+    twitter_link=models.URLField(blank=True, null=True)
+    youtube_link=models.URLField(blank=True, null=True)
+    def __str__(self):
+        return self.user.username
+
+
+class Category(models.Model):
+    title = models.CharField(max_length=40)
+
+    def __str__(self):
+        return self.title
+
+
+class Post(models.Model):
+    CHOICES = (
+        ('EN', 'English'),
+        ('NP', 'Nepali'),
+    )
+
+    title = models.CharField(max_length=100)
+    timestamp = models.DateField(auto_now_add=True)
+    thumbnail = models.ImageField(upload_to='post_thumbs')
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    categories = models.ManyToManyField(Category)
+    content = RichTextUploadingField(blank=True, null=True,config_name='default')
+    language=models.CharField(max_length=40, choices=CHOICES)
+    slug = models.SlugField(null=False, blank=True, unique=True)
+
+    def save(self, *args, **kwargs):
+        super(Post, self).save()
+        if not self.slug:
+            self.slug=slugify(self.title)
+        return super().save(*args, **kwargs)
+    
+    # def get_absolute_url(self):
+    #     return reverse("Post-detail", kwargs={"slug": self.slug})
+    
+    def __str__(self):
+        return self.title
+
+
+            

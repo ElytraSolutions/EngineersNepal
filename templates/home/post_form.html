@@ -1,0 +1,11 @@
+{% block title %}
+Create new post
+{% endblock title %}
+{% block content %}
+<form action="" method="post" enctype="multipart/form-data" style="text-align: center;">
+    {% csrf_token %}
+    {{form.media}}
+    {{form.as_p}}
+    <button type="submit"> Submit </Button>
+</form>
+{% endblock content %}
