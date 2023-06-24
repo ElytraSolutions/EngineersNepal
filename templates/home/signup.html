@@ -1,0 +1,10 @@
+{% block title %}
+Signup
+{% endblock title %}
+{% block content %}
+<form action="" method="post" style="text-align: center;">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit"> Signup </Button>
+</form>
+{% endblock content %}

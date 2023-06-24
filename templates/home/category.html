@@ -1,0 +1,10 @@
+{% block title %}
+Category:: {{item}} 
+{% endblock title %}
+{% block content %}
+{% for post in posts %}
+{{post.title}}
+<br>
+<hr>
+{% endfor %}
+{% endblock content %}

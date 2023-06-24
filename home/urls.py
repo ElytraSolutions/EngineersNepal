@@ -1,8 +1,7 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from datetime import datetime
-from .views import PostCreate, PostUpdate, PostDelete, SignUpView, profile
-
+from .views import PostCreate, PostUpdate, PostDelete, SignUpView, profile, categoryview, AdminView
 
 urlpatterns = [
     path('login/', LoginView.as_view(template_name='home/login.html'), name='login'),
@@ -12,5 +11,7 @@ urlpatterns = [
     path('update-post/<slug:slug>', PostUpdate.as_view(), name='update-post'), 
     path('delete-post/<slug:slug>', PostDelete.as_view(), name='delete-post'), 
     path('delete-post/<slug:slug>', PostDelete.as_view(), name='delete-post'), 
-    path('profile', profile, name='profile'), 
+    path('profile-update', profile, name='profile'), 
+    path('category/<slug:slug>', categoryview, name='category'), 
+    path('profile/<slug:slug>', AdminView, name='adminpage'), 
 ]

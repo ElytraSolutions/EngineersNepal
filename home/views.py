@@ -78,4 +78,24 @@ def categoryview(request, slug):
         a_post = paginator.page(paginator.num_pages)
     context={'item':item, 
              'searched':searched, 
+             'posts':a_post,
              }
+    return render(request, 'home/category.html',context)
+
+
+def AdminView(request, slug):
+    author=Author.objects.get(slug=slug)
+    searched=Post.objects.filter(author__slug=slug).order_by('-id')
+    page = request.GET.get('page', 1)
+    paginator = Paginator(searched, 6)
+    try:
+        a_post = paginator.page(page)
+    except PageNotAnInteger:
+        a_post = paginator.page(1)
+    except EmptyPage:
+        a_post = paginator.page(paginator.num_pages)
+    context={
+        'posts':a_post,
+        'author':author,
+    }
+    return render(request, 'home/admin.html', context)

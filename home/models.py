@@ -18,6 +18,13 @@ class Author(models.Model):
     facebook_link=models.URLField(blank=True, null=True)
     twitter_link=models.URLField(blank=True, null=True)
     youtube_link=models.URLField(blank=True, null=True)
+    slug=models.SlugField(null=False, blank=True, unique=True)
+    def save(self, *args, **kwargs):
+        super(Author, self).save()
+        if not self.slug:
+            self.slug=slugify(self.user.username)
+        return super().save(*args, **kwargs)
+
     def __str__(self):
         return self.user.username
 

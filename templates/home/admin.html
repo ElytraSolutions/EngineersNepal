@@ -1,0 +1,11 @@
+{% block title %}
+Profile Page:: {{author}} 
+{% endblock title %}
+<br>
+{% block content %}
+{% for post in posts %}
+{{post.title}}
+<br>
+<hr>
+{% endfor %}
+{% endblock content %}
