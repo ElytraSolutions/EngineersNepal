@@ -24,6 +24,13 @@ class Author(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=40)
+    slug=models.SlugField(null=False, blank=True, unique=True)
+    
+    def save(self, *args, **kwargs):
+        super(Category, self).save()
+        if not self.slug:
+            self.slug=slugify(self.title)
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title

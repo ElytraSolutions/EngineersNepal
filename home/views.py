@@ -1,12 +1,16 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
-from .models import Post, Author
+from .models import Post, Author, Category
 from datetime import datetime
-from .forms import PostForm
+from .forms import PostForm, UserUpdateForm, ProfileUpdateForm, UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+from django.shortcuts import redirect
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 class PostCreate(CreateView, LoginRequiredMixin):
@@ -35,4 +39,43 @@ class PostDelete(DeleteView, LoginRequiredMixin, SuccessMessageMixin):
 class PostDetail(DetailView):
     model=Post
 
-    
+class SignUpView(CreateView, SuccessMessageMixin):
+    template_name='home/signup.html'
+    success_url=reverse_lazy('login')
+    form_class=UserRegisterForm
+    success_message='Signed Up successfully'
+
+
+@login_required
+def profile(request):
+    if request.method=='POST':
+        u_form=UserUpdateForm(request.POST, instance=request.user)
+        p_form=ProfileUpdateForm(request.POST, request.FILES, instance=request.user.author)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            messages.success(request, f'profile updates successfully')
+            return redirect('profile')
+    else:
+        u_form=UserUpdateForm(instance=request.user)
+        p_form=ProfileUpdateForm(instance=request.user.author)
+    context={'u_form':u_form, 
+                 'p_form':p_form, 
+                 'user':request.user}
+    return render(request, 'home/profile_update.html', context)
+
+
+def categoryview(request, slug):
+    searched=Post.objects.filter(categories__slug=slug).order_by('timestamp')
+    item=Category.objects.get(slug=slug)
+    page=request.GET.get('page', 1)
+    paginator=Paginator(searched, 7)
+    try:
+        a_post = paginator.page(page)
+    except PageNotAnInteger:
+        a_post = paginator.page(1)
+    except EmptyPage:
+        a_post = paginator.page(paginator.num_pages)
+    context={'item':item, 
+             'searched':searched, 
+             }
