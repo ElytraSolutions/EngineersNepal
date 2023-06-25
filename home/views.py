@@ -10,6 +10,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
@@ -99,3 +100,26 @@ def AdminView(request, slug):
         'author':author,
     }
     return render(request, 'home/admin.html', context)
+
+
+def searchview(request):
+    if request.method == "POST":
+        query = request.POST['search']
+        if query:
+            queryset=queryset.filter(
+                Q(title__contains=query) | 
+                Q(overview__contains=query)).distinct()
+        page=request.GET.get('page',1)
+        paginator=Paginator(queryset, 6)
+        try:
+            a_post = paginator.page(page)
+        except PageNotAnInteger:
+            a_post = paginator.page(1)
+        except EmptyPage:
+            a_post = paginator.page(paginator.num_pages)
+        context={
+            'posts':a_post, 
+            'query':query,
+        }
+        return render(request, 'home/searchresult.html', context)
+

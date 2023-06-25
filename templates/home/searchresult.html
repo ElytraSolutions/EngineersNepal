@@ -1,0 +1,11 @@
+{% block title %}
+Search Results : {{query}}
+{% endblock title %}
+{% block content %}
+Search Results:: {{query}}
+{% for post in posts %}
+{{post.title}}
+<br>
+<br>
+{% endfor %}
+{% endblock content %}
