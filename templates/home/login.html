@@ -1,10 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}
 Login 
 {% endblock title %}
 {% block content %}
+<!-- centralized div for login form with padding and margin -->
+<div style="text-align: center;padding-left: 30%; padding-right: 30%; padding-bottom: 10%;margin-top: 5%;">
+<h1> Login </h1>
 <form action="" method="post" style="text-align: center;">
     {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit"> Submit </Button>
+    {{form|crispy}}
+    <!-- bootstrap attractive button to submit for login -->
+    <button type="submit" class="btn btn-outline-primary btn-block"> Login </button>
+    <br>
+    <br>
+    <button type="button" class="btn btn-libtn btn-outline-secondarynk btn-block"><a href="{% url 'password_reset' %}"> Forget Password</a></button>
+    <br>
 </form>
+</div>
 {% endblock content %}
+
+

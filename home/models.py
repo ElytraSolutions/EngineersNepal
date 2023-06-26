@@ -53,7 +53,7 @@ class Post(models.Model):
     timestamp = models.DateField(auto_now_add=True)
     thumbnail = models.ImageField(upload_to='post_thumbs')
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    categories = models.ManyToManyField(Category)
+    categories = models.ForeignKey(Category, on_delete=models.CASCADE)
     content = RichTextUploadingField(blank=True, null=True,config_name='default')
     language=models.CharField(max_length=40, choices=CHOICES)
     slug = models.SlugField(null=False, blank=True, unique=True)

@@ -1,10 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}
-Create new post
+Update post
 {% endblock title %}
+<!-- centered div for form -->
+
 {% block content %}
-<form method="post">
+<div class="container" style="text-align: center; padding-left: 10%; padding-right: 10%;padding-bottom: 5%;">
+    <h1> Create new post </h1>
+<form action="" method="post" enctype="multipart/form-data" style="text-align: center;">
     {% csrf_token %}
-    {{form.as_p}}
-    <Button type="submit"> Submit </Button>
+    {{form.media}}
+    {{form|crispy}}
+    <br>
+    <button type="submit" class="btn btn-outline-primary"> Update Post </button>
 </form>
+</div>
 {% endblock content %}

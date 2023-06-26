@@ -123,3 +123,11 @@ def searchview(request):
         }
         return render(request, 'home/searchresult.html', context)
 
+
+def contact(request):
+    context = {}
+    return render(request, 'home/contact.html', context)
+
+def aboutus(request):
+    context={}
+    return render(request, 'home/about.html', context)
