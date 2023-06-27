@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
 from .models import Post, Author, Category
+from .forms import ContactUSForm
 from datetime import datetime
 from .forms import PostForm, UserUpdateForm, ProfileUpdateForm, UserRegisterForm
 from django.contrib import messages
@@ -124,7 +125,22 @@ def searchview(request):
 
 
 def contact(request):
-    context = {}
+    Contactform = ContactUSForm(request.POST)
+    if request.method == 'POST':
+        if Contactform.is_valid():
+            email = Contactform.cleaned_data['email']
+            print(email)
+            subject = Contactform.cleaned_data['subject']
+            print(subject)
+            message_body=Contactform.cleaned_data['message_body']
+            print(message_body)
+            name=Contactform.cleaned_data['name']
+            print(name)
+            
+        else:
+         Contactform = ContactUSForm(request.POST)    
+            
+    context={'form':Contactform}
     return render(request, 'home/contact.html', context)
 
 def aboutus(request):
