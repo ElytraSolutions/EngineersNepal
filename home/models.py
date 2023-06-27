@@ -77,4 +77,20 @@ class Post(models.Model):
 
 
 
-            
+class advertisement(models.Model):
+    #title of the advertisement
+    title = models.CharField(max_length=100)
+    #description of the advertisement
+    #gif or image field
+    photo = models.ImageField(upload_to='post_ads')
+    #link to the post
+    link = models.URLField()
+    #date of creation
+    date_created = models.DateField(auto_now_add=True)
+    #date of expiry
+    date_expiry = models.DateField()
+    #status of the advertisement
+    status = models.BooleanField(default=True)
+
+    def str(self):
+        return self.title

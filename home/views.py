@@ -134,10 +134,9 @@ def aboutus(request):
 
 def homepage(request):
     context={}
-    return render(request,'templates/index.html',context)
+    return render(request,'home/home.html',context)
 
 def newsdetail(request,slug):
     context={'news':Post.objects.get(slug=slug)}
     return render(request,'home/newsdetail.html',context)
-    
     
