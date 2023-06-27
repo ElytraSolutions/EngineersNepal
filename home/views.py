@@ -131,3 +131,11 @@ def contact(request):
 def aboutus(request):
     context={}
     return render(request, 'home/about.html', context)
+
+
+
+def homepage(request):
+    context={}
+    return render(request, 'home/home.html', context)
+
+
