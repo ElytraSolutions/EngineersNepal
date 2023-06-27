@@ -12,7 +12,7 @@ class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     firstname=models.CharField(max_length=40)
     lastname=models.CharField(max_length=40)
-    middlename=models.CharField(max_length=40, null=True, blank=True)
+    middlename=models.CharField(max_length=40, null=True, blank=True, default='')
     profile_picture = models.ImageField(default='default.jpg', upload_to='profilepics')
     bio=models.TextField(max_length=300, blank=True, null=True)
     facebook_link=models.URLField(blank=True, null=True)
@@ -27,6 +27,10 @@ class Author(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+    @property
+    def fullname(self):
+        return self.firstname+" "+ self.lastname
 
 
 class Category(models.Model):
@@ -69,6 +73,8 @@ class Post(models.Model):
     
     def __str__(self):
         return self.title
+
+
 
 
             

@@ -1,9 +1,10 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from datetime import datetime
-from .views import PostCreate, PostUpdate, PostDelete, SignUpView, profile, categoryview, AdminView, searchview,contact, aboutus
+from .views import PostCreate, PostUpdate, PostDelete, SignUpView, profile, categoryview, AdminView, searchview,contact, aboutus,newsdetail
 from django.contrib.auth import views as auth_views
 urlpatterns = [
+    path('post/<slug:slug>/',newsdetail,name='newsdetail'),
     path('login/', LoginView.as_view(template_name='home/login.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('signup/', SignUpView.as_view(), name='signup'),

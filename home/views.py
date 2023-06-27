@@ -37,8 +37,7 @@ class PostDelete(DeleteView, LoginRequiredMixin, SuccessMessageMixin):
     success_url='/home/'
     success_message='post deleted successsfully'
 
-class PostDetail(DetailView):
-    model=Post
+
 
 class SignUpView(CreateView, SuccessMessageMixin):
     template_name='home/signup.html'
@@ -131,3 +130,14 @@ def contact(request):
 def aboutus(request):
     context={}
     return render(request, 'home/about.html', context)
+
+
+def homepage(request):
+    context={}
+    return render(request,'templates/index.html',context)
+
+def newsdetail(request,slug):
+    context={'news':Post.objects.get(slug=slug)}
+    return render(request,'home/newsdetail.html',context)
+    
+    
