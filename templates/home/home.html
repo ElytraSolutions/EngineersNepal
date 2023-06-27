@@ -14,9 +14,9 @@
                             <!-- <p>Rem ipsum dolor sit amet, consectetur adipisicing elit.</p> -->
                             <div class="trending-animated">
                                 <ul id="js-news" class="js-hidden">
-                                    <li class="news-item">Civil Engineer lai Khola le Bagaayo</li>
-                                    <li class="news-item">Thapathali college ek din banda bhayo</li>
-                                    <li class="news-item">Swobiyu ko toli khojna gayo</li>
+                                    {% for trend in trending %}
+                                    <li class="news-item"><a href='{% url "newsdetail" trend.slug %}' style="color:black;"> {{trend.title}} </a> </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                             

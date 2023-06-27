@@ -31,6 +31,9 @@ class PostUpdate(UpdateView, LoginRequiredMixin, SuccessMessageMixin):
     form_class=PostForm
     queryset=Post.objects.all()
     success_message="post updated successfully"
+    def get_success_url(self):
+        slug=self.kwargs['slug']
+        return reverse_lazy('newsdetail', kwargs={'slug':slug})
 
 class PostDelete(DeleteView, LoginRequiredMixin, SuccessMessageMixin):
     model=Post
@@ -107,7 +110,7 @@ def searchview(request):
         if query:
             queryset=queryset.filter(
                 Q(title__contains=query) | 
-                Q(overview__contains=query)).distinct()
+                Q(content__contains=query)).distinct()
         page=request.GET.get('page',1)
         paginator=Paginator(queryset, 6)
         try:
@@ -133,10 +136,11 @@ def aboutus(request):
 
 
 def homepage(request):
-    context={}
+    trending=Post.objects.all().order_by('-timestamp')[:3]
+    context={'trending':trending,}
     return render(request,'home/home.html',context)
 
 def newsdetail(request,slug):
-    context={'news':Post.objects.get(slug=slug)}
+    context={'news':Post.objects.get(slug=slug),}
     return render(request,'home/newsdetail.html',context)
     
