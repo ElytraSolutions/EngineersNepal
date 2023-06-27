@@ -1,15 +1,16 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from datetime import datetime
-from .views import PostCreate, PostUpdate, PostDelete, SignUpView, profile, categoryview, AdminView, searchview,contact, aboutus,newsdetail
+from .views import PostCreate, PostUpdate, PostDelete, SignUpView, profile, categoryview, AdminView, searchview,contact, aboutus,newsdetail, homepage
 from django.contrib.auth import views as auth_views
 urlpatterns = [
+    path('',homepage,name='home'),
     path('post/<slug:slug>/',newsdetail,name='newsdetail'),
     path('login/', LoginView.as_view(template_name='home/login.html'), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('signup/', SignUpView.as_view(), name='signup'),
     path('create-post/', PostCreate.as_view(), name='create-post'), 
-    path('update-post/<slug:slug>', PostUpdate.as_view(), name='update-post'), 
+    path('update-post/<slug:slug>', PostUpdate.as_view(template_name='home/post_update_form.html'), name='update-post'), 
     path('delete-post/<slug:slug>', PostDelete.as_view(), name='delete-post'), 
     path('delete-post/<slug:slug>', PostDelete.as_view(), name='delete-post'), 
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='register/password_reset.html'), name='password_reset'),
