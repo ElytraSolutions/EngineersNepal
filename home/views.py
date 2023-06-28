@@ -168,7 +168,7 @@ def homepage(request):
         if category.featured==True:
             category_dict[category]=Post.objects.filter(categories__slug=category.slug).order_by('-id')[:7]
     # finding weekly top posts
-    print(category_dict) 
+    # print(category_dict) 
     weekly_top=Post.objects.filter(timestamp__week=datetime.now().date().isocalendar()[1]).order_by('-id')[:7]
     context={'trending1':trending_1,'trending2':trending_2, 'featured_post':featured_post, 'weekly_top':weekly_top,
              'categories':categories, 'category_dict':category_dict}

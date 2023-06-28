@@ -40,8 +40,8 @@
                                         <small><a href="{% url 'adminpage' news.author.slug %}" style="color:black;">posted by: {{news.author}}</a></small>
                                         <br>
                                         {% if news.author.user == user %}
-                                          <small><a style="color:black;" href="{% url 'update-post' news.slug %}">Update</a> </small>
-                                          <small><a style="color:black;"  href="{% url 'delete-post' news.slug %}">Delete</a> </small>
+                                          <small><a style="color:green;" href="{% url 'update-post' news.slug %}">Update</a> </small>
+                                          <small><a style="color:red;"  href="{% url 'delete-post' news.slug %}">Delete</a> </small>
                                         {% endif %}
                             </div>
                             <div class="newscontent">
