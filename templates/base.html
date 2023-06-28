@@ -9,8 +9,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
             .newscontent img{
-                width:100%;
-                height:100%;
+                width:100% !important;
+                height:100% !important;
             }
             .newscontent iframe{
                 width:100%;
@@ -118,6 +118,7 @@
                                             <li><a href="{% url 'contact' %}">Contact</a></li>
                                             <li><a href="#">Pages</a>
                                             {% if request.user.is_authenticated %}
+                                                <li><a href="{% url 'profile' %}"> Profile </a></li>
                                                 <li><a href="{% url 'create-post' %}"> Create </a></li>
                                                 <li><a href="{% url 'logout' %}">Logout</a></li>
                                             {% endif %}
@@ -174,7 +175,11 @@
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
-                                        <p>Suscipit mauris pede for con sectetuer sodales adipisci for cursus fames lectus tempor da blandit gravida sodales  Suscipit mauris pede for con sectetuer sodales adipisci for cursus fames lectus tempor da blandit gravida sodales  Suscipit mauris pede for sectetuer.</p>
+                                        <p>Engineeers Nepal is one of the leading portal related to engineering education and profession in Nepal. 
+                                            It is one of the pioneeering institution of Nepal and It has one of the largest fan following in the Nepal. 
+                                            Engineers Nepal consists of a team of 10 people and has been actively working for the welfare of students and 
+                                            professionals in Nepal. It has been providing various services to the students and professionals of Nepal.
+                                        </p>
                                     </div>
                                 </div>
                                 <!-- social -->

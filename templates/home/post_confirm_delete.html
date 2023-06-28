@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+Delete Post
+{% endblock title %}
+{% block content %}
+<!-- a centered container for the contents  -->
+<div class="container" style="padding-top: 5%;padding-bottom: 5%;">
+<h3> Are you sure ??? </h3>
+<p> You are going to permanently delete the file and it will be impossible to recover it. </p>
+<form method="POST">
+    {% csrf_token %}
+<button class="btn btn-danger">Delete</button>
+</form>
+</div>
+
+{% endblock content %}

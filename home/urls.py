@@ -22,5 +22,5 @@ urlpatterns = [
     path('contact/', contact, name='contact'), 
     path('about-us/', aboutus, name='aboutus'), 
     path('category/<slug:slug>', categoryview, name='category'), 
-    path('profile/<slug:slug>', AdminView, name='adminpage'), 
+    path('author/<slug:slug>', AdminView, name='adminpage'), 
 ]

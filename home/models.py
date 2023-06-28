@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
 from ckeditor.fields import RichTextField
+from datetime import datetime
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
 from django.conf import settings 
@@ -60,12 +61,13 @@ class Post(models.Model):
     categories = models.ForeignKey(Category, on_delete=models.CASCADE)
     content = RichTextUploadingField(blank=True, null=True,config_name='default')
     language=models.CharField(max_length=40, choices=CHOICES)
-    slug = models.SlugField(null=False, blank=True, unique=True)
+    slug = models.SlugField(null=False, blank=True, unique=True, allow_unicode=True)
 
     def save(self, *args, **kwargs):
         super(Post, self).save()
         if not self.slug:
-            self.slug=slugify(self.title)
+            formatedDate=datetime.now().strftime("%Y-%m-%d")
+            self.slug=slugify(formatedDate)+'-'+'2000'+str(self.id)
         return super().save(*args, **kwargs)
     
     # def get_absolute_url(self):

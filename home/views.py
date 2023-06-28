@@ -38,7 +38,7 @@ class PostUpdate(UpdateView, LoginRequiredMixin, SuccessMessageMixin):
 
 class PostDelete(DeleteView, LoginRequiredMixin, SuccessMessageMixin):
     model=Post
-    success_url='/home/'
+    success_url='/'
     success_message='post deleted successsfully'
 
 
@@ -71,9 +71,10 @@ def profile(request):
 
 def categoryview(request, slug):
     searched=Post.objects.filter(categories__slug=slug).order_by('timestamp')
+    categories=Category.objects.all()
     item=Category.objects.get(slug=slug)
     page=request.GET.get('page', 1)
-    paginator=Paginator(searched, 7)
+    paginator=Paginator(searched, 4)
     try:
         a_post = paginator.page(page)
     except PageNotAnInteger:
@@ -83,12 +84,15 @@ def categoryview(request, slug):
     context={'item':item, 
              'searched':searched, 
              'posts':a_post,
+             'categories':categories,
+             'cate':Category.objects.get(slug=slug),
              }
     return render(request, 'home/category.html',context)
 
 
 def AdminView(request, slug):
     author=Author.objects.get(slug=slug)
+    categories=Category.objects.all()
     searched=Post.objects.filter(author__slug=slug).order_by('-id')
     page = request.GET.get('page', 1)
     paginator = Paginator(searched, 6)
@@ -101,6 +105,7 @@ def AdminView(request, slug):
     context={
         'posts':a_post,
         'author':author,
+        'categories':categories,
     }
     return render(request, 'home/admin.html', context)
 

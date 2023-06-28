@@ -134,7 +134,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND='pillow'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
-CRISPY_TEMPLATE_PACK= 'bootstrap5'
 
 
 CKEDITOR_CONFIGS = {
@@ -152,3 +151,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+ALLOW_UNICODE_SLUGS = True
+
