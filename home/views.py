@@ -157,8 +157,21 @@ def aboutus(request):
 
 
 def homepage(request):
-    trending=Post.objects.all().order_by('-timestamp')[:3]
-    context={'trending':trending,}
+    category_dict={}
+    all_posts=Post.objects.all()
+    featured_post=Post.objects.filter(featured=True).order_by('-timestamp')[0]
+    trending_1=all_posts[:3]
+    trending_2=all_posts[3:8]
+    categories=Category.objects.all()
+
+    for category in categories:
+        if category.featured==True:
+            category_dict[category]=Post.objects.filter(categories__slug=category.slug).order_by('-id')[:7]
+    # finding weekly top posts
+    print(category_dict) 
+    weekly_top=Post.objects.filter(timestamp__week=datetime.now().date().isocalendar()[1]).order_by('-id')[:7]
+    context={'trending1':trending_1,'trending2':trending_2, 'featured_post':featured_post, 'weekly_top':weekly_top,
+             'categories':categories, 'category_dict':category_dict}
     return render(request,'home/home.html',context)
 
 def newsdetail(request,slug):

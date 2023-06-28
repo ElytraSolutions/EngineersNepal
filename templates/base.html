@@ -15,6 +15,9 @@
             .newscontent iframe{
                 width:100%;
             }
+            .about-img img{
+                height:10% !important;
+            }
         </style>
         <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'logo.png' %}">
@@ -88,7 +91,7 @@
                             <!-- Logo -->
                             <div class="col-xl-3 col-lg-3 col-md-3">
                                 <div class="logo">
-                                    <a href="index.html"><img src="{% static 'logo.png' %}" style = "height: 197px; width: 185px;" alt=""></a>
+                                    <a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-9 col-lg-9 col-md-9">
@@ -105,16 +108,15 @@
                             <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                                 <!-- sticky -->
                                     <div class="sticky-logo">
-                                        <a href="index.html"><img src="{% static 'logo.png' %}" style = "height: 197px; width: 185px;" alt=""></a>
+                                        <a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" alt=""></a>
                                     </div>
                                 <!-- Main-menu -->
                                 <div class="main-menu d-none d-md-block">
                                     <nav>                  
                                         <ul id="navigation">    
                                             <li><a href="{% url 'home' %}">Home</a></li>
-                                            <li><a href="categori.html">Category</a></li>
+                                            <li><a href="#" class='dropdown-toggle'>Category</a></li>
                                             <li><a href="{% url 'aboutus' %}">About</a></li>
-                                            <li><a href="latest_news.html">Latest News</a></li>
                                             <li><a href="{% url 'contact' %}">Contact</a></li>
                                             <li><a href="#">Pages</a>
                                             {% if request.user.is_authenticated %}
@@ -172,7 +174,7 @@
                             <div class="single-footer-caption">
                                 <!-- logo -->
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="{% static 'logo.png' %}" style = "height: 197px; width: 185px;"  alt=""></a>
+                                    <a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" alt=""></a>
                                 </div>
                                 <div class="footer-tittle">
                                     <div class="footer-pera">
@@ -277,7 +279,7 @@
 
 		<!-- Jquery Slick , Owl-Carousel Plugins -->
         <script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
-        <script src="assets/js/slick.min.js"></script>
+        <script src="{% static 'assets/js/slick.min.js' %}"></script>
         <!-- Date Picker -->
         <script src="{% static 'assets/js/gijgo.min.js' %}"></script>
 		<!-- One Page, Animated-HeadLin -->

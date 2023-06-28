@@ -33,11 +33,11 @@
                         <!-- Trending Tittle -->
                         <div class="about-right mb-90">
                             <div class="about-img">
-                                <img src="{{news.thumbnail.url}}" alt="">
+                                <img src="{{news.thumbnail.url}}" alt="" style="height:20%;">
                             </div>
                             <div class="section-tittle mb-30 pt-30">
                                 <h3>{{news.title}}</h3>
-                                        <small>posted by: {{news.author}}</small>
+                                        <small><a href="{% url 'adminpage' news.author.slug %}" style="color:black;">posted by: {{news.author}}</a></small>
                                         <br>
                                         {% if news.author.user == user %}
                                           <small><a style="color:black;" href="{% url 'update-post' news.slug %}">Update</a> </small>
@@ -57,11 +57,32 @@
                                 </ul>
                             </div>
                         </div>
+                        <br>
+                        <h5 class="mr-20">About The Author</h3>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-12 mt-3">
+                                    <div class="card">
+                                        <div class="card-horizontal">
+                                            <div class="img-square-wrapper">
+                                                <img class="" src="{{news.author.profile_picture.url}}" alt="Author Image" style="width:100%;">
+                                            </div>
+                                            <div class="card-body">
+                                                <h4 class="card-title"><a href="{% url 'adminpage' news.author.slug %}" style="color:black;">{{news.author.fullname }}</a></h4>
+                                                <p class="card-text">{{news.author.bio}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    
                         <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="5"></div>
                         </div>
                         <!-- From -->
 
-                    </div>
+                    </div>                                
+
                     <div class="col-lg-4">
                         <!-- Section Tittle -->
                         <div class="section-tittle mb-40">

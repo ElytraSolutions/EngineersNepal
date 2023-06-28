@@ -24,9 +24,9 @@ Category:: {{item}}
                                     {% for category in categories %}
                                      <!-- <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All</a> -->
                                      {% if category == cate %}
-                                     <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="{% url 'category' category.slug %}" role="tab" aria-controls="nav-profile" aria-selected="false">{{ category.title }}</a>
+                                     <a class="nav-item nav-link active" href="{% url 'category' category.slug %}" role="tab" aria-controls="nav-profile" aria-selected="false">{{ category.title }}</a>
                                      {% else %}
-                                    <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" href="{% url 'category' category.slug %}" role="tab" aria-controls="nav-home" aria-selected="true">{{ category.title }}</a>
+                                    <a class="nav-item nav-link" href="{% url 'category' category.slug %}" role="tab" aria-controls="nav-home" aria-selected="true">{{ category.title }}</a>
                                     {% endif %}
                                     {% endfor %}
                                  </div>

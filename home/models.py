@@ -6,6 +6,7 @@ from datetime import datetime
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
 from django.conf import settings 
+from PIL import Image
 User=get_user_model()
 # Create your models here.
 
@@ -24,6 +25,10 @@ class Author(models.Model):
         super(Author, self).save()
         if not self.slug:
             self.slug=slugify(self.user.username)
+        img=Image.open(self.profile_picture.path)
+        output_size=(350,350)
+        img.thumbnail(output_size)
+        img.save(self.profile_picture.path)
         return super().save(*args, **kwargs)
 
     def __str__(self):
@@ -37,6 +42,7 @@ class Author(models.Model):
 class Category(models.Model):
     title = models.CharField(max_length=40)
     slug=models.SlugField(null=False, blank=True, unique=True)
+    featured=models.BooleanField(default=False)
     
     def save(self, *args, **kwargs):
         super(Category, self).save()
@@ -62,12 +68,17 @@ class Post(models.Model):
     content = RichTextUploadingField(blank=True, null=True,config_name='default')
     language=models.CharField(max_length=40, choices=CHOICES)
     slug = models.SlugField(null=False, blank=True, unique=True, allow_unicode=True)
+    featured=models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         super(Post, self).save()
         if not self.slug:
             formatedDate=datetime.now().strftime("%Y-%m-%d")
             self.slug=slugify(formatedDate)+'-'+'2000'+str(self.id)
+        img=Image.open(self.thumbnail.path)
+        output_size=(750,335)
+        img.thumbnail(output_size)
+        img.save(self.thumbnail.path)
         return super().save(*args, **kwargs)
     
     # def get_absolute_url(self):

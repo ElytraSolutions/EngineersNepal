@@ -188,10 +188,10 @@ a:focus,
   outline: none;
 }
 a {
-  color: #635c5c;
+  color: black;
 }
 a:hover {
-  color: #fff;
+  color: black;
 }
 a:focus,
 a:hover,
@@ -201,7 +201,7 @@ a:hover,
 }
 a,
 button {
-  color: #fff;
+  color: black;
   outline: medium none;
 }
 button:focus,
