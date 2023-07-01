@@ -17,9 +17,9 @@ Profile Page:: {{author}}
                              <h3>{{author.fullname}}</h3>
                          </div>
                      </div>
-                     <div class="col-lg-9 col-md-9">
+                     <!-- <div class="col-lg-9 col-md-9">
                          <div class="properties__button">
-                             <!--Nav Button  -->                                            
+                                                                        
                              <nav>                                                                     
                                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     {% for cat in categories %}
@@ -27,9 +27,9 @@ Profile Page:: {{author}}
                                     {% endfor %}
                                  </div>
                              </nav>
-                             <!--End Nav Button  -->
+                            
                          </div>
-                     </div>
+                     </div> -->
                  </div>
                  <div class="row">
                      <div class="col-12">
@@ -43,7 +43,7 @@ Profile Page:: {{author}}
                                          <div class="col-lg-6 col-md-6">
                                              <div class="single-what-news mb-100">
                                                  <div class="what-img">
-                                                     <a href="{% url 'newsdetail' post.slug %}"><img src="{{post.thumbnail.url}}" style="width: 360px; height: 335px;" alt=""> </a>
+                                                     <a href="{% url 'newsdetail' post.slug %}"><img src="{{post.thumbnail.url}}" alt=""> </a>
                                                  </div>
                                                  <div class="what-cap">
                                                      <span class="color1"><a href="{% url 'category' post.categories.slug %}" style="color:black;"> {{post.categories}} </a></span>

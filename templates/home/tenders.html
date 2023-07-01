@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Tenders Notices Available 
+{% endblock title %}
+{% block styles %}
+{% endblock styles %}
+{% block content %}
+
+<!-- create a centered div  -->
+<div style="width: 100%; text-align: center; margin: 0 auto; padding-left: 10%;padding-right: 10%;padding-top: 2%;">
+  <h1 style="text-align: center;">Tenders Available</h1>
+  <br>
+<table style="width:100%; border-collapse:collapse; margin:0 auto;">
+    {% for vacancy in tenders %}
+    <tr>
+      <td style="padding: 10px;padding-bottom: 20px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;">
+        <span class="job-title"><a href="{% url 'vacancy' vacancy.id %}" style="color:black;"><b>{{vacancy.title}}</b></a></span><br>
+          </td>
+      <td style="padding: 10px;padding-bottom: 20px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;">
+        <span class="job-title">{{vacancy.date_created}}</span><br>
+          </td>
+      <td style="padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;">
+        <span class="job-title">{{vacancy.date_expiry}}</span><br>
+          </td>
+      <td style="padding: 10px;padding-bottom: 20px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;">
+        <span class="job-title"><a href="{{vacancy.documents.url}}" target="_blank" style="color:black;"><b><i class="fa fa-eye" aria-hidden="true"></i></b></a></span><br>
+          </td>
+      <td style="padding: 10px;padding-bottom: 20px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;">
+        <span class="job-title"><a href="{{vacany.documents.url}}" style="color:black;"><b><i class="fa fa-download" aria-hidden="true"></i></b></a></span><br>
+          </td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+{% endblock content %}
+
+<!-- font awesome icon for viewmore -->
+

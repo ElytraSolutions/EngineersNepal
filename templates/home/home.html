@@ -81,7 +81,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-tittle mb-30">
-                        <h3>Category {{key}}</h3>
+                        <h3>Latest Posts: {{key}}</h3>
                     </div>
                 </div>
             </div>
@@ -176,7 +176,7 @@
                 {% for category in categories %}
                   <div class="follow-us d-flex align-items-center">
                       <div class="follow-social">
-                          <a href="{url 'category' category.slug}">{{category.title}}</a>
+                          <a href="{% url 'category' category.slug %}">{{category.title}}</a>
                       </div>
                       <div class="follow-count">  
                           <!-- <p>{{category.title}}</p>                            -->
@@ -272,23 +272,11 @@
           <div class="row">
               <div class="col-12">
                   <div class="video-items-active">
+                    {% for video in videos %}
                       <div class="video-items text-center">
-                          <iframe src="https://www.youtube.com/embed/CicQIuG8hBo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                          <iframe src="{{video.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                       </div>
-                      <div class="video-items text-center">
-                          <iframe  src="https://www.youtube.com/embed/rIz00N40bag" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                      </div>
-                      <div class="video-items text-center">
-                          <iframe src="https://www.youtube.com/embed/CONfhrASy44" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-                      </div>
-                      <div class="video-items text-center">
-                          <iframe src="https://www.youtube.com/embed/lq6fL2ROWf8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                       
-                      </div>
-                      <div class="video-items text-center">
-                          <iframe src="https://www.youtube.com/embed/0VxlQlacWV4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                      </div>
+                      {% endfor %}
                   </div>
               </div>
           </div>
@@ -297,52 +285,31 @@
                   <div class="col-lg-6">
                       <div class="video-caption">
                           <div class="top-caption">
-                              <span class="color1">Politics</span>
+                              <span class="color1">Latest Videos</span>
                           </div>
                           <div class="bottom-caption">
-                              <h2>Welcome To The Best Model Winner Contest At Look of the year</h2>
-                              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum dolor sit. Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod ipsum dolor sit lorem ipsum dolor sit.</p>
+                              <h2>Take a look at the latest videos</h2>
+                              <p>Donot forget to subscribe to the newsletter of Engineers Nepal and donot ever miss anything about Latest Engineering related posts and videos. </p>
                           </div>
                       </div>
                   </div>
                   <div class="col-lg-6">
                       <div class="testmonial-nav text-center">
+                        {% for video in videos %}
                           <div class="single-video">
-                              <iframe  src="https://www.youtube.com/embed/CicQIuG8hBo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                              <iframe  src="{{video.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                               <div class="video-intro">
-                                  <h4>Welcotme To The Best Model Winner Contest</h4>
+                                  <h4>{{video.title}}</h4>
                               </div>
                           </div>
-                          <div class="single-video">
-                              <iframe  src="https://www.youtube.com/embed/rIz00N40bag" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                              <div class="video-intro">
-                                  <h4>Welcotme To The Best Model Winner Contest</h4>
-                              </div>
-                          </div>
-                          <div class="single-video">
-                              <iframe src="https://www.youtube.com/embed/CONfhrASy44" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                              <div class="video-intro">
-                                  <h4>Welcotme To The Best Model Winner Contest</h4>
-                              </div>
-                          </div>
-                          <div class="single-video">
-                              <iframe src="https://www.youtube.com/embed/lq6fL2ROWf8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                              <div class="video-intro">
-                                  <h4>Welcotme To The Best Model Winner Contest</h4>
-                              </div>
-                          </div>
-                          <div class="single-video">
-                              <iframe src="https://www.youtube.com/embed/0VxlQlacWV4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                              <div class="video-intro">
-                                  <h4>Welcotme To The Best Model Winner Contest</h4>
-                              </div>
-                          </div>
+                          {% endfor %}
                       </div>
                   </div>
               </div>
           </div>
       </div>
   </div> 
+</div>
   <!-- End Start youtube -->
   <!--  Recent Articles start -->
   <div class="recent-articles">

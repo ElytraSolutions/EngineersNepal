@@ -1,7 +1,8 @@
 from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from datetime import datetime
-from .views import PostCreate, PostUpdate, PostDelete, SignUpView, profile, categoryview, AdminView, searchview,contact, aboutus,newsdetail, homepage
+from .views import (PostCreate, PostUpdate, PostDelete, SignUpView, profile,
+categoryview, AdminView, searchview,contact, aboutus,newsdetail, homepage, vacancyhome, vacancy, tender)
 from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('',homepage,name='home'),
@@ -19,8 +20,11 @@ urlpatterns = [
     path('password-reset-complete/', auth_views.PasswordResetCompleteView.as_view(template_name='register/password_reset_complete.html'), name='password_reset_complete'),
     path('profile-update/', profile, name='profile'), 
     path('search/', searchview, name='search'), 
+    path('vacancy/', vacancyhome, name='vacancyhome'), 
+    path('vacancy/<int:id>/', vacancy, name='vacancy'), 
     path('contact/', contact, name='contact'), 
     path('about-us/', aboutus, name='aboutus'), 
+    path('tenders/', tender, name='tenders'), 
     path('category/<slug:slug>', categoryview, name='category'), 
     path('author/<slug:slug>', AdminView, name='adminpage'), 
 ]

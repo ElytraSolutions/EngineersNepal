@@ -18,6 +18,7 @@
             .about-img img{
                 height:10% !important;
             }
+            {% block styles %} {% endblock styles %}
         </style>
         <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'logo.png' %}">
@@ -123,14 +124,17 @@
                                                 </ul>
                                             </li>
                                             <!-- dropdown values for category under above list item  -->
-                                            <li><a href="{% url 'contact' %}">Contact</a></li>
-                                            <li><a href="{% url 'aboutus' %}">About</a></li>
-                                            <li><a href="{% url 'login' %}">Login</a></li>
+                                            <li><a href="{% url 'vacancyhome' %}">Vacancy</a></li>
+                                            <li><a href="{% url 'tenders' %}">Tenders</a></li>
                                             {% if request.user.is_authenticated %}
                                                 <li><a href="{% url 'profile' %}"> Profile </a></li>
                                                 <li><a href="{% url 'create-post' %}"> Create </a></li>
                                                 <li><a href="{% url 'logout' %}">Logout</a></li>
+                                            {% else %}
+                                                <li><a href="{% url 'login' %}">Login</a></li>
                                             {% endif %}
+                                            <li><a href="{% url 'contact' %}">Contact</a></li>
+                                            <li><a href="{% url 'aboutus' %}">About</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -246,7 +250,7 @@
                         <div class="col-lg-6">
                             <div class="footer-copy-right">
                                 <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="ti-heart" aria-hidden="true"></i> <a href="#" target="_blank">BloomByte</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |<a href="#" target="_blank">BloomByte</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                             </div>
                         </div>

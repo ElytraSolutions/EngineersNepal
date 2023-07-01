@@ -37,11 +37,13 @@
                             </div>
                             <div class="section-tittle mb-30 pt-30">
                                 <h3>{{news.title}}</h3>
-                                        <small><a href="{% url 'adminpage' news.author.slug %}" style="color:black;">posted by: {{news.author}}</a></small>
+                                        <small><a href="{% url 'adminpage' news.author.slug %}" style="color:black;">posted by: <b>{{news.author.fullname}}</b></a></small>
                                         <br>
+                                        <!-- icon for delete post -->
                                         {% if news.author.user == user %}
-                                          <small><a style="color:green;" href="{% url 'update-post' news.slug %}">Update</a> </small>
-                                          <small><a style="color:red;"  href="{% url 'delete-post' news.slug %}">Delete</a> </small>
+                                        <!-- icon for update  -->
+                                          <small><a style="color:green;" href="{% url 'update-post' news.slug %}">Update <i class="fas fa-edit" aria-hidden="true"></i></a> </small>
+                                          <small><a style="color:red;"  href="{% url 'delete-post' news.slug %}">Delete <i class="fa fa-trash" aria-hidden="true"></i> </a> </small>
                                         {% endif %}
                             </div>
                             <div class="newscontent">

@@ -24,7 +24,7 @@ class Author(models.Model):
     def save(self, *args, **kwargs):
         super(Author, self).save()
         if not self.slug:
-            self.slug=slugify(self.user.username)
+            self.slug=slugify(self.user.username)+'-'+'2000'+str(self.id)
         img=Image.open(self.profile_picture.path)
         output_size=(350,350)
         img.thumbnail(output_size)
@@ -105,5 +105,40 @@ class advertisement(models.Model):
     #status of the advertisement
     status = models.BooleanField(default=True)
 
-    def str(self):
+    def __str__(self):
+        return self.title
+
+# model for vacany posts 
+class Vacancy(models.Model):
+    choices=(
+        ('Onsite','Onsite'),
+        ('Remote','Remote'),
+    )
+    title=models.CharField(max_length=100)
+    company=models.CharField(max_length=100)
+    description=models.TextField(max_length=500)
+    date_created=models.DateField(auto_now_add=True)
+    date_expiry=models.DateField()
+    address=models.CharField(max_length=100)
+    place=models.CharField(max_length=10, choices=choices)
+    worktime=models.CharField(max_length=100)
+    salary=models.CharField(max_length=100)
+    link=models.URLField(null=True, blank=True, default='')
+    def __str__(self):
+        return self.title
+
+class Videos(models.Model):
+    title=models.CharField(max_length=100)
+    link=models.URLField()
+    date_created=models.DateField(auto_now_add=True)
+    def __str__(self):
+        return self.title
+    
+
+class TenderDocuments(models.Model):
+    title=models.CharField(max_length=400)
+    documents=models.FileField(upload_to='tender_documents')
+    date_created=models.DateField(auto_now_add=True)
+    date_exp=models.DateField()
+    def __str__(self):
         return self.title

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
-from .models import Post, Author, Category
+from .models import Post, Author, Category, Vacancy, Videos, TenderDocuments
 from .forms import ContactUSForm
 from datetime import datetime
 from .forms import PostForm, UserUpdateForm, ProfileUpdateForm, UserRegisterForm
@@ -111,6 +111,7 @@ def AdminView(request, slug):
 
 
 def searchview(request):
+    queryset=Post.objects.all()
     if request.method == "POST":
         query = request.POST['search']
         if query:
@@ -129,7 +130,7 @@ def searchview(request):
             'posts':a_post, 
             'query':query,
         }
-        return render(request, 'home/searchresult.html', context)
+    return render(request, 'home/searchresult.html', context)
 
 
 def contact(request):
@@ -163,7 +164,7 @@ def homepage(request):
     trending_1=all_posts[:3]
     trending_2=all_posts[3:8]
     categories=Category.objects.all()
-
+    videos=Videos.objects.all()
     for category in categories:
         if category.featured==True:
             category_dict[category]=Post.objects.filter(categories__slug=category.slug).order_by('-id')[:7]
@@ -171,10 +172,28 @@ def homepage(request):
     # print(category_dict) 
     weekly_top=Post.objects.filter(timestamp__week=datetime.now().date().isocalendar()[1]).order_by('-id')[:7]
     context={'trending1':trending_1,'trending2':trending_2, 'featured_post':featured_post, 'weekly_top':weekly_top,
-             'categories':categories, 'category_dict':category_dict}
+             'categories':categories, 'category_dict':category_dict, 'videos':videos,}
     return render(request,'home/home.html',context)
 
 def newsdetail(request,slug):
     context={'news':Post.objects.get(slug=slug),}
     return render(request,'home/newsdetail.html',context)
     
+
+def vacancy(request, id):
+    # filter vacancies by id
+    vacancies=Vacancy.objects.filter(id=id)
+    print(vacancies)
+    context={'vacancy':vacancies, }
+    return render(request, 'home/vacancy.html', context)
+
+def vacancyhome(request):
+    vacposts=Vacancy.objects.filter(date_expiry__gte=datetime.now().date())
+    context={'vacposts':vacposts}
+    return render(request, 'home/vacancyhome.html', context)
+
+
+def tender(request):
+    tenders=TenderDocuments.objects.filter(date_exp__gte=datetime.now().date()).order_by('-id')
+    context={'tenders':tenders}
+    return render(request, 'home/tenders.html', context)
