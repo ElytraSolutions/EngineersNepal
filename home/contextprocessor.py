@@ -1,4 +1,4 @@
-from .models import Category
+from .models import Category, Author
 from datetime import date
 import nepali_datetime 
 
@@ -10,4 +10,9 @@ def message_processor(request):
     datenep=nepali_datetime.date.today()
     dateeng=dateeng.strftime("%d %B %Y")
     d1=datenep.strftime("%K-%n-%D (%k %N %G)")
-    return {'categories':categories, 'dateeng':dateeng, 'datenep':d1,}
+    if request.user.is_authenticated:
+        current_user=Author.objects.get(user=request.user)
+        return {'categories':categories, 'dateeng':dateeng, 'datenep':d1,'current_user':current_user}
+    else:
+        return {'categories':categories, 'dateeng':dateeng, 'datenep':d1}
+        

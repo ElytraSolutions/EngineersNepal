@@ -3,7 +3,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
 from .models import Post, Author, Category, Vacancy, Videos, TenderDocuments
 from .forms import ContactUSForm, ApplyForm
-from datetime import datetime
+from datetime import datetime, timedelta
 from .forms import PostForm, UserUpdateForm, ProfileUpdateForm, UserRegisterForm
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -19,19 +19,20 @@ class PostCreate(CreateView, LoginRequiredMixin):
     model=Post
     form_class=PostForm
     queryset=Post.objects.all()
+    success_url=reverse_lazy('home')
     def form_valid(self, form):
         form.instance.timestamp = datetime.now().date()
         author=Author.objects.get(user=self.request.user)
         form.instance.author=author
         form.save()
-        messages.success(self.request, f'created post successfully')
+        messages.success(self.request, f'Post created successfully')
         return super(PostCreate, self).form_valid(form)
     
 class PostUpdate(UpdateView, LoginRequiredMixin, SuccessMessageMixin):
     model=Post
     form_class=PostForm
     queryset=Post.objects.all()
-    success_message="post updated successfully"
+    success_message="Post updated successfully"
     def get_success_url(self):
         slug=self.kwargs['slug']
         return reverse_lazy('newsdetail', kwargs={'slug':slug})
@@ -39,7 +40,7 @@ class PostUpdate(UpdateView, LoginRequiredMixin, SuccessMessageMixin):
 class PostDelete(DeleteView, LoginRequiredMixin, SuccessMessageMixin):
     model=Post
     success_url='/'
-    success_message='post deleted successsfully'
+    success_message='Post deleted successsfully'
 
 
 
@@ -58,8 +59,8 @@ def profile(request):
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
-            messages.success(request, f'profile updates successfully')
-            return redirect('profile')
+            messages.success(request, f'Profile updated successfully')
+            return redirect('home')
     else:
         u_form=UserUpdateForm(instance=request.user)
         p_form=ProfileUpdateForm(instance=request.user.author)
@@ -74,7 +75,7 @@ def categoryview(request, slug):
     categories=Category.objects.all()
     item=Category.objects.get(slug=slug)
     page=request.GET.get('page', 1)
-    paginator=Paginator(searched, 4)
+    paginator=Paginator(searched, 6)
     try:
         a_post = paginator.page(page)
     except PageNotAnInteger:
@@ -138,14 +139,10 @@ def contact(request):
     if request.method == 'POST':
         if Contactform.is_valid():
             email = Contactform.cleaned_data['email']
-            print(email)
             subject = Contactform.cleaned_data['subject']
-            print(subject)
             message_body=Contactform.cleaned_data['message_body']
-            print(message_body)
             name=Contactform.cleaned_data['name']
-            print(name)
-            
+            print(name, message_body, subject, email)
         else:
          Contactform = ContactUSForm(request.POST)    
             
@@ -158,25 +155,29 @@ def aboutus(request):
 
 
 def homepage(request):
+    from_date=datetime.now()-timedelta(days=7)
     category_dict={}
     all_posts=Post.objects.all()
-    featured_post=Post.objects.filter(featured=True).order_by('-timestamp')[0]
+    featured_post=all_posts.filter(featured=True).order_by('-timestamp')[0]
     trending_1=all_posts[:3]
     trending_2=all_posts[3:8]
     categories=Category.objects.all()
     videos=Videos.objects.all()
+    weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:4]
     for category in categories:
         if category.featured==True:
-            category_dict[category]=Post.objects.filter(categories__slug=category.slug).order_by('-id')[:7]
-    # finding weekly top posts
-    # print(category_dict) 
-    weekly_top=Post.objects.filter(timestamp__week=datetime.now().date().isocalendar()[1]).order_by('-id')[:7]
+            category_dict[category]=all_posts.filter(categories__slug=category.slug).order_by('-id')[:7]
     context={'trending1':trending_1,'trending2':trending_2, 'featured_post':featured_post, 'weekly_top':weekly_top,
              'categories':categories, 'category_dict':category_dict, 'videos':videos,}
     return render(request,'home/home.html',context)
 
 def newsdetail(request,slug):
-    context={'news':Post.objects.get(slug=slug),}
+    post=Post.objects.get(slug=slug)
+    if not request.session.get('Counted'):
+        post.views+=1
+        post.save()
+        request.session['Counted']=True
+    context={'news':post,}
     return render(request,'home/newsdetail.html',context)
     
 
@@ -208,7 +209,7 @@ def apply(request, id):
             vacancy=Vacancy.objects.get(id=id)
             form.instance.vacancy=vacancy
             form.save()
-            messages.success(request, f'applied successfully')
+            messages.success(request, f'Applied successfully to the job !!!')
             return redirect('home')
     else:
         form=ApplyForm()

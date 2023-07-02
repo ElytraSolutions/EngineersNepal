@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block title %}
-Vacancy Site Supervisor 
+{{ vacancy.title }} 
 {% endblock title %}
 {% block content %}
 <!-- centered div  -->
@@ -20,14 +20,14 @@ Vacancy Site Supervisor
     <div class="newscontent">
 {{ vacancy.description|safe }}
 </div>
+<br>
    Salary: <b>{{vacancy.salary}}</b>
 <br>
 Submit by: <span class="job-title"><b>{{vacancy.date_expiry}}</b></span><br>
-Work type: <span class="job-title"><b>{{vacancy.place}}</b></span>
+Work type: <span class="job-title"><b>{{vacancy.place}}</b></span><br>
+Link: <a href="{{vacancy.link}}" target="_blank" style="color:blue;">{{vacancy.link}}</a>
 <br>
-
-<br>
-<b><a href="{% url 'apply' vacancy.id %}" style="color:black;">Apply Now</a></b>
+<b><a href="{% url 'apply' vacancy.id %}" style="color:blue;">Apply Now</a></b>
 </div>
 
 `

@@ -69,6 +69,7 @@ class Post(models.Model):
     language=models.CharField(max_length=40, choices=CHOICES)
     slug = models.SlugField(null=False, blank=True, unique=True, allow_unicode=True)
     featured=models.BooleanField(default=False)
+    views=models.IntegerField(default=1)
 
     def save(self, *args, **kwargs):
         super(Post, self).save()

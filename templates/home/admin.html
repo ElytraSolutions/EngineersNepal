@@ -20,6 +20,7 @@ Profile Page:: {{author}}
                                 &nbsp;&nbsp;<a href="{{ news.author.facebook_link }}" ><img src="{% static 'assets/img/news/icon-fb.png' %}" alt="image not found" style="width:30px;"></a>
                                 &nbsp;&nbsp;<a href="{{ news.author.twitter_link }}"><img src="{% static 'assets/img/news/icon-tw.png' %}" alt="image not found" style="width:30px;"></a><br>
                                 &nbsp;&nbsp;<p style="max-width: 100%;">{{author.bio}}</p>
+                                <a href="{% url 'profile' %}" style='color:blue;'>Edit Profile </a>
                             </small>
                          </div>
                      </div>

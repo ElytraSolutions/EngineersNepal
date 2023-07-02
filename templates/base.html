@@ -15,6 +15,14 @@
             .newscontent iframe{
                 width:100%;
             }
+            .newscontent ol{
+                list-style-type:disc;
+                display:list-item !important;
+            }
+            .newscontent li{
+                list-style-type:disc;
+                display:list-item !important;
+            }
             .about-img img{
                 height:10% !important;
             }
@@ -70,6 +78,13 @@
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v17.0&appId=956497205672768&autoLogAppEvents=1" nonce="1o9h0F0h"></script>
 
        
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{message.tags}}" id='msg' role='alert' style="text-align: center;">
+  <b>{{ message }}</b>
+</div>
+{% endfor %}
+{% endif %}
     <!-- Preloader Start -->
     <!-- <div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -149,11 +164,9 @@
                                             <li><a href="{% url 'vacancyhome' %}">Vacancy</a></li>
                                             <li><a href="{% url 'tenders' %}">Tenders</a></li>
                                             {% if request.user.is_authenticated %}
-                                                <li><a href="{% url 'profile' %}"> Profile </a></li>
+                                                <li><a href="{% url 'adminpage' current_user.slug %}"> Profile </a></li>
                                                 <li><a href="{% url 'create-post' %}"> Create </a></li>
                                                 <li><a href="{% url 'logout' %}">Logout</a></li>
-                                            {% else %}
-                                                <li><a href="{% url 'login' %}">Login</a></li>
                                             {% endif %}
                                             <li><a href="{% url 'contact' %}">Contact</a></li>
                                             <li><a href="{% url 'aboutus' %}">About</a></li>
@@ -295,6 +308,14 @@
 	<!-- JS here -->
 	
 		<!-- All JS Custom Plugins Link Here here -->
+        <script>
+            setTimeout(function () {
+              if ($('#msg').length > 0) {
+                $('#msg').remove();
+              }
+            }, 2000)
+          </script>
+      
         <script src="{% static './assets/js/vendor/modernizr-3.5.0.min.js' %}"></script>
 		<!-- Jquery, Popper, Bootstrap -->
 		<script src="{% static 'assets/js/vendor/jquery-1.12.4.min.js' %}"></script>

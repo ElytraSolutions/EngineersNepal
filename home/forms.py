@@ -30,7 +30,7 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model=Author
-        fields = ['profile_picture', 'bio','twitter_link','facebook_link','youtube_link']
+        fields = ['firstname','lastname','profile_picture', 'bio','twitter_link','facebook_link','youtube_link']
 
 
 class ContactUSForm(forms.Form):
