@@ -1,5 +1,5 @@
 from django import forms 
-from .models import Post, Author
+from .models import Post, Author, AppliedUsers
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -47,3 +47,8 @@ class ContactUSForm(forms.Form):
         return self.Email
     
     
+# model form to save applied users data 
+class ApplyForm(forms.ModelForm):
+    class Meta:
+        model=AppliedUsers
+        fields=['fullname','email','phone','address','cv']
