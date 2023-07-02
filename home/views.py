@@ -182,9 +182,9 @@ def newsdetail(request,slug):
 
 def vacancy(request, id):
     # filter vacancies by id
-    vacancies=Vacancy.objects.filter(id=id)
+    vacancies=Vacancy.objects.get(id=id)
     print(vacancies)
-    context={'vacancy':vacancies, }
+    context={'vacancy':vacancies}
     return render(request, 'home/vacancy.html', context)
 
 def vacancyhome(request):

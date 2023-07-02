@@ -6,40 +6,29 @@ Vacancy Site Supervisor
 {% block content %}
 <!-- centered div  -->
 <div style="width: 100%; text-align: justified; margin: 0 auto; padding-left: 10%;padding-right: 10%;padding-top: 2%;">
-<h1>Site Supervisor</h1>
+<h1>{{vacancy.title}}</h1>
 <!-- a row to display icons for several data -->
 <div class="row">
 <div class="col-md-20">
-<i class="fa fa-map-marker" aria-hidden="true"></i> <span class="job-title">Location: </span><span class="job-title">Kathmandu</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<i class="fa fa-calendar" aria-hidden="true"></i> <span class="job-title">Deadline: </span><span class="job-title">2021-05-30</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<i class="fa fa-clock" aria-hidden="true"></i> <span class="job-title">Work Time: </span><span class="job-title">10 to 6</span>
+<i class="fa fa-map-marker" aria-hidden="true"></i> <span class="job-title">Location: </span><span class="job-title">{{vacancy.place}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<i class="fa fa-calendar" aria-hidden="true"></i> <span class="job-title">Deadline: </span><span class="job-title">{{vacancy.date_expiry}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<i class="fa fa-clock" aria-hidden="true"></i> <span class="job-title">Work Time: </span><span class="job-title">{{vacancy.worktime}}</span>
 </div>
 </div>
 <hr>
 <p>
-    <ol style="color:black;">
-<li>5+ years of real-world data engineering development experience in AWS (certifications preferred)</li>
-<li>Strong programming Skills in one or more languages such as Python, Scala, and proficient in writing efficient and optimized code for data integration, storage, processing and manipulation.</li>
-<li>Strong knowledge SDLC tools and technologies,  including project management software (Jira or similar), source code management (GitHub or similar), CI/CD system (GitHub actions, AWS CodeBuild or similar) and binary repository manager (AWS CodeArtifact or similar).</li>
-<li>Good understanding of Data Modeling and Database Design Principles. Being able to design and implement efficient database schemas that meet the requirements of the data architecture to support data solutions.</li>
-<li>Skilled in Data Integration from different sources such as APIs, databases, flat files, event streaming. </li>
-<li>Strong experience in working with ELT and ETL tools and being able to develop custom integration solutions as needed.</li>
-<li>Strong experience with scalable and distributed Data Technologies such as Spark/PySpark, DBT and Kafka, to be able to handle large volumes of data.</li>
-    </ol>
-   Salary: <b>Negotiable</b>
+    <div class="newscontent">
+{{ vacancy.description|safe }}
+</div>
+   Salary: <b>{{vacancy.salary}}</b>
 <br>
-Submit by: <span class="job-title"><b>2021-05-30</b></span><br>
-Work type: <span class="job-title"><b>2021-05-30</b></span>
+Submit by: <span class="job-title"><b>{{vacancy.date_expiry}}</b></span><br>
+Work type: <span class="job-title"><b>{{vacancy.place}}</b></span>
 <br>
-Drop your cv here: 
-<!-- file input field in html  -->
-<input type="file" id="myFile" name="filename">
 
+<br>
+<b><a href="#" style="color:black;">Apply Now</a></b>
 </div>
 
-
-{{ vacancy.title }}
-{{ vacancy.company }}
-{{ vacancy.address }}
-{{ vacancy.description }}
+`
 {% endblock content %}

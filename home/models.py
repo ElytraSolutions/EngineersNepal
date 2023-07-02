@@ -116,7 +116,7 @@ class Vacancy(models.Model):
     )
     title=models.CharField(max_length=100)
     company=models.CharField(max_length=100)
-    description=models.TextField(max_length=500)
+    description=RichTextUploadingField(blank=True, null=True,config_name='default')
     date_created=models.DateField(auto_now_add=True)
     date_expiry=models.DateField()
     address=models.CharField(max_length=100)
