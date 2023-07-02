@@ -2040,7 +2040,7 @@ hr {
 }
 .header-area .header-mid {
   padding: 9px 0px;
-  background: #fff;
+  background: #fc3f00; /*changed bibek*/
   position: relative;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -2059,6 +2059,7 @@ hr {
 .header-area .header-bottom {
   border-top: 1px solid #eee;
   box-shadow: 0px 0px 36px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff9c6;
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .header-area .header-bottom {
@@ -2443,7 +2444,8 @@ hr {
   line-height: 1.4;
 }
 .trending-area .trending-main .trand-right-single .trand-right-cap h4 a:hover {
-  color: #fc3f00;
+  color: #fc3f00; 
+  /* bibek changed */
 }
 .single-bottom:hover .trend-bottom-img img {
   transform: scale(1.1);
@@ -2475,7 +2477,7 @@ hr {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 500;
-  background: #ff0b0b;
+  background: #fc3f00;
   padding: 11px 0px;
   line-height: 1;
   margin-bottom: 15px;
@@ -5651,3 +5653,6 @@ del {
   display: flex;
   flex: 1 1 auto;
 }
+
+
+/* custom added css */
