@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
 from .models import Post, Author, Category, Vacancy, Videos, TenderDocuments
-from .forms import ContactUSForm
+from .forms import ContactUSForm, ApplyForm
 from datetime import datetime
 from .forms import PostForm, UserUpdateForm, ProfileUpdateForm, UserRegisterForm
 from django.contrib import messages
@@ -197,3 +197,20 @@ def tender(request):
     tenders=TenderDocuments.objects.filter(date_exp__gte=datetime.now().date()).order_by('-id')
     context={'tenders':tenders}
     return render(request, 'home/tenders.html', context)
+
+
+# create a function based views to apply for the specific job as in vacancy model 
+def apply(request, id):
+    if request.method=='POST':
+        form=ApplyForm(request.POST, request.FILES)
+        if form.is_valid():
+            # obtain the vacancy object and save the form with the vacancy post according to id 
+            vacancy=Vacancy.objects.get(id=id)
+            form.instance.vacancy=vacancy
+            form.save()
+            messages.success(request, f'applied successfully')
+            return redirect('home')
+    else:
+        form=ApplyForm()
+    context={'form':form}
+    return render(request, 'home/apply.html', context)

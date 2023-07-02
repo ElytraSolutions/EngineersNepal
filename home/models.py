@@ -24,7 +24,7 @@ class Author(models.Model):
     def save(self, *args, **kwargs):
         super(Author, self).save()
         if not self.slug:
-            self.slug=slugify(self.user.username)+'-'+'2000'+str(self.id)
+            self.slug='2000'+str(self.id)
         img=Image.open(self.profile_picture.path)
         output_size=(350,350)
         img.thumbnail(output_size)
@@ -142,3 +142,16 @@ class TenderDocuments(models.Model):
     date_exp=models.DateField()
     def __str__(self):
         return self.title
+
+# model to store the applied users data 
+class AppliedUsers(models.Model):
+    vacancy=models.ForeignKey(Vacancy, on_delete=models.CASCADE)
+    fullname=models.CharField(max_length=100)
+    email=models.EmailField()
+    phone=models.CharField(max_length=100)
+    address=models.CharField(max_length=100)
+    # only upload files with extensions pdf 
+    cv=models.FileField(upload_to='cv')
+    def __str__(self):
+        return self.fullname+" "+self.vacancy.title
+    
