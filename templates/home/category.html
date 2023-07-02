@@ -19,9 +19,9 @@ Category:: {{item}}
                      <div class="col-lg-9 col-md-9">
                          <div class="properties__button">
                              <!--Nav Button  -->                                            
-                             <nav>                                                                     
+                             <nav>                                                                   
                                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    {% for category in categories %}
+                                    {% for category in categories|slice:"0:3" %}
                                      <!-- <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">All</a> -->
                                      {% if category == cate %}
                                      <a class="nav-item nav-link active" href="{% url 'category' category.slug %}" role="tab" aria-controls="nav-profile" aria-selected="false">{{ category.title }}</a>
@@ -29,6 +29,18 @@ Category:: {{item}}
                                     <a class="nav-item nav-link" href="{% url 'category' category.slug %}" role="tab" aria-controls="nav-home" aria-selected="true">{{ category.title }}</a>
                                     {% endif %}
                                     {% endfor %}
+                                    <div class="catdropdown">
+                                        <a class="nav-item nav-link active" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa fa-angle-down"></i></a>
+                                        <div class="catdropdown-content">
+                                            {% for category in categories|slice:"3:" %}
+                                            {% if category == cate %}
+                                            <a class="nav-item nav-link active" href="{% url 'category' category.slug %}" role="tab" aria-controls="nav-profile" aria-selected="false">{{ category.title }}</a>
+                                            {% else %}
+                                            <a class="nav-item nav-link" href="{% url 'category' category.slug %}" role="tab" aria-controls="nav-profile" aria-selected="false">{{ category.title }}</a>
+                                            {% endif %}
+                                            {% endfor %}
+                                        </div>
+                                      </div>
                                  </div>
                              </nav>
                              <!--End Nav Button  -->
@@ -147,8 +159,8 @@ Category:: {{item}}
 
                                {% if posts.has_previous %}
                              
-                                <li class="page-item"> <a class="pagination-link" href="?page=1"><span class="flaticon-arrow roted"></span></a></li>
-                                <li class="page-item> <a class="pagination-link" href="?page={{ posts.previous_page_number }}"><span class="flaticon-arrow roted"></span></a></li>
+                                <li class="page-item"> <a class="page-link" href="?page=1"><span class="flaticon-arrow roted"></span></a></li>
+                                <li class="page-item> <a class="page-link" href="?page={{ posts.previous_page_number }}"></a></li>
                                </a>
                                {% endif %}
                                {% for num in posts.paginator.page_range %}
@@ -159,8 +171,7 @@ Category:: {{item}}
                                  {% endif %}
                                  {% endfor %}
                                     {% if posts.has_next %}
-                                    <li class="page-item"> <a class="pagination-action" href="?page={{ posts.next_page_number }}"><span class="flaticon-arrow roted"></span></a></li>
-                                    <li class="page-item> <a class="pagination-action" href="?page={{ posts.paginator.num_pages }}"><span class="flaticon-arrow right-arrow"></span></a></li>
+                                    <li class="page-item> <a class="page-link" href="?page={{ posts.paginator.num_pages }}"><span class="flaticon-arrow right-arrow"></span></a></li>
                                    </a>
                                     {% endif %}
                              </ul>

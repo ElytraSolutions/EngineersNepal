@@ -18,7 +18,28 @@
             .about-img img{
                 height:10% !important;
             }
-            {% block styles %} {% endblock styles %}
+            /* custom start */
+            .catdropdown {
+            position: relative;
+            display: inline-block;
+            }
+
+            .catdropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+            }
+
+            .catdropdown:hover .catdropdown-content {
+            display: block;
+            }
+            /* end */
+            {% block styles %} 
+            {% endblock styles %}
         </style>
         <link rel="manifest" href="site.webmanifest">
 		<link rel="shortcut icon" type="image/x-icon" href="{% static 'logo.png' %}">
@@ -39,6 +60,7 @@
             <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
             <link rel="stylesheet" href="{% static 'assets/css/flaticon.css' %}">
             <link rel="stylesheet" href="{% static 'assets/css/respnsive.css' %}">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
             
    </head>
@@ -86,7 +108,7 @@
                        </div>
                    </div>
                 </div>
-                <div class="header-mid d-none d-md-block">
+                <div class="header-mid d-none d-md-block" >
                    <div class="container">
                         <div class="row d-flex align-items-center">
                             <!-- Logo -->
@@ -146,7 +168,7 @@
                                       <div class="input-group" >
                                         <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                                         aria-describedby="search-addon" name="search"/>&nbsp;&nbsp;
-                                        <button  type="submit" class="rounded btn btn-primary btn-sm" style="min-width: 50px;min-height: 20px;padding: 0;" ><i class="fas fa-search special-tag"></i></button>
+                                        <button  type="submit" class="rounded btn btn-primary btn-sm" style="min-width: 50px;min-height: 20px;padding: 0; background:#fc3f00" ><i class="fas fa-search special-tag"></i></button>
                                         
                                       </div>
                                     </form>

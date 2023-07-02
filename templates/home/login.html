@@ -5,16 +5,22 @@ Login
 {% endblock title %}
 {% block content %}
 <!-- centralized div for login form with padding and margin -->
-<div style="text-align: center;padding-left: 30%; padding-right: 30%; padding-bottom: 10%;margin-top: 5%;">
-<h1> Login </h1>
+<div style="text-align: center;padding-left: 20%; padding-right: 20%; padding-bottom: 10%;margin-top: 5%;">
+<h1> Login </h1><hr>
 <form action="" method="post" style="text-align: center;">
     {% csrf_token %}
     {{form|crispy}}
     <!-- bootstrap attractive button to submit for login -->
-    <button type="submit" class="btn btn-outline-primary btn-block"> Login </button>
+    <button type="submit" style="background-color: green; /* Green */
+    border: none;
+    color: white;
+    padding: 8px 22px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;"> Login </button>
     <br>
-    <br>
-    <button type="button" class="btn btn-libtn btn-outline-secondarynk btn-block"><a href="{% url 'password_reset' %}"> Forget Password</a></button>
+    <small><a href="{% url 'password_reset' %}" style="color: red"> Forget Password</a></small>
     <br>
 </form>
 </div>

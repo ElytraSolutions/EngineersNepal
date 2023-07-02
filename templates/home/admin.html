@@ -12,11 +12,18 @@ Profile Page:: {{author}}
              <div class="row">
              <div class="col-lg-8">
                  <div class="row d-flex justify-content-between">
-                     <div class="col-lg-3 col-md-3">
+                    <hr>
+                     <div class="col-lg-12 col-md-3">
                          <div class="section-tittle mb-30">
-                             <h3>{{author.fullname}}</h3>
+                            <h2>{{author.user.username}}</h2>
+                            <small><img src="{{author.profile_picture.url}}" style="width: 70px; height:70px; border-radius: 50%;">
+                                &nbsp;&nbsp;<a href="{{ news.author.facebook_link }}" ><img src="{% static 'assets/img/news/icon-fb.png' %}" alt="image not found" style="width:30px;"></a>
+                                &nbsp;&nbsp;<a href="{{ news.author.twitter_link }}"><img src="{% static 'assets/img/news/icon-tw.png' %}" alt="image not found" style="width:30px;"></a><br>
+                                &nbsp;&nbsp;<p style="max-width: 100%;">{{author.bio}}</p>
+                            </small>
                          </div>
                      </div>
+                     <hr>
                      <!-- <div class="col-lg-9 col-md-9">
                          <div class="properties__button">
                                                                         
@@ -120,52 +127,51 @@ Profile Page:: {{author}}
  
      <!--Start pagination -->
      <div class="pagination-area pb-45 text-center">
-         <div class="container">
-             <div class="row">
-                 <div class="col-xl-12">
-                     <div class="single-wrap d-flex justify-content-center">
-                         <nav aria-label="Page navigation example">
-                             <ul class="pagination justify-content-start">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="single-wrap d-flex justify-content-center">
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-start">
 
-                               <!-- <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow roted"></span></a></li>
-                                 <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                 <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                 <li class="page-item"><a class="page-link" href="#">03</a></li>
-                               <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow right-arrow"></span></a></li> -->
-                               <!-- {% if blog.has_previous %}
-                               <a class="pagination-action" href="?page=1">
-                                   <i class="fa fa-angle-double-left" aria-hidden="true"></i> </a>
-                               <a class="pagination-action" href="?page={{ blog.previous_page_number }}">
-                                   <i class="fa fa-angle-left" aria-hidden="true"></i>
-                               </a>
-                               {% endif %} -->
+                              <!-- <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow roted"></span></a></li>
+                                <li class="page-item active"><a class="page-link" href="#">01</a></li>
+                                <li class="page-item"><a class="page-link" href="#">02</a></li>
+                                <li class="page-item"><a class="page-link" href="#">03</a></li>
+                              <li class="page-item"><a class="page-link" href="#"><span class="flaticon-arrow right-arrow"></span></a></li> -->
+                              <!-- {% if blog.has_previous %}
+                              <a class="pagination-action" href="?page=1">
+                                  <i class="fa fa-angle-double-left" aria-hidden="true"></i> </a>
+                              <a class="pagination-action" href="?page={{ blog.previous_page_number }}">
+                                  <i class="fa fa-angle-left" aria-hidden="true"></i>
+                              </a>
+                              {% endif %} -->
 
 
-                               {% if posts.has_previous %}
-                             
-                                <li class="page-item"> <a class="pagination-link" href="?page=1"><span class="flaticon-arrow roted"></span></a></li>
-                                <li class="page-item> <a class="pagination-link" href="?page={{ posts.previous_page_number }}"><span class="flaticon-arrow roted"></span></a></li>
-                               </a>
-                               {% endif %}
-                               {% for num in posts.paginator.page_range %}
-                               {% if posts.number == num %}
-                               <li class="page-item active"><a class="page-link" href="#">{{num}}</a></li>
-                               {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
-                               <li class="page-item"><a class="page-link" href="?page={{ num }}">{{num}}</a></li>
-                                 {% endif %}
-                                 {% endfor %}
-                                    {% if posts.has_next %}
-                                    <li class="page-item"> <a class="pagination-action" href="?page={{ posts.next_page_number }}"><span class="flaticon-arrow roted"></span></a></li>
-                                    <li class="page-item> <a class="pagination-action" href="?page={{ posts.paginator.num_pages }}"><span class="flaticon-arrow right-arrow"></span></a></li>
-                                   </a>
-                                    {% endif %}
-                             </ul>
-                           </nav>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
+                              {% if posts.has_previous %}
+                            
+                               <li class="page-item"> <a class="page-link" href="?page=1"><span class="flaticon-arrow roted"></span></a></li>
+                               <li class="page-item> <a class="page-link" href="?page={{ posts.previous_page_number }}"></a></li>
+                              </a>
+                              {% endif %}
+                              {% for num in posts.paginator.page_range %}
+                              {% if posts.number == num %}
+                              <li class="page-item active"><a class="page-link" href="#">{{num}}</a></li>
+                              {% elif num > posts.number|add:'-3' and num < posts.number|add:'3' %}
+                              <li class="page-item"><a class="page-link" href="?page={{ num }}">{{num}}</a></li>
+                                {% endif %}
+                                {% endfor %}
+                                   {% if posts.has_next %}
+                                   <li class="page-item> <a class="page-link" href="?page={{ posts.paginator.num_pages }}"><span class="flaticon-arrow right-arrow"></span></a></li>
+                                  </a>
+                                   {% endif %}
+                            </ul>
+                          </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
      <!-- End pagination  -->
      </main>
 {% endblock content %}
