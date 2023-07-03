@@ -157,10 +157,11 @@ def aboutus(request):
 def homepage(request):
     from_date=datetime.now()-timedelta(days=7)
     category_dict={}
-    all_posts=Post.objects.all()
-    featured_post=all_posts.filter(featured=True).order_by('-timestamp')[0]
-    trending_1=all_posts[:3]
-    trending_2=all_posts[3:8]
+    all_posts=Post.objects.all().order_by('-timestamp')
+    features=all_posts.filter(featured=True).order_by('-timestamp')
+    featured_post=features[0]
+    trending_1=features[:3]
+    trending_2=all_posts[:5]
     categories=Category.objects.all()
     videos=Videos.objects.all()
     weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:4]
