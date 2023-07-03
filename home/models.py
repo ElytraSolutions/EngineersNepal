@@ -5,6 +5,7 @@ from ckeditor.fields import RichTextField
 from datetime import datetime
 from ckeditor_uploader.fields import RichTextUploadingField
 from django.template.defaultfilters import slugify
+from django.core.validators import FileExtensionValidator
 from django.conf import settings 
 from PIL import Image
 User=get_user_model()
@@ -55,18 +56,12 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    CHOICES = (
-        ('EN', 'English'),
-        ('NP', 'Nepali'),
-    )
-
     title = models.CharField(max_length=100)
-    timestamp = models.DateField(auto_now_add=True)
+    timestamp = models.DateField(null=True, blank=True)
     thumbnail = models.ImageField(upload_to='post_thumbs')
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     categories = models.ForeignKey(Category, on_delete=models.CASCADE)
     content = RichTextUploadingField(blank=True, null=True,config_name='default')
-    language=models.CharField(max_length=40, choices=CHOICES)
     slug = models.SlugField(null=False, blank=True, unique=True, allow_unicode=True)
     featured=models.BooleanField(default=False)
     views=models.IntegerField(default=1)
@@ -76,6 +71,8 @@ class Post(models.Model):
         if not self.slug:
             formatedDate=datetime.now().strftime("%Y-%m-%d")
             self.slug=slugify(formatedDate)+'-'+'2000'+str(self.id)
+        if not self.timestamp:
+            self.timestamp=datetime.now()
         img=Image.open(self.thumbnail.path)
         output_size=(750,335)
         img.thumbnail(output_size)
@@ -156,3 +153,9 @@ class AppliedUsers(models.Model):
     def __str__(self):
         return self.fullname+" "+self.vacancy.title
     
+
+class Epapers(models.Model):
+    epaper_pdf=models.FileField(upload_to='epapers', validators=[FileExtensionValidator(allowed_extensions=['pdf'])])
+    date_created=models.DateField()
+    def __str__(self):
+        return str(self.date_created)+" epaper"

@@ -37,6 +37,7 @@
                             </div>
                             <div class="section-tittle mb-30 pt-30">
                                 <h1>{{news.title}}</h1><br>
+                                <small>Published at: {{news.timestamp}}</small>
                                 <hr>
                                 <small><img src="{{news.author.profile_picture.url}}" style="width: 50px; height:50px; border-radius: 50%;">&nbsp;&nbsp;<a href="{% url 'adminpage' news.author.slug %}" style="color:black;"><b style="font-size: 20px;">{{news.author.fullname}}</b></a>
                                     &nbsp;&nbsp;<a href="{{ news.author.facebook_link }}" ><img src="{% static 'assets/img/news/icon-fb.png' %}" alt="image not found" style="width:20px;"></a>

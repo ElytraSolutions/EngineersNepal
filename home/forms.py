@@ -6,12 +6,11 @@ from django.contrib.auth.forms import UserCreationForm
 class PostForm(forms.ModelForm):
     class Meta:
         model=Post
-        fields = ['title','thumbnail','categories','content','language']
+        fields = ['title','thumbnail','categories','content',]
         widgets = {
             'category': forms.Select(),
             'body': forms.Textarea(),
             'content': forms.TextInput(),
-            'language':forms.Select(),
         }
 
 class UserRegisterForm(UserCreationForm):

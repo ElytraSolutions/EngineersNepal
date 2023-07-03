@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
-from .models import Post, Author, Category, Vacancy, Videos, TenderDocuments
+from .models import Post, Author, Category, Vacancy, Videos, TenderDocuments, Epapers
 from .forms import ContactUSForm, ApplyForm
 from datetime import datetime, timedelta
 from .forms import PostForm, UserUpdateForm, ProfileUpdateForm, UserRegisterForm
@@ -215,3 +215,9 @@ def apply(request, id):
         form=ApplyForm()
     context={'form':form}
     return render(request, 'home/apply.html', context)
+
+def epaperview(request, id):
+    paper=Epapers.objects.get(id=id)
+    context={'paper':paper,}
+    return render(request, 'home/epaper.html', context)
+
