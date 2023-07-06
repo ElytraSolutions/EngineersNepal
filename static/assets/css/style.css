@@ -28,7 +28,7 @@
   background: #fff;
 }
 .black-bg {
-  background: #000;
+  background: #181019;
 }
 .theme-bg {
   background: #fc3f00;
@@ -1914,24 +1914,24 @@ hr {
   }
 }
 .footer-padding {
-  padding-top: 140px;
+  padding-top: 75px;
   padding-bottom: 50px;
 }
 @media only screen and (min-width: 1200px) and (max-width: 1600px) {
   .footer-padding {
-    padding-top: 120px;
+    padding-top: 75px;
     padding-bottom: 10px;
   }
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .footer-padding {
-    padding-top: 100px;
+    padding-top: 50px;
     padding-bottom: 10px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .footer-padding {
-    padding-top: 100px;
+    padding-top: 50px;
     padding-bottom: 10px;
   }
 }
@@ -1975,7 +1975,7 @@ hr {
   background: #fff;
 }
 .black-bg {
-  background: #000;
+  background: #181019;
 }
 .theme-bg {
   background: #fc3f00;
@@ -2040,7 +2040,7 @@ hr {
 }
 .header-area .header-mid {
   padding: 9px 0px;
-  background: #F95738; /*changed bibek*/
+  background: #D59386; /*changed bibek*/
   position: relative;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -2057,9 +2057,8 @@ hr {
   width: 100%;
 }
 .header-area .header-bottom {
-  border-top: 1px solid #eee;
   box-shadow: 0px 0px 36px 0px rgba(0, 0, 0, 0.1);
-  background-color: #F4D35E;
+  background-color: #EECB96;
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .header-area .header-bottom {
@@ -2157,7 +2156,7 @@ hr {
   }
 }
 .main-header .main-menu ul li:hover > a {
-  color: #fc3f00;
+  color: #974535;
 }
 .main-header .main-menu ul ul.submenu {
   position: absolute;
@@ -2169,7 +2168,7 @@ hr {
   opacity: 0;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.05);
   padding: 17px 0;
-  border-top: 5px solid #fc3f00;
+  border-top: 5px solid #974535;
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
   -ms-transition: all 0.3s ease-out 0s;
@@ -2187,7 +2186,7 @@ hr {
   text-transform: capitalize;
 }
 .main-header .main-menu ul ul.submenu > li > a:hover {
-  color: #fc3f00;
+  color: #974535;
   background: none;
 }
 .header-area .header-top .header-info-right .header-social a i {
@@ -2235,7 +2234,7 @@ hr {
   }
 }
 .slicknav_menu .slicknav_icon-bar {
-  background-color: #fc3f00 !important;
+  background-color: #181019 !important;
 }
 .slicknav_nav {
   margin-top: 0px;
@@ -2249,7 +2248,7 @@ hr {
 }
 .slicknav_menu .slicknav_nav a:hover {
   background: transparent;
-  color: #fc3f00;
+  color: #974535;
 }
 .slicknav_menu {
   background: transparent;
@@ -2266,6 +2265,7 @@ hr {
 }
 .header-sticky.sticky-bar.sticky .sticky-logo {
   display: block !important;
+  padding: 20px;
 }
 .sticky-logo {
   display: none !important;
@@ -2318,7 +2318,7 @@ hr {
   padding: 9px 20px;
   border-radius: 5px;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 11px;
   line-height: 1;
   margin-bottom: 19px;
@@ -2395,7 +2395,7 @@ hr {
   .trend-bottom-cap
   h4
   a {
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.4;
 }
 .trending-area
@@ -2405,7 +2405,7 @@ hr {
   .trend-bottom-cap
   h4
   a:hover {
-  color: #fc3f00;
+  color: #974535;
 }
 .trending-area .trending-main .trand-right-single {
   margin-bottom: 20px;
@@ -2444,7 +2444,7 @@ hr {
   line-height: 1.4;
 }
 .trending-area .trending-main .trand-right-single .trand-right-cap h4 a:hover {
-  color: #fc3f00; 
+  color: #974535; 
   /* bibek changed */
 }
 .single-bottom:hover .trend-bottom-img img {
@@ -2477,7 +2477,7 @@ hr {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 500;
-  background: #fc3f00;
+  background: #994636;
   padding: 11px 0px;
   line-height: 1;
   margin-bottom: 15px;
@@ -2684,7 +2684,8 @@ hr {
 .whats-news-area .single-follow .follow-us,
 .about-area .single-follow .follow-us,
 .contact-section .single-follow .follow-us {
-  border: 1px solid #f4f4f4;
+  border: 2px solid #CDD3D5;
+  fill: #CDD3D5;
   padding-top: 10px;
   padding-bottom: 15px;
   padding-left: 13px;
@@ -3075,7 +3076,7 @@ hr {
   display: flex;
 }
 .footer-area {
-  background: #100f0f;
+  background: #C096D3;
 }
 .footer-area .footer-logo {
   margin-bottom: 40px;
@@ -3090,21 +3091,21 @@ hr {
   padding: 0;
 }
 .footer-area .footer-tittle h4 {
-  color: #fff;
+  color: black;
   font-size: 20px;
   margin-bottom: 29px;
   font-weight: 500;
   text-transform: capitalize;
 }
 .footer-area .footer-tittle p {
-  color: #a8a8a8;
+  color: black;
 }
 .footer-area .footer-tittle ul li {
   color: #012f5f;
   margin-bottom: 15px;
 }
 .footer-area .footer-tittle ul li a {
-  color: #333333;
+  color: black;
   font-weight: 300;
 }
 .footer-area .footer-tittle ul li a:hover {
@@ -3171,7 +3172,7 @@ hr {
   width: 100%;
 }
 .footer-bottom-area {
-  background: #100f0f;
+  background: #181019;
 }
 .footer-bottom-area .footer-border {
   border-top: 1px solid #242323;
@@ -3183,17 +3184,17 @@ hr {
   }
 }
 .footer-bottom-area .footer-copy-right p {
-  color: #838383;
+  color: white;
   font-weight: 300;
   font-size: 16px;
   line-height: 2;
   margin-bottom: 12px;
 }
 .footer-bottom-area .footer-copy-right p i {
-  color: #f27420;
+  color: white;
 }
 .footer-bottom-area .footer-copy-right p a {
-  color: #f27420;
+  color: #D59386;
 }
 .footer-bottom-area .footer-copy-right p a:hover {
   color: #fff;
@@ -3211,7 +3212,7 @@ hr {
   }
 }
 .footer-menu ul li a {
-  color: #777777;
+  color: white;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 500;

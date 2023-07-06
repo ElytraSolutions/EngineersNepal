@@ -122,7 +122,7 @@
                   {% for category in categories|slice:"0:7" %}
                     <div class="follow-us d-flex align-items-center">
                         <div class="follow-social">
-                            <a href="{% url 'category' category.slug %}">{{category.title}}</a>
+                            <a href="{% url 'category' category.slug %}"><b>{{category.title}}</b></a>
                         </div>
                         <div class="follow-count">  
                             <!-- <p>{{category.title}}</p>                            -->
@@ -176,7 +176,7 @@
                 </div>
             </div>
             <br><br>
-            <b><a href="{% url "category" key.slug %}" style="color:red; text-indent: right;">View More</a></b>
+            <b><a href="{% url "category" key.slug %}" style="color:#181019; text-indent: right;">View More</a></b>
        </div>
     </div>
 </div>    
