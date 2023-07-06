@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'home',
     'django_social_share',
 ]
-
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -64,7 +64,7 @@ Category:: {{item}}
                                                  <div class="what-cap">
                                                      <span class="color1">{{post.categories}}</span>
                                                      <h4><a href="{% url 'newsdetail' post.slug %}">{{post.title}}</a></h4>
-                                                     <h5><small>By {{post.author}}</small></h5>
+                                                     {% comment %} <h5><small>By {{post.author}}</small></h5> {% endcomment %}
                                                  </div>
                                              </div>
                                          </div>
@@ -109,12 +109,20 @@ Category:: {{item}}
                                  <span>Instagram</span>
                              </div>
                          </div>
+                             <div class="follow-us d-flex align-items-center">
+                             <div class="follow-social">
+                                 <a href="#"><img src="{% static 'assets/img/news/icon-tiktok.png' %}" alt=""></a>
+                             </div>
+                             <div class="follow-count">
+                                 <span>Tiktok</span>
+                             </div>
+                         </div>
                          <div class="follow-us d-flex align-items-center">
                              <div class="follow-social">
                                  <a href="#"><img src="{% static 'assets/img/news/icon-yo.png' %}" alt=""></a>
                              </div>
                              <div class="follow-count">
-                                 <span>Linkedin</span>
+                                 <span>Youtube</span>
                              </div>
                          </div>
                      </div>

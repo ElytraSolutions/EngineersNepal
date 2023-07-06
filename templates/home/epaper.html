@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block title %}
-Epaper {{paper.date_created|date:"d-m-Y"}}
+Epaper {{paper.date_created|date:"d-m-Y"}} 
 {% endblock title %}
 {% block content %}
 <!-- centralized div for login form with padding and margin -->
@@ -9,8 +9,8 @@ Epaper {{paper.date_created|date:"d-m-Y"}}
 <h1>View E-paper</h1>
 <small>{{paper.date_created}}</small>
 
-<iframe src="http://docs.google.com/gview?url=https://localhost:8000/media/epapers/Prakashs_Resume_3.pdf&embedded=true" style="width:600px; height:500px;" frameborder="0"></iframe>
-{{paper.epaper_pdf.url}}
+<embed src="{{ paper.epaper_pdf.url }}" type="application/pdf" width="100%" height="600px" />
+<p><small>Note: your browser may not support the pdf viewer Click <a href="{{paper.epaper_pdf.url}}" target="_blank" style="color:blue;">Here</a> to download</small></p>
 
 </div>
 {% endblock content %}

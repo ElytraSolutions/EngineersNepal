@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Latest Videos  {%endblock title %}
+{% block content %}
+<div class="youtube-area video-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="video-items-active">
+                  {% for video in videos %}
+                    <div class="video-items text-center">
+                        <iframe src="{{video.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="video-info">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="video-caption">
+                        <div class="top-caption">
+                            <span class="color1">Latest Videos</span>
+                        </div>
+                        <div class="bottom-caption">
+                            <h2>Take a look at the latest videos</h2>
+                            <p>Donot forget to subscribe to the newsletter of Engineers Nepal and donot ever miss anything about Latest Engineering related posts and videos. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="testmonial-nav text-center">
+                      {% for video in videos %}
+                        <div class="single-video">
+                            <iframe  src="{{video.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <div class="video-intro">
+                                <h4>{{video.title}}</h4>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+{% endblock content %}

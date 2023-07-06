@@ -71,6 +71,79 @@
           </div>
       </div>
   </div>
+  <section class="whats-news-area pt-50 pb-20">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8">
+            <div class="row d-flex justify-content-between">
+                <div class="col-lg-3 col-md-3">
+                    <div class="section-tittle mb-30">
+                        <h3 style="color:black;">Most Viewed</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <!-- Nav Card -->
+                    <div class="tab-content" id="nav-tabContent">
+                        <!-- card one -->
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">           
+                            <div class="whats-news-caption">
+                                <div class="row"> 
+                                  {% for trend in weekly_top %}
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="single-what-news mb-100">
+                                            <div class="what-img">
+                                                <img src="{{trend.thumbnail.url}}" alt="">
+                                            </div>
+                                            <div class="what-cap">
+                                                <span class="color1">{{trend.categories.title}}</span>
+                                                <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:63}}...</a></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- End Nav Card -->
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <!-- Section Tittle -->
+            <div class="section-tittle mb-40">
+                <h3>Categories</h3>
+            </div>
+            <!-- Flow Socail -->
+            <div class="single-follow mb-45">
+                <div class="single-box">
+                  {% for category in categories|slice:"0:7" %}
+                    <div class="follow-us d-flex align-items-center">
+                        <div class="follow-social">
+                            <a href="{% url 'category' category.slug %}">{{category.title}}</a>
+                        </div>
+                        <div class="follow-count">  
+                            <!-- <p>{{category.title}}</p>                            -->
+                        </div>
+                    </div> 
+                    {% endfor %}
+                </div>
+            </div>
+            <!-- New Poster -->
+            <div class="news-poster d-none d-lg-block">
+                <img src="{% static 'assets/img/hero/verticalgif.jpg' %}" alt="">
+            </div>
+            <br>
+            <br>
+            <div class="news-poster d-none d-lg-block">
+                <img src="{% static 'assets/img/hero/verticalgif.jpg' %}" alt="">
+            </div>
+        </div>
+        </div>
+    </div>
+  </section>
   <!-- Trending Area End -->
   <!--   Weekly-News start -->
 {% for key,value in category_dict.items %}
@@ -111,74 +184,7 @@
   
   <!-- End Weekly-News -->
  <!-- Whats New Start -->
- <section class="whats-news-area pt-50 pb-20">
-  <div class="container">
-      <div class="row">
-      <div class="col-lg-8">
-          <div class="row d-flex justify-content-between">
-              <div class="col-lg-3 col-md-3">
-                  <div class="section-tittle mb-30">
-                      <h3 style="color:black;">Most Viewed</h3>
-                  </div>
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-12">
-                  <!-- Nav Card -->
-                  <div class="tab-content" id="nav-tabContent">
-                      <!-- card one -->
-                      <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">           
-                          <div class="whats-news-caption">
-                              <div class="row"> 
-                                {% for trend in weekly_top %}
-                                  <div class="col-lg-6 col-md-6">
-                                      <div class="single-what-news mb-100">
-                                          <div class="what-img">
-                                              <img src="{{trend.thumbnail.url}}" alt="">
-                                          </div>
-                                          <div class="what-cap">
-                                              <span class="color1">{{trend.categories.title}}</span>
-                                              <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:63}}...</a></h4>
-                                          </div>
-                                      </div>
-                                  </div>
-                                  {% endfor %}
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              <!-- End Nav Card -->
-              </div>
-          </div>
-      </div>
-      <div class="col-lg-4">
-          <!-- Section Tittle -->
-          <div class="section-tittle mb-40">
-              <h3>Categories</h3>
-          </div>
-          <!-- Flow Socail -->
-          <div class="single-follow mb-45">
-              <div class="single-box">
-                {% for category in categories|slice:"0:7" %}
-                  <div class="follow-us d-flex align-items-center">
-                      <div class="follow-social">
-                          <a href="{% url 'category' category.slug %}">{{category.title}}</a>
-                      </div>
-                      <div class="follow-count">  
-                          <!-- <p>{{category.title}}</p>                            -->
-                      </div>
-                  </div> 
-                  {% endfor %}
-              </div>
-          </div>
-          <!-- New Poster -->
-          <div class="news-poster d-none d-lg-block">
-              <img src="{% static 'assets/img/news/news_card.jpg' %}" alt="">
-          </div>
-      </div>
-      </div>
-  </div>
-</section>
+
   <!-- Whats New End -->
   <!--   Weekly2-News start -->
   <!-- <div class="weekly2-news-area  weekly2-pading gray-bg">
@@ -252,7 +258,7 @@
   </div>            -->
   <!-- End Weekly-News -->
   <!-- Start Youtube -->
-  <div class="youtube-area video-padding">
+  <!-- <div class="youtube-area video-padding">
       <div class="container">
           <div class="row">
               <div class="col-12">
@@ -293,7 +299,7 @@
               </div>
           </div>
       </div>
-  </div> 
+  </div>  -->
 </div>
   <!-- End Start youtube -->
   <!--  Recent Articles start -->

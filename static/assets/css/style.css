@@ -2036,11 +2036,11 @@ hr {
   padding-left: 17px;
 }
 .header-area .header-top .header-info-right .header-social li a:hover {
-  color: #fc3f00;
+  color: #F28482;
 }
 .header-area .header-mid {
   padding: 9px 0px;
-  background: #fc3f00; /*changed bibek*/
+  background: #F95738; /*changed bibek*/
   position: relative;
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
@@ -2059,7 +2059,7 @@ hr {
 .header-area .header-bottom {
   border-top: 1px solid #eee;
   box-shadow: 0px 0px 36px 0px rgba(0, 0, 0, 0.1);
-  background-color: #fff9c6;
+  background-color: #F4D35E;
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .header-area .header-bottom {

@@ -158,13 +158,12 @@ def homepage(request):
     from_date=datetime.now()-timedelta(days=7)
     category_dict={}
     all_posts=Post.objects.all().order_by('-timestamp')
-    features=all_posts.filter(featured=True).order_by('-timestamp')
-    featured_post=features[0]
-    trending_1=features[:3]
-    trending_2=all_posts[:5]
-    categories=Category.objects.all()
+    featured_post=all_posts.filter(featured=True).order_by('-timestamp')[0]
+    trending_1=all_posts[:3]
+    trending_2=all_posts[3:8]
+    categories=Category.objects.all().order_by('priority')
     videos=Videos.objects.all()
-    weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:4]
+    weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:6]
     for category in categories:
         if category.featured==True:
             category_dict[category]=all_posts.filter(categories__slug=category.slug).order_by('-id')[:7]
@@ -222,3 +221,8 @@ def epaperview(request, id):
     context={'paper':paper,}
     return render(request, 'home/epaper.html', context)
 
+
+def videos(request):
+    videos=Videos.objects.all()
+    context={'videos':videos}
+    return render(request, 'home/videos.html', context)

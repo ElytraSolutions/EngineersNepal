@@ -2,7 +2,7 @@ from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from datetime import datetime
 from .views import (PostCreate, PostUpdate, PostDelete, SignUpView, profile,
-categoryview, AdminView, searchview,contact, aboutus,newsdetail, homepage, vacancyhome, vacancy, tender, apply, epaperview)
+categoryview, AdminView, searchview,contact, aboutus,newsdetail, homepage, vacancyhome, vacancy, tender, apply, epaperview, videos)
 from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('',homepage,name='home'),
@@ -29,4 +29,5 @@ urlpatterns = [
     path('author/<slug:slug>', AdminView, name='adminpage'), 
     path('apply/<int:id>', apply, name='apply'), 
     path('epaper/<int:id>/', epaperview, name='epaper'), 
+    path('videos/', videos, name='videos'), 
 ]

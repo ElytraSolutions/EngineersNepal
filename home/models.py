@@ -23,7 +23,7 @@ class Author(models.Model):
     youtube_link=models.URLField(blank=True, null=True)
     slug=models.SlugField(null=False, blank=True, unique=True)
     def save(self, *args, **kwargs):
-        super(Author, self).save()
+        super(Author, self)
         if not self.slug:
             self.slug='2000'+str(self.id)
         img=Image.open(self.profile_picture.path)
@@ -44,6 +44,7 @@ class Category(models.Model):
     title = models.CharField(max_length=40)
     slug=models.SlugField(null=False, blank=True, unique=True)
     featured=models.BooleanField(default=False)
+    priority=models.IntegerField(default=99)
     
     def save(self, *args, **kwargs):
         super(Category, self).save()

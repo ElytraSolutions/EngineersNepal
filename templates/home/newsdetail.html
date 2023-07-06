@@ -51,15 +51,16 @@
                                 {% endif %}
                                 <hr>
                             </div>
-                                <img src="{% static 'assets/img/hero/header_card.jpg' %}" style='width:100%;' alt="">
-
+                            <div class="header-banner f-right ">
+                                <img src="{% static 'assets/img/hero/header_card.jpg' %}" alt="">
+                            </div>
                             <div class="newscontent">
 
                                 {{news.content|safe}}
 
                         </div>
                             <div class="header-banner f-right ">
-                                <img src="{% static 'assets/img/hero/header_card.jpg' %}" alt="" style='width:100%;'>
+                                <img src="{% static 'assets/img/hero/header_card.jpg' %}" alt="">
                             </div>
                             <br><br><br><br>
                         <div class="social-share pt-30">
@@ -137,6 +138,14 @@
                                     </div>
                                     <div class="follow-count">
                                         <span>Youtube</span>
+                                    </div>
+                                </div>
+                                <div class="follow-us d-flex align-items-center">
+                                    <div class="follow-social">
+                                        <a href="#"><img src="{% static 'assets/img/news/icon-tiktok.png' %}" alt=""></a>
+                                    </div>
+                                    <div class="follow-count">
+                                        <span>Tiktok</span>
                                     </div>
                                 </div>
                             </div>
