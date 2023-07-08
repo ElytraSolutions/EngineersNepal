@@ -2358,7 +2358,7 @@ hr {
   transition: all 0.5s ease-out 0s;
 }
 
-@media screen and (max-width: 974px) {
+@media screen and (max-width: 991px) {
   .trending-area
     .trending-main
     .trending-bottom
@@ -2373,7 +2373,7 @@ hr {
   .trending-main
   .trending-bottom
   .single-bottom
-  .trend-bottom-cap span {
+  .trend-bottom-cap span{
   color: #000;
   text-transform: uppercase;
   font-size: 11px;
