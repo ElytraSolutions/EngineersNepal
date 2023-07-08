@@ -28,7 +28,7 @@
                       <!-- Trending Top -->
                       <div class="trending-top mb-30">
                           <div class="trend-top-img">
-                            <a href="{% url 'newsdetail' featured_post.slug %}"> <img src="{{featured_post.thumbnail.url}}" alt=""> </a>
+                            <img src="{{featured_post.thumbnail.url}}" alt=""> 
                               <div class="trend-top-cap">
                                   <span>{{featured_post.categories.title}}</span>
                                   <h2><a href="{% url 'newsdetail' featured_post.slug %}">{{featured_post.title|slice:120}}</a></h2>
@@ -71,7 +71,7 @@
                               {% if trend.title|length < 36 %}
                               <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title}}</a></h4>
                               {% else %}
-                              <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:40}}...</a></h4>
+                              <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:36}}...</a></h4>
                               {% endif %}
                           </div>
                       </div>
@@ -108,7 +108,12 @@
                                             </div>
                                             <div class="what-cap">
                                                 <span class="color1">{{trend.categories.title}}</span>
-                                                <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:63}}...</a></h4>
+                                                {% if trend.title|length < 64 %}
+                                                <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title}}</a></h4>
+                                                {% else %}
+                                                <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:64}}...</a></h4>
+                                                {% endif %}
+                                                {% comment %} <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:63}}...</a></h4> {% endcomment %}
                                             </div>
                                         </div>
                                     </div>
@@ -178,7 +183,12 @@
                             </div>
                             <div class="weekly-caption">
                                 <span class="color1">{{weekly.categories.title}}</span>
-                                <h4><a href="{% url 'newsdetail' weekly.slug %}">{{weekly.title|slice:63}}...</a></h4>
+                                {% if weekly.title|length < 64 %}
+                                <h4><a href="{% url 'newsdetail' weekly.slug %}">{{weekly.title}}</a></h4>
+                                {% else %}
+                                <h4><a href="{% url 'newsdetail' weekly.slug %}">{{weekly.title|slice:64}}...</a></h4>
+                                {% endif %}
+                                {% comment %} <h4><a href="{% url 'newsdetail' weekly.slug %}">{{weekly.title|slice:63}}...</a></h4> {% endcomment %}
                             </div>
                         </div>
                         {% endfor %}
