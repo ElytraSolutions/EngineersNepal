@@ -41,8 +41,8 @@
                                 <small>{{news.timestamp}}</small>
                                 <hr>
                                 <small><img src="{{news.author.profile_picture.url}}" style="width: 50px; height:50px; border-radius: 50%;">&nbsp;&nbsp;<a href="{% url 'adminpage' news.author.slug %}" style="color:black;"><b style="font-size: 20px;">{{news.author.fullname}}</b></a>
-                                    &nbsp;&nbsp;<a href="{{ news.author.facebook_link }}" ><img src="{% static 'assets/img/news/icon-fb.png' %}" alt="image not found" style="width:20px;"></a>
-                                    &nbsp;&nbsp;<a href="{{ news.author.twitter_link }}"><img src="{% static 'assets/img/news/icon-tw.png' %}" alt="image not found" style="width:20px;"></a>
+                                    {% comment %} &nbsp;&nbsp;<a href="{{ news.author.facebook_link }}" ><img src="{% static 'assets/img/news/icon-fb.png' %}" alt="image not found" style="width:20px;"></a>
+                                    &nbsp;&nbsp;<a href="{{ news.author.twitter_link }}"><img src="{% static 'assets/img/news/icon-tw.png' %}" alt="image not found" style="width:20px;"></a> {% endcomment %}
                                 </small><br>
                                 <!-- icon for delete post -->
                                 {% if news.author.user == user %}
@@ -58,7 +58,7 @@
                                 {{news.content|safe}}
 
                         </div>
-                                <img src="{% static 'assets/img/hero/header_card.jpg' %}" alt="">
+                                <img src="{% static 'assets/img/hero/header_card.jpg' %}" alt="" style="width:100%;">
                             <br><br><br><br>
                         <div class="social-share pt-30">
                             <div class="section-tittle">
