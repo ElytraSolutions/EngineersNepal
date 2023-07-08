@@ -16,7 +16,7 @@ class Author(models.Model):
     firstname=models.CharField(max_length=40)
     lastname=models.CharField(max_length=40)
     middlename=models.CharField(max_length=40, null=True, blank=True, default='')
-    profile_picture = models.ImageField(default='default.jpg', upload_to='profilepics')
+    profile_picture = models.ImageField(upload_to='profilepics', default='default.jpg')
     bio=models.TextField(max_length=300, blank=True, null=True)
     facebook_link=models.URLField(blank=True, null=True)
     twitter_link=models.URLField(blank=True, null=True)
@@ -25,11 +25,11 @@ class Author(models.Model):
     def save(self, *args, **kwargs):
         super(Author, self)
         if not self.slug:
-            self.slug='2000'+str(self.id)
-        img=Image.open(self.profile_picture.path)
-        output_size=(350,350)
-        img.thumbnail(output_size)
-        img.save(self.profile_picture.path)
+            self.slug='2000'+str(self.user.username)
+        # img=Image.open(self.profile_picture.path)
+        # output_size=(350,350)
+        # img.thumbnail(output_size)
+        # img.save(self.profile_picture.path)
         return super().save(*args, **kwargs)
 
     def __str__(self):

@@ -11,7 +11,7 @@
     You should have received a copy of the GNU General Public License
     along with jQuery News Ticker.  If not, see <http://www.gnu.org/licenses/>.
 */
-console.log("jQuery News Ticker")
+// console.log("jQuery News Ticker")
 (function($){  
 	$.fn.ticker = function(options) { 
 		// Extend our default options with those provided.
