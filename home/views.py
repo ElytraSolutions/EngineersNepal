@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
-from .models import Post, Author, Category, Vacancy, Videos, TenderDocuments, Epapers
+from .models import Post, Author, Category, Vacancy, Videos, TenderDocuments, Epapers, AppliedUsers
 from .forms import ContactUSForm, ApplyForm
 from datetime import datetime, timedelta
 from .forms import PostForm, UserUpdateForm, ProfileUpdateForm, UserRegisterForm
@@ -13,6 +13,8 @@ from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse
+import csv
 # Create your views here.
 
 class PostCreate(CreateView, LoginRequiredMixin):
@@ -157,7 +159,7 @@ def aboutus(request):
 def homepage(request):
     from_date=datetime.now()-timedelta(days=7)
     category_dict={}
-    all_posts=Post.objects.all().order_by('-timestamp')
+    all_posts=Post.objects.filter(approved=True).order_by('-timestamp')
     temp=all_posts.filter(featured=True).order_by('-timestamp')
     featured_post=temp[0]
     trending_1=temp[1:4]
@@ -227,3 +229,25 @@ def videos(request):
     videos=Videos.objects.all()
     context={'videos':videos}
     return render(request, 'home/videos.html', context)
+
+
+def downloadcsv(request, id):
+    # Retrieve the data from the model
+    vacancy=Vacancy.objects.get(id=id)
+    print(vacancy)
+    queryset = AppliedUsers.objects.filter(vacancy=vacancy)
+    # Prepare the CSV response
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename={vacancy.title}.csv'
+
+    # Create a CSV writer
+    writer = csv.writer(response)
+
+    # Write the header row
+    writer.writerow(['Job Title', 'fullname', 'email','phone','address','cv'])  # Replace with your field names
+
+    # Write the data rows
+    for obj in queryset:
+        writer.writerow([obj.vacancy, obj.fullname, obj.email, obj.phone, obj.address, obj.cv])  # Replace with your field values
+
+    return response

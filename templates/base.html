@@ -156,30 +156,30 @@
                                 <div class="main-menu d-none d-md-block">
                                     <nav>                  
                                         <ul id="navigation">    
-                                            <li><a href="{% url 'home' %}">Home</a></li>
-                                            <li><a href="#">Development</a>
+                                            <li><a href="{% url 'home' %}"><b>Home</b></a></li>
+                                            <li><a href="#"><b>Development</b></a>
                                                 <ul class="submenu">
                                                     {% for category in development %}
-                                                    <li><a href="{% url 'category' category.slug %}">{{category.title}}</a></li>
+                                                    <li><a href="{% url 'category' category.slug %}"><b>{{category.title}}</b></a></li>
                                                     {% endfor %}
                                                 </ul>
                                             </li>
                                             {% for kauli in aalu %}
-                                            <li><a href="{% url 'category' kauli.slug %}">{{kauli.title}}</a></li>
+                                            <li><a href="{% url 'category' kauli.slug %}"><b>{{kauli.title}}</b></a></li>
                                             {% endfor %}
-                                            <li><a href="#">Others</a>
+                                            <li><a href="#"><b>Others</b></a>
                                             <ul class="submenu">
-                                                <li><a href="{% url 'category' engsug.slug %}">{{engsug.title}}</a></li>
-                                                <li><a href="{% url 'tenders' %}">Tenders</a></li>
-                                                <li><a href="{% url 'vacancyhome' %}">Vacancy</a></li>
-                                                <li><a href="{% url 'videos' %}">Videos</a></li> 
+                                                <li><a href="{% url 'category' engsug.slug %}"><b>{{engsug.title}}</b></a></li>
+                                                <li><a href="{% url 'tenders' %}"><b>Tenders</b></a></li>
+                                                <li><a href="{% url 'vacancyhome' %}"><b>Vacancy</b></a></li>
+                                                <li><a href="{% url 'videos' %}"><b>Videos</b></a></li> 
                                                 {% if request.user.is_authenticated %}
-                                                <li><a href="{% url 'adminpage' current_user.slug %}"> Profile </a></li>
-                                                <li><a href="{% url 'create-post' %}"> Create </a></li>
-                                                <li><a href="{% url 'logout' %}">Logout</a></li>
+                                                <li><a href="{% url 'adminpage' current_user.slug %}"> <b>Profile</b> </a></li>
+                                                <li><a href="{% url 'create-post' %}"> <b>Create</b> </a></li>
+                                                <li><a href="{% url 'logout' %}"><b>Logout</b></a></li>
                                             {% else %}
-                                            <li><a href="{% url 'contact' %}">Contact</a></li>
-                                            <li><a href="{% url 'aboutus' %}">About</a></li>
+                                            <li><a href="{% url 'contact' %}"><b>Contact</b></a></li>
+                                            <li><a href="{% url 'aboutus' %}"><b>About</b></a></li>
                                             {% endif %}
 
 

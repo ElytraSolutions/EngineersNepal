@@ -46,7 +46,11 @@
                                   </div>
                                   <div class="trend-bottom-cap">
                                       <span class="color1">{{trend.categories.title}}</span>
-                                      <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:63}}...</a></h4>
+                                      {% if trend.title|length < 64 %}
+                                      <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title}}</a></h4>
+                                      {% else %}
+                                      <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:64}}...</a></h4>
+                                      {% endif %}
                                   </div>
                               </div>
                               </div>
@@ -59,11 +63,16 @@
                     {% for trend in trending2 %}
                       <div class="trand-right-single d-flex">
                           <div class="trand-right-img">
-                            <a href="{% url 'newsdetail' trend.slug %}"><img src="{{trend.thumbnail.url}}" alt="" style="width:120px; height:100px;"></a>
+                            {% comment %} <a href="{% url 'newsdetail' trend.slug %}"><img src="{{trend.thumbnail.url}}" alt="" style="width:120px; height:100px;"></a> {% endcomment %}
+                            <a href="{% url 'newsdetail' trend.slug %}"><img src="{{trend.thumbnail.url}}" alt="" style="width:120px; height:100px;object-fit:cover;"></a>
                           </div>
                           <div class="trand-right-cap">
                               <span class="color1">{{trend.categories.title}}</span>
-                              <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:63}}...</a></h4>
+                              {% if trend.title|length < 36 %}
+                              <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title}}</a></h4>
+                              {% else %}
+                              <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:40}}...</a></h4>
+                              {% endif %}
                           </div>
                       </div>
                       {% endfor %}

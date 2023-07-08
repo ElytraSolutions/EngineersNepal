@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.1.79','localhost', 'engineersnepal.com','141.148.206.219']
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:80/', 'https://engineersnepal.com','http://141.148.206.219']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:80/', 'https://engineersnepal.com','http://141.148.206.219','http://localhost:8000/']
 
 # Application definition
 

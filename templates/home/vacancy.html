@@ -28,6 +28,11 @@ Work type: <span class="job-title"><b>{{vacancy.place}}</b></span><br>
 Link: <a href="{{vacancy.link}}" target="_blank" style="color:blue;">{{vacancy.link}}</a>
 <br>
 <b><a href="{% url 'apply' vacancy.id %}" style="color:blue;">Apply Now</a></b>
+<br>
+{% if request.user.is_superuser %}
+<b><a href="{% url 'download' vacancy.id %}" style="color:blue;">Download Content</a></b>
+{% endif %}
+
 </div>
 
 `

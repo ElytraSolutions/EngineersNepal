@@ -66,6 +66,7 @@ class Post(models.Model):
     slug = models.SlugField(null=False, blank=True, unique=True, allow_unicode=True)
     featured=models.BooleanField(default=False)
     views=models.IntegerField(default=1)
+    approved=models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         super(Post, self).save()
@@ -74,10 +75,10 @@ class Post(models.Model):
             self.slug=slugify(formatedDate)+'-'+'2000'+str(self.id)
         if not self.timestamp:
             self.timestamp=datetime.now()
-        img=Image.open(self.thumbnail.path)
-        output_size=(750,335)
-        img.thumbnail(output_size)
-        img.save(self.thumbnail.path)
+        # img=Image.open(self.thumbnail.path)
+        # output_size=(750,335)
+        # img.thumbnail(output_size)
+        # img.save(self.thumbnail.path)
         return super().save(*args, **kwargs)
     
     # def get_absolute_url(self):
@@ -160,3 +161,12 @@ class Epapers(models.Model):
     date_created=models.DateField()
     def __str__(self):
         return str(self.date_created)+" epaper"
+    
+
+
+class breakings(models.Model):
+    title=models.CharField(max_length=100)
+    date_created=models.DateField(auto_now_add=True)
+    thumbnail=models.ImageField(upload_to='breaking_thumbs', null=True, blank=True)
+    def __str__(self):
+        return self.title
