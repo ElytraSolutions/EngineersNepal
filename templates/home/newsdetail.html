@@ -65,7 +65,7 @@
                                 <h3 class="mr-20">Share:</h3> 
                                 <ul>
                                     <li><a href='#' style="color:black;"> {% post_to_facebook object_or_url "Share to Facebook" %}</a></li>
-                                    <li><a href='#' style="color:black;"> {% post_to_twitter object_or_url "Share to Twitter" %}</a></li>
+                                    <li><a href='#' style="color:black;"> {% post_to_twitter "{{news.title}}" object_or_url "Post to Twitter" %}</a></li>
                                     <li><a href='#' style="color:black;"> {% post_to_linkedin object_or_url %}</a></li>
                                 </ul>
                             </div>
