@@ -73,7 +73,7 @@ def profile(request):
 
 
 def categoryview(request, slug):
-    searched=Post.objects.filter(categories__slug=slug).order_by('timestamp')
+    searched=Post.objects.filter(categories__slug=slug, approved=True).order_by('-timestamp')
     categories=Category.objects.all()
     item=Category.objects.get(slug=slug)
     page=request.GET.get('page', 1)
