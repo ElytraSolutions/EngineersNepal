@@ -68,10 +68,10 @@
                           </div>
                           <div class="trand-right-cap">
                               <span class="color1">{{trend.categories.title}}</span>
-                              {% if trend.title|length < 36 %}
+                              {% if trend.title|length < 40 %}
                               <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title}}</a></h4>
                               {% else %}
-                              <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:36}}...</a></h4>
+                              <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:40}}...</a></h4>
                               {% endif %}
                           </div>
                       </div>
@@ -182,7 +182,7 @@
                                 <a href="{% url 'newsdetail' weekly.slug %}"><img src="{{weekly.thumbnail.url}}" alt="" width="360" height="420" style="object-fit: cover;"></a>
                             </div>
                             <div class="weekly-caption">
-                                <span class="color1">{{weekly.categories.title}}</span>
+                                
                                 {% if weekly.title|length < 64 %}
                                 <h4><a href="{% url 'newsdetail' weekly.slug %}">{{weekly.title}}</a></h4>
                                 {% else %}
