@@ -2519,7 +2519,7 @@ hr {
 }
 @media (max-width: 767px) {
   .trending-tittle .ticker {
-    width: 230px;
+    width:95vw;
   }
 }
 .weekly-news-area .weekly-wrapper {
