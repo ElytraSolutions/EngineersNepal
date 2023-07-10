@@ -16,7 +16,7 @@ class Author(models.Model):
     firstname=models.CharField(max_length=40)
     lastname=models.CharField(max_length=40)
     middlename=models.CharField(max_length=40, null=True, blank=True, default='')
-    profile_picture = models.ImageField(upload_to='profilepics', default='default.jpg')
+    profile_picture = models.ImageField(upload_to='profilepics', default='default.png')
     bio=models.TextField(max_length=300, blank=True, null=True)
     facebook_link=models.URLField(blank=True, null=True)
     twitter_link=models.URLField(blank=True, null=True)
@@ -41,11 +41,15 @@ class Author(models.Model):
 
 
 class Category(models.Model):
+    choices=(
+        ('gridone','gridone'),
+        ('gridtwo','gridtwo'),
+    )
     title = models.CharField(max_length=40)
     slug=models.SlugField(null=False, blank=True, unique=True)
     featured=models.BooleanField(default=False)
     priority=models.IntegerField(default=99)
-    
+    grid=models.CharField(max_length=10, choices=choices)
     def save(self, *args, **kwargs):
         super(Category, self).save()
         if not self.slug:
@@ -59,7 +63,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     timestamp = models.DateField(null=True, blank=True)
-    thumbnail = models.ImageField(upload_to='post_thumbs', null=True, blank=True)
+    thumbnail = models.ImageField(upload_to='post_thumbs', default='post_thumbs/default.jpg')
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     categories = models.ForeignKey(Category, on_delete=models.CASCADE)
     content = RichTextUploadingField(blank=True, null=True,config_name='default')
