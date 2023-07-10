@@ -54,11 +54,12 @@
       <div class="col-md-10 text-center image-wala">
         <a href = "{% url 'newsdetail' breaking_new.slug %}"><img class="img-fuild"  src="{{breaking_new.thumbnail.url}}" alt=""></a> 
       </div>
-      {% endif %}
-
       <div class = 'col-md-9 mt-20'>
         <h1><a href="{% url 'newsdetail' breaking_new.slug %}">{{breaking_new.content|safe|slice:300}}...</a></h1>
         </div>
+      {% endif %}
+
+      
 
     </div>
     <hr>
