@@ -32,59 +32,29 @@
 
 
 <div class="container-fluid mt-50 text-center">
+    {% for breaking_new in breaking_news %}
     <div class="row justify-content-center">
 
         <div class = 'col-md-9 mb-10'>
-        <h1><a  class="breaking_title" href="{% url 'newsdetail' featured_post.slug %}">{{featured_post.title|slice:120}}</a></h1>
+        <h1><a  class="breaking_title" href="{% url 'newsdetail' breaking_new.slug %}">{{breaking_new.title|slice:120}}</a></h1>
         </div>
-        
-
-        <div class="mb-15"><img src="{{featured_post.author.profile_picture.url}}" style="width: 3vh; height:auto; border-radius: 50%;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 15px; color:#676767;font-weight: 600;">{{featured_post.author.fullname}}</span>
-            &nbsp;&nbsp;&nbsp;&nbsp;<img src="{% static 'calendar.png' %}" style="width: 2vh; height:auto;">&nbsp;&nbsp;<span style="font-size: 15px; color:#676767;font-weight: 600;">{{featured_post.timestamp}}</span>
-        </div>
-           
-       
-        
+        <div class="mb-15"><img src="{{breaking_new.author.profile_picture.url}}" style="width: 3vh; height:auto; border-radius: 50%;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 15px; color:#676767;font-weight: 600;">{{breaking_new.author.fullname}}</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<img src="{% static 'calendar.png' %}" style="width: 2vh; height:auto;">&nbsp;&nbsp;<span style="font-size: 15px; color:#676767;font-weight: 600;">{{breaking_new.timestamp}}</span>
+        </div>  
+        {% if breaking_new.breakingthumbnail %}
       <div class="col-md-10 text-center image-wala">
-        <a href = "{% url 'newsdetail' featured_post.slug %}"><img class="img-fuild"  src="{{featured_post.thumbnail.url}}" alt=""></a> 
+        <a href = "{% url 'newsdetail' breaking_new.slug %}"><img class="img-fuild"  src="{{breaking_new.thumbnail.url}}" alt=""></a> 
       </div>
+      {% endif %}
 
       <div class = 'col-md-9 mt-20'>
-        <h1><a href="{% url 'newsdetail' featured_post.slug %}">{{featured_post.content|safe|slice:300}}...</a></h1>
+        <h1><a href="{% url 'newsdetail' breaking_new.slug %}">{{breaking_new.content|safe|slice:300}}...</a></h1>
         </div>
 
     </div>
+    <hr>
+    {% endfor %}
   </div>
-
-  <hr>
-
-  <div class="container-fluid mt-50 text-center">
-    <div class="row justify-content-center">
-
-        <div class = 'col-md-9 mb-10'>
-        <h1><a  class="breaking_title" href="{% url 'newsdetail' featured_post.slug %}">{{featured_post.title|slice:120}}</a></h1>
-        </div>
-        
-
-        <div class="mb-15"><img src="{{featured_post.author.profile_picture.url}}" style="width: 3vh; height:auto; border-radius: 50%;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 15px; color:#676767;font-weight: 600;">{{featured_post.author.fullname}}</span>
-            &nbsp;&nbsp;&nbsp;&nbsp;<img src="{% static 'calendar.png' %}" style="width: 3vh; height:auto; border-radius: 50%;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 15px; color:#676767;font-weight: 600;">{{featured_post.timestamp}}</span>
-        </div>
-           
-       
-        
-      <div class="col-md-10 text-center image-wala">
-        <a href = "{% url 'newsdetail' featured_post.slug %}"><img class="img-fuild" src="{{featured_post.thumbnail.url}}" alt=""></a> 
-      </div>
-
-      <div class = 'col-md-9 mt-20'>
-        <h1><a href="{% url 'newsdetail' featured_post.slug %}">{{featured_post.content|safe|slice:300}}...</a></h1>
-        </div>
-
-    </div>
-  </div>
-
-  <hr>
-
 {% endblock breaking %}
 
 

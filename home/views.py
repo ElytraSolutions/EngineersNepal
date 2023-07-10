@@ -167,11 +167,13 @@ def homepage(request):
     categories=Category.objects.all().order_by('priority')
     videos=Videos.objects.all()
     weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:6]
+    breaking_news=all_posts.filter(breaking=True).order_by('-timestamp')
+    print(breaking_news)
     for category in categories:
         if category.featured==True:
-            category_dict[category]=all_posts.filter(categories__slug=category.slug).order_by('-id')[:7]
+            category_dict[category]=all_posts.filter(categories__slug=category.slug, breaking=False).order_by('-id')[:7]
     context={'trending1':trending_1,'trending2':trending_2, 'featured_post':featured_post, 'weekly_top':weekly_top,
-             'categories':categories, 'category_dict':category_dict,}
+             'categories':categories, 'category_dict':category_dict,'breaking_news':breaking_news,}
     return render(request,'home/home.html',context)
 
 def newsdetail(request,slug):

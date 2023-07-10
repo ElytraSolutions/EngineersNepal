@@ -6,7 +6,7 @@ from django.contrib.auth.forms import UserCreationForm
 class PostForm(forms.ModelForm):
     class Meta:
         model=Post
-        fields = ['title','thumbnail','categories','content',]
+        fields = ['title','thumbnail','categories','content','breakingthumbnail','breaking']
         widgets = {
             'category': forms.Select(),
             'body': forms.Textarea(),

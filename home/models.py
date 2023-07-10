@@ -59,7 +59,7 @@ class Category(models.Model):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     timestamp = models.DateField(null=True, blank=True)
-    thumbnail = models.ImageField(upload_to='post_thumbs')
+    thumbnail = models.ImageField(upload_to='post_thumbs', null=True, blank=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     categories = models.ForeignKey(Category, on_delete=models.CASCADE)
     content = RichTextUploadingField(blank=True, null=True,config_name='default')
@@ -67,6 +67,8 @@ class Post(models.Model):
     featured=models.BooleanField(default=False)
     views=models.IntegerField(default=1)
     approved=models.BooleanField(default=False)
+    breaking=models.BooleanField(default=False)
+    breakingthumbnail=models.BooleanField(default=True)
 
     def save(self, *args, **kwargs):
         super(Post, self).save()
