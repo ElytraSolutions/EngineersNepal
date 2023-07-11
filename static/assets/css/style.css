@@ -3248,7 +3248,7 @@ hr {
   display: flex;
 }
 .footer-area {
-  background: #C096D3;
+  background: rgba(98,109,88,.9);
 }
 .footer-area .footer-logo {
   margin-bottom: 40px;
@@ -3344,7 +3344,7 @@ hr {
   width: 100%;
 }
 .footer-bottom-area {
-  background: #181019;
+  background: rgba(98,109,88,.9);
 }
 .footer-bottom-area .footer-border {
   border-top: 1px solid #242323;

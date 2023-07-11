@@ -252,7 +252,12 @@
   <!-- Trending Area End -->
   <!--   Weekly-News start -->
 {% for key,value in category_dict.items  %}
-  <div class="weekly-news-area pt-50">
+{%if key.grid == "gridone"%}
+<div class="weekly-news-area pt-50" style="background-color: rgba(49,38,62,0.8);">
+{%endif%}
+{%if key.grid == "gridtwo"%}
+<div class="weekly-news-area pt-50">
+{%endif%}
     <div class="container">
        <div class="weekly-wrapper">
             <!-- section Tittle -->
@@ -260,7 +265,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-tittle mb-30">
-                        <h2>{{key}}</h2>
+                        <h2 style="color: rgba(255,255,255,0.9);">{{key}}</h2>
                     </div>
                 </div>
             </div>
@@ -324,7 +329,12 @@
             </div>
             {% endif %}
             <br><br>
+            {%if key.grid == "gridone"%}
+            <b><a href="{% url 'category' key.slug %}" style="color: rgba(255,255,255,0.9); text-indent: right;">View More</a></b>
+            {%endif%}
+            {%if key.grid == "gridtwo"%}
             <b><a href="{% url 'category' key.slug %}" style="color:#181019; text-indent: right;">View More</a></b>
+            {%endif%}
        </div>
     </div>
 </div>    
