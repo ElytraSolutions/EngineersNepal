@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
-from .models import Post, Author, Category, Vacancy, Videos, TenderDocuments, Epapers, AppliedUsers
+from .models import Post, Author, Category, Vacancy, Videos, TenderDocuments, Epapers, AppliedUsers, advertisement
 from .forms import ContactUSForm, ApplyForm
 from datetime import datetime, timedelta
 from .forms import PostForm, UserUpdateForm, ProfileUpdateForm, UserRegisterForm
@@ -166,30 +166,33 @@ def homepage(request):
     trending_2=all_posts[1:6]
     categories=Category.objects.all().order_by('priority')
     videos=Videos.objects.all()
+    adhomeside=advertisement.objects.get(title='homepageside')
     weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:6]
     breaking_news=all_posts.filter(breaking=True).order_by('-timestamp')
     developmentnews=all_posts.filter(categories__priority=2).order_by('-timestamp')[:6]
     for category in categories:
         if category.featured==True:
-            category_dict[category]=all_posts.filter(categories__slug=category.slug).order_by('-id')[:4]
+            category_dict[category]=all_posts.filter(categories__slug=category.slug).order_by('-timestamp')[:4]
     context={'trending1':trending_1,'trending2':trending_2, 'featured_post':featured_post, 'weekly_top':weekly_top,
-             'categories':categories, 'category_dict':category_dict,'breaking_news':breaking_news,'developnews':developmentnews,}
+             'categories':categories, 'category_dict':category_dict,'breaking_news':breaking_news,'developnews':developmentnews,'adhomeside':adhomeside,}
     return render(request,'home/home.html',context)
 
 def newsdetail(request,slug):
     post=Post.objects.get(slug=slug)
+    adnewsbegin=advertisement.objects.get(title='newspageup')
+    adnewsend=advertisement.objects.get(title='newspagedown')
+    adnewsside=advertisement.objects.get(title='newspageside')
     if not request.session.get('Counted'):
         post.views+=1
         post.save()
         request.session['Counted']=True
-    context={'news':post,}
+    context={'news':post,'adnewsbegin':adnewsbegin,'adnewsend':adnewsend,'adnewsside':adnewsside,}
     return render(request,'home/newsdetail.html',context)
     
 
 def vacancy(request, id):
     # filter vacancies by id
     vacancies=Vacancy.objects.get(id=id)
-    print(vacancies)
     context={'vacancy':vacancies}
     return render(request, 'home/vacancy.html', context)
 

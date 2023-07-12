@@ -52,13 +52,13 @@
                                 {% endif %}
                                 <hr>
                             </div>
-                                <img src="{% static 'assets/img/hero/header_card.jpg' %}" alt="" style='width:100%;'>
+                                <img src="{{adnewsbegin.photo.url}}" alt="" style='width:100%;'>
                             <div class="newscontent">
 
                                 {{news.content|safe}}
 
                         </div>
-                                <img src="{% static 'assets/img/hero/header_card.jpg' %}" alt="" style="width:100%;">
+                                <img src="{{adnewsend.photo.url}}" alt="" style="width:100%;">
                             <br><br><br><br>
                         <div class="social-share pt-30">
                             <div class="section-tittle">

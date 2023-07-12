@@ -124,8 +124,8 @@
                                 </div>
                                 <div class="header-info-right">
                                     <ul class="header-social">   
-                                        <li> <a href="#"><i class="fab fa-facebook-f"></i></a></li> 
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li> <a href="https://www.facebook.com/EngineersNepalOfficial"><i class="fab fa-facebook-f"></i></a></li> 
+                                        <li><a href="https://twitter.com/engineers_nepal"><i class="fab fa-twitter"></i></a></li>
                                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
 
                                     </ul>
@@ -145,7 +145,7 @@
                             </div>
                             <div class="col-xl-9 col-lg-9 col-md-9">
                                 <div class="header-banner f-right ">
-                                    <img src="{% static 'assets/img/hero/header_card.jpg' %}" alt="">
+                                    <img src="{{adtop.photo.url}}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -163,7 +163,7 @@
                                 <div class="main-menu d-none d-md-block">
                                     <nav>                  
                                         <ul id="navigation">    
-                                           
+                                            <li><a href="{% url 'category' newer.slug %}"><b>{{newer.title}}</b></a></li>
                                             <li><a href="#"><b>Development</b></a>
                                                 <ul class="submenu">
                                                     {% for category in development %}
@@ -171,6 +171,8 @@
                                                     {% endfor %}
                                                 </ul>
                                             </li>
+                                           
+
                                             {% for kauli in aalu %}
                                             <li><a href="{% url 'category' kauli.slug %}"><b>{{kauli.title}}</b></a></li>
                                             {% endfor %}

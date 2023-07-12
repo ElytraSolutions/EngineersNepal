@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+{% load social_share %}
 {% block title %}
 {{ vacancy.title }} 
 {% endblock title %}
@@ -33,7 +34,18 @@ Link: <a href="{{vacancy.link}}" target="_blank" style="color:blue;">{{vacancy.l
 <b><a href="{% url 'download' vacancy.id %}" style="color:blue;">Download Content</a></b>
 {% endif %}
 
+<div class="social-share pt-30">
+    <div class="section-tittle">
+        <h3 class="mr-20">Share:</h3> 
+        <ul>
+            <li><a href='#' style="color:black;"> {% post_to_facebook object_or_url "Share to Facebook" %}</a></li>
+            <li><a href='#' style="color:black;"> {% post_to_twitter "{{vacancy.title}}" object_or_url "Post to Twitter" %}</a></li>
+            <li><a href='#' style="color:black;"> {% post_to_linkedin object_or_url %}</a></li>
+        </ul>
+    </div>
 </div>
 
-`
+</div>
+
+
 {% endblock content %}

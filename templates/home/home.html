@@ -241,9 +241,9 @@
               </div>
               {% endfor %}
             <!-- New Poster -->
-            <div class="news-poster d-none d-lg-block">
+            {% comment %} <div class="news-poster d-none d-lg-block">
                 <img src="{% static 'assets/img/hero/verticalgif.jpg' %}" alt="">
-            </div>
+            </div> {% endcomment %}
 
         </div>
         </div>
@@ -323,7 +323,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="news-poster d-none d-lg-block">
-                        <img src="{% static 'assets/img/news/news_card.jpg' %}" alt="">
+                        <img src="{{adhomeside.photo.url}}" alt="">
                     </div>
                 </div>
             </div>

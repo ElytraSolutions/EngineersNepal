@@ -9,18 +9,20 @@
         <div class="single-box">
             <div class="follow-us d-flex align-items-center">
                 <div class="follow-social">
-                    <a href="#"><img src="{% static 'assets/img/news/icon-fb.png' %}" alt=""></a>
+                    <a href="https://www.facebook.com/EngineersNepalOfficial"><img src="{% static 'assets/img/news/icon-fb.png' %}" alt="">
                 </div>
                 <div class="follow-count">  
                     <span>Facebook</span>
                 </div>
+            </a>
             </div> 
             <div class="follow-us d-flex align-items-center">
                 <div class="follow-social">
-                    <a href="#"><img src="{% static 'assets/img/news/icon-tw.png' %}" alt=""></a>
+                    <a href="https://twitter.com/engineers_nepal"><img src="{% static 'assets/img/news/icon-tw.png' %}" alt="">
                 </div>
                 <div class="follow-count">
                     <span>Twitter</span>
+                </a>
                 </div>
             </div>
                 <div class="follow-us d-flex align-items-center">
@@ -50,6 +52,6 @@
         </div>
     </div>
     <div class="news-poster d-none d-lg-block">
-        <img src="{% static 'assets/img/news/news_card.jpg' %}" alt="">
+        <img src="{{newsside.photo.url}}" alt="">
     </div>
 </div>
