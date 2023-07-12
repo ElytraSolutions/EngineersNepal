@@ -171,7 +171,7 @@ def homepage(request):
     developmentnews=all_posts.filter(categories__priority=2).order_by('-timestamp')[:6]
     for category in categories:
         if category.featured==True:
-            category_dict[category]=all_posts.filter(categories__slug=category.slug, breaking=False).order_by('-id')[:4]
+            category_dict[category]=all_posts.filter(categories__slug=category.slug).order_by('-id')[:4]
     context={'trending1':trending_1,'trending2':trending_2, 'featured_post':featured_post, 'weekly_top':weekly_top,
              'categories':categories, 'category_dict':category_dict,'breaking_news':breaking_news,'developnews':developmentnews,}
     return render(request,'home/home.html',context)

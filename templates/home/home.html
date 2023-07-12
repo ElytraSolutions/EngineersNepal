@@ -252,17 +252,24 @@
   <!-- Trending Area End -->
   <!--   Weekly-News start -->
 {% for key,value in category_dict.items  %}
-  <div class="weekly-news-area pt-50">
+{%if key.grid == "gridone"%}
+<div class="weekly-news-area pt-50" style="background-color: rgba(49,38,62,0.8);">
+{%endif%}
+{%if key.grid == "gridtwo"%}
+<div class="weekly-news-area pt-50">
+{%endif%}
     <div class="container">
        <div class="weekly-wrapper">
             <!-- section Tittle -->
+            {%if key.grid == "gridone"%}
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-tittle mb-30">
-                        <h2>{{key}}</h2>
+                        <h2 style="color: rgba(255,255,255,0.9);">{{key}}</h2>
                     </div>
                 </div>
             </div>
+            
             <div class="row">
                 <div class="col-12">
                     <div class="weekly-news-active dot-style d-flex dot-style">
@@ -272,7 +279,6 @@
                                 <a href="{% url 'newsdetail' weekly.slug %}"><img src="{{weekly.thumbnail.url}}" alt="" width="360" height="420" style="object-fit: cover;"></a>
                             </div>
                             <div class="weekly-caption">
-                                
                                 {% if weekly.title|length < 64 %}
                                 <h4><a href="{% url 'newsdetail' weekly.slug %}">{{weekly.title}}</a></h4>
                                 {% else %}
@@ -285,8 +291,50 @@
                     </div>
                 </div>
             </div>
+            {% endif %}
+            {%if key.grid == "gridtwo"%}
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="section-tittle mb-30">
+                        <h2>{{key}}</h2>
+                    </div>
+                    <div class="whats-news-caption">
+                        <div class="row">
+                            {% for weekly in value %}
+                              <div class=" col-lg-6 col-md-6">
+                                <div class="single-what-news mb-100">
+                                    <div class="what-img">
+                                        <a href="{% url 'newsdetail' weekly.slug %}"><img src="{{weekly.thumbnail.url}}" alt=""></a>
+                                    </div>
+                                        <div class="weekly-caption">
+                                            {% if weekly.title|length < 64 %}
+                                            <h4><a href="{% url 'newsdetail' weekly.slug %}">{{weekly.title}}</a></h4>
+                                            {% else %}
+                                            <h4><a href="{% url 'newsdetail' weekly.slug %}">{{weekly.title|slice:64}}...</a></h4>
+                                            {% endif %}
+                                            {% comment %} <h4><a href="{% url 'newsdetail' weekly.slug %}">{{weekly.title|slice:63}}...</a></h4> {% endcomment %}
+                                    </div>
+                                </div>   
+                              </div>
+                              {% endfor %}
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-3">
+                    <div class="news-poster d-none d-lg-block">
+                        <img src="{% static 'assets/img/news/news_card.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+            {% endif %}
             <br><br>
-            <b><a href="{% url "category" key.slug %}" style="color:#181019; text-indent: right;">View More</a></b>
+            {%if key.grid == "gridone"%}
+            <b><a href="{% url 'category' key.slug %}" style="color: rgba(255,255,255,0.9); text-indent: right;">View More</a></b>
+            {%endif%}
+            {%if key.grid == "gridtwo"%}
+            <b><a href="{% url 'category' key.slug %}" style="color:#181019; text-indent: right;">View More</a></b>
+            {%endif%}
        </div>
     </div>
 </div>    

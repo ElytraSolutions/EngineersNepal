@@ -2746,6 +2746,106 @@ hr {
 .contact-section .whats-news-caption .single-what-news:hover .what-cap {
   bottom: -70px;
 }
+
+
+
+
+
+
+/* new section       grideekly2 */
+
+
+
+
+.whats-news-area .whats-news-caption .single-what-news,
+.about-area .whats-news-caption .single-what-news,
+.contact-section .whats-news-caption .single-what-news {
+  position: relative;
+}
+.weekly-news-area .whats-news-caption .single-what-news .what-img img,
+.about-area .whats-news-caption .single-what-news .what-img img,
+.contact-section .whats-news-caption .single-what-news .what-img img {
+  border-radius: 6px;
+  width: 100%;
+}
+
+
+
+/* caption */
+
+.weekly-news-area .weekly-wrapper .single-what-news .weekly-caption {
+  position: absolute;
+  bottom: 0px;
+  left: 0;
+  background: #fff;
+  padding: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin: 0 28px;
+  border-radius: 10px;
+  -webkit-transition: all 0.4s ease-out 0s;
+  -moz-transition: all 0.4s ease-out 0s;
+  -ms-transition: all 0.4s ease-out 0s;
+  -o-transition: all 0.4s ease-out 0s;
+  transition: all 0.4s ease-out 0s;
+  opacity: 1;
+  visibility: visible;
+  bottom: 20px;
+  /* visibility: hidden; */
+}
+.weekly-news-area .weekly-wrapper .single-what-news .weekly-caption span {
+  color: #000;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 10px 15px;
+  line-height: 1;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+.weekly-news-area .weekly-wrapper .single-what-news .weekly-caption h4 a {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+.weekly-news-area .weekly-wrapper .single-what-news .weekly-caption h4 a:hover {
+  color: #fc3f00;
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .weekly-news-area .weekly-wrapper .single-what-news .weekly-caption h4 a {
+    font-size: 9px;
+    line-height: 1;
+  }
+}
+.weekly-news-area .weekly-wrapper .single-what-news:hover .weekly-caption {
+  bottom: 20px;
+  opacity: 1;
+  visibility: visible;
+}
+
+
+
+/* grid2 finsih */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .whats-news-area .single-follow .single-box,
 .about-area .single-follow .single-box,
 .contact-section .single-follow .single-box {
@@ -3148,7 +3248,7 @@ hr {
   display: flex;
 }
 .footer-area {
-  background: #C096D3;
+  background: rgba(98,109,88,.9);
 }
 .footer-area .footer-logo {
   margin-bottom: 40px;
@@ -3244,7 +3344,7 @@ hr {
   width: 100%;
 }
 .footer-bottom-area {
-  background: #181019;
+  background:   #181019;
 }
 .footer-bottom-area .footer-border {
   border-top: 1px solid #242323;
