@@ -175,7 +175,7 @@
                 <div class="row justify-content-start mb-20">
                 {% for cat in development %}
                 <div class = "col-auto ">
-                    <a class = "subcat" href = "#">{{cat.title}}</a>
+                    <a class = "subcat" href = "{% url 'category' cat.slug %}">{{cat.title}}</a>
                 </div>
                 
                 {% endfor %}
