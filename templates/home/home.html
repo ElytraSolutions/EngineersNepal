@@ -51,7 +51,7 @@
             &nbsp;&nbsp;&nbsp;&nbsp;<img src="{% static 'calendar.png' %}" style="width: 2vh; height:auto;">&nbsp;&nbsp;<span style="font-size: 15px; color:#676767;font-weight: 600;">{{breaking_new.timestamp}}</span>
         </div>  
         {% if breaking_new.breakingthumbnail %}
-      <div class="col-md-10 text-center image-wala">
+      <div class="col-md-8 text-center image-wala">
         <a href = "{% url 'newsdetail' breaking_new.slug %}"><img class="img-fuild"  src="{{breaking_new.thumbnail.url}}" alt=""></a> 
       </div>
       <div class = 'col-md-9 mt-20'>
@@ -190,9 +190,9 @@
                             <div class="whats-news-caption">
                                 <div class="row"> 
                                   {% for trend in developnews %}
-                                    <div class="col-lg-6 col-md-6">
-                                        <div class="single-what-news mb-100">
-                                            <div class="what-img">
+                                    <div class="col-lg-4">
+                                        <div class="single-what-news mb-35">
+                                            <div class="what-img mb-10">
                                                 <a href="{% url 'newsdetail' trend.slug %}"><img src="{{trend.thumbnail.url}}" alt=""></a>
                                             </div>
                                             <div class="what-cap">
