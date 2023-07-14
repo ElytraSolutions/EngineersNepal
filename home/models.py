@@ -171,9 +171,3 @@ class Epapers(models.Model):
     
 
 
-class breakings(models.Model):
-    title=models.CharField(max_length=100)
-    date_created=models.DateField(auto_now_add=True)
-    thumbnail=models.ImageField(upload_to='breaking_thumbs', null=True, blank=True)
-    def __str__(self):
-        return self.title

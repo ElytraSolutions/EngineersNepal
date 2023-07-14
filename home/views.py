@@ -170,11 +170,58 @@ def homepage(request):
     weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:6]
     breaking_news=all_posts.filter(breaking=True).order_by('-timestamp')
     developmentnews=all_posts.filter(categories__priority=2).order_by('-timestamp')[:6]
+    
+
+    # for advertisements 
+    
+    categorybottom = list(advertisement.objects.filter(title__startswith='categorybottom').order_by('title') ) 
+    mobilead = list (advertisement.objects.filter(title__startswith='mobile').order_by('title') ) 
+
+    
+    homepageside = list (advertisement.objects.filter(title__startswith='homepageside').order_by('title'))
+    
+    
     for category in categories:
         if category.featured==True:
             category_dict[category]=all_posts.filter(categories__slug=category.slug).order_by('-timestamp')[:4]
+
+    n_cat = len(category_dict)
+    n_cat_ad = len(categorybottom)
+
+    if(n_cat>n_cat_ad):
+        difference = n_cat - n_cat_ad
+
+        for i in range(difference):
+            categorybottom.append(categorybottom[i % n_cat_ad])
+
+    gridtwo_count = 0
+    # count categories with grid == gridtwo
+    for category in categories:
+        if category.grid == 'gridtwo' and category.featured == True:
+            gridtwo_count += 1
+    
+    n_homeside = len(homepageside)
+    n_mobilead = len(mobilead)
+
+    if(gridtwo_count>n_homeside):
+        difference = gridtwo_count - n_homeside
+
+        for i in range(difference):
+            homepageside.append(homepageside[i % n_homeside])
+
+    if(gridtwo_count>n_mobilead):
+        difference = gridtwo_count - n_mobilead
+
+        for i in range(difference):
+            mobilead.append(mobilead[i % n_mobilead])
+    
+
+
+
+ 
+
     context={'trending1':trending_1,'trending2':trending_2, 'featured_post':featured_post, 'weekly_top':weekly_top,
-             'categories':categories, 'category_dict':category_dict,'breaking_news':breaking_news,'developnews':developmentnews,'adhomeside':adhomeside,}
+             'categories':categories, 'category_dict':category_dict,'breaking_news':breaking_news,'developnews':developmentnews,'adhomeside':adhomeside,'categorybottom':categorybottom,'homepageside':homepageside,'mobilead':mobilead,}
     return render(request,'home/home.html',context)
 
 def newsdetail(request,slug):
@@ -256,3 +303,5 @@ def downloadcsv(request, id):
         writer.writerow([obj.vacancy, obj.fullname, obj.email, obj.phone, obj.address, obj.cv])  # Replace with your field values
 
     return response
+
+

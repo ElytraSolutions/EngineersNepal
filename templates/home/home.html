@@ -2,6 +2,8 @@
 {% extends 'base.html' %} {% load static %} {% block title %} EngineersNepal {%endblock title %} 
 
 
+{% load custom_filters %}
+
 {% block breakingstyle %}
 
 <style>
@@ -39,6 +41,11 @@
 {% endblock breakingstyle %}
 
 {% block breaking %}
+
+<div class="d-block d-sm-none">
+    This div is only visible on mobile devices.
+  </div>
+
 
 
 <div class="container-fluid mt-50 text-center">
@@ -252,6 +259,7 @@
   </section>
   <!-- Trending Area End -->
   <!--   Weekly-News start -->
+{% with adindex=0 %}
 {% for key,value in category_dict.items  %}
 {%if key.grid == "gridone"%}
 <div class="weekly-news-area pt-50" style="background-color: rgba(49,38,62,0.8);">
@@ -324,7 +332,10 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="news-poster d-none d-lg-block">
-                        <a href="{{adhomeside.link}}" target="_blank"><img src="{{adhomeside.photo.url}}" alt=""></a>
+                        {% with ad=homepageside|index:adindex %}
+                        <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" alt=""></a>
+                        {% endwith %}
+                       
                     </div>
                 </div>
             </div>
@@ -336,11 +347,19 @@
             {%if key.grid == "gridtwo"%}
             <b><a href="{% url 'category' key.slug %}" style="color:#181019; text-indent: right;">View More</a></b>
             {%endif%}
+            
+            {% with ad=categorybottom|index:forloop.counter0 %}
+            <a href = "{{ad.link}}" target="_blank" >{{ad.title}}</a>
+            {% endwith %}
+           
+           
        </div>
     </div>
 </div>    
-{% endfor %}              
-  
+
+{% endfor %}       
+{% endwith %}       
+ 
   <!-- End Weekly-News -->
  <!-- Whats New Start -->
 
