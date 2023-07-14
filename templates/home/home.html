@@ -5,6 +5,7 @@
 {% block breakingstyle %}
 
 <style>
+
 .image-wala img {
     width: 100%;
     height: 50vh;
@@ -20,7 +21,7 @@
   }
 .breaking_title{
     font-size:64px; 
-    font-family:mukta;
+    
 }
 .breaking_title:hover{
     color:rgba(100,25,25,.90);
@@ -48,7 +49,7 @@
         <h1><a  class="breaking_title" href="{% url 'newsdetail' breaking_new.slug %}">{{breaking_new.title|slice:120}}</a></h1>
         </div>
         <div class="mb-15"><img src="{{breaking_new.author.profile_picture.url}}" style="width: 3vh; height:auto; border-radius: 50%;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-size: 15px; color:#676767;font-weight: 600;">{{breaking_new.author.fullname}}</span>
-            &nbsp;&nbsp;&nbsp;&nbsp;<img src="{% static 'calendar.png' %}" style="width: 2vh; height:auto;">&nbsp;&nbsp;<span style="font-size: 15px; color:#676767;font-weight: 600;">{{breaking_new.timestamp}}</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;<img src="{% static 'calendar.png' %}" style="width: 2vh; height:auto;">&nbsp;&nbsp;<span style="font-size: 20px; color:#676767;font-weight: 600;">{{breaking_new.timestamp}}</span>
         </div>  
         {% if breaking_new.breakingthumbnail %}
       <div class="col-md-8 text-center image-wala">

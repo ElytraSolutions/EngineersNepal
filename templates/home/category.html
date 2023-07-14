@@ -58,7 +58,7 @@ Category:: {{item}}
                                         {% for post in posts %}
                                          <div class="col-lg-6 col-md-6">
                                              <div class="single-what-news mb-100">
-                                                 <div class="what-img">
+                                                 <div class="what-img mb-10" >
                                                      <a href="{% url 'newsdetail' post.slug %}"><img src="{{post.thumbnail.url}}" alt=""> </a>
                                                  </div>
                                                  <div class="what-cap">

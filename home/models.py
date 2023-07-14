@@ -106,10 +106,11 @@ class advertisement(models.Model):
     link = models.URLField()
     #date of creation
     date_created = models.DateField(auto_now_add=True)
-    #date of expiry
-    date_expiry = models.DateField()
+   
     #status of the advertisement
     status = models.BooleanField(default=True)
+    
+    
 
     def __str__(self):
         return self.title

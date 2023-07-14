@@ -20,6 +20,18 @@ def message_processor(request):
     newsside=advertisement.objects.get(title='newspageside')
     dateeng=dateeng.strftime("%d %B %Y")
     d1=datenep.strftime("%K-%n-%D (%G)")
+    homepagetop = advertisement.objects.get(title='homepagetop')
+    
+    Categorybottom = advertisement.objects.filter(title__startswith='categorybottom')  
+    mobilead = advertisement.objects.filter(title__startswith='mobile')  
+    
+    homepageside = advertisement.objects.filter(title__startswith='homepageside')
+    newspagemobile = advertisement.objects.get(title='newspagemobile')
+    
+    
+    
+    
+    # categoryads = advertisement.objects.get(title='categoryad1')
     if request.user.is_authenticated:
         current_user=Author.objects.get(user=request.user)
         return {'aalu':cappa, 'dateeng':dateeng, 'datenep':d1,'current_user':current_user,'development':development,'engsug':engsug,'scroller':posters,'newer':news,'adtop':adtop,'newsside':newsside,'engedu':engedu,}
