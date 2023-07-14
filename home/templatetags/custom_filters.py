@@ -10,3 +10,9 @@ def split_paragraphs(value):
 @register.filter
 def index(sequence, position):
     return sequence[position]
+
+
+@register.simple_tag
+def set(val=None):
+  return val
+

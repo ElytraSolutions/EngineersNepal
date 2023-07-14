@@ -4,6 +4,7 @@
 
 {% load custom_filters %}
 
+
 {% block breakingstyle %}
 
 <style>
@@ -77,6 +78,7 @@
 
 
 {% block content %}
+{% set 1 as adindex %}
 <!-- Trending Area Start -->
 <main>
   <!-- Trending Area Start -->
@@ -259,12 +261,13 @@
   </section>
   <!-- Trending Area End -->
   <!--   Weekly-News start -->
-{% with adindex=0 %}
+
 {% for key,value in category_dict.items  %}
 {%if key.grid == "gridone"%}
 <div class="weekly-news-area pt-50" style="background-color: rgba(49,38,62,0.8);">
 {%endif%}
 {%if key.grid == "gridtwo"%}
+
 <div class="weekly-news-area pt-50">
 {%endif%}
     <div class="container">
@@ -332,9 +335,15 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="news-poster d-none d-lg-block">
+                       
                         {% with ad=homepageside|index:adindex %}
                         <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" alt=""></a>
+                        
+                        
                         {% endwith %}
+
+                       
+                       
                        
                     </div>
                 </div>
@@ -358,7 +367,7 @@
 </div>    
 
 {% endfor %}       
-{% endwith %}       
+    
  
   <!-- End Weekly-News -->
  <!-- Whats New Start -->
