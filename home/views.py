@@ -175,10 +175,10 @@ def homepage(request):
     # for advertisements 
     
     categorybottom = list(advertisement.objects.filter(title__startswith='categorybottom').order_by('title') ) 
-    mobilead = list (advertisement.objects.filter(title__startswith='mobile').order_by('title') ) 
+    mobilead = advertisement.objects.get(title='mobile') 
 
     
-    homepageside = list (advertisement.objects.filter(title__startswith='homepageside').order_by('title'))
+    homepageside = advertisement.objects.get(title='homepageside') 
     
     
     for category in categories:
@@ -193,32 +193,6 @@ def homepage(request):
 
         for i in range(difference):
             categorybottom.append(categorybottom[i % n_cat_ad])
-
-    gridtwo_count = 0
-    # count categories with grid == gridtwo
-    for category in categories:
-        if category.grid == 'gridtwo' and category.featured == True:
-            gridtwo_count += 1
-    
-    n_homeside = len(homepageside)
-    n_mobilead = len(mobilead)
-
-    if(gridtwo_count>n_homeside):
-        difference = gridtwo_count - n_homeside
-
-        for i in range(difference):
-            homepageside.append(homepageside[i % n_homeside])
-
-    if(gridtwo_count>n_mobilead):
-        difference = gridtwo_count - n_mobilead
-
-        for i in range(difference):
-            mobilead.append(mobilead[i % n_mobilead])
-    
-
-
-
- 
 
     context={'trending1':trending_1,'trending2':trending_2, 'featured_post':featured_post, 'weekly_top':weekly_top,
              'categories':categories, 'category_dict':category_dict,'breaking_news':breaking_news,'developnews':developmentnews,'adhomeside':adhomeside,'categorybottom':categorybottom,'homepageside':homepageside,'mobilead':mobilead,}

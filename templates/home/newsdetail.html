@@ -73,12 +73,18 @@
                                 </div>
                             </div>
                         </div> -->
+                        <div class="col d-lg-none mt-10 mb-10">
+                            {% with ad=newspagemobile%}
+                                <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" style="width: 100%;" alt="" ></a> 
+                            {% endwith %}
+                        </div>  
     
                         <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="5"></div>
                         </div>
                         <!-- From -->
 
-                    </div>                                
+                    </div>
+                                                  
 
 {% include 'home/followus.html' %}
                </div>

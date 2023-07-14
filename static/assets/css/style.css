@@ -2811,7 +2811,7 @@ hr {
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .weekly-news-area .weekly-wrapper .single-what-news .weekly-caption h4 a {
-    font-size: 9px;
+    font-size: 18px;
     line-height: 1;
   }
 }

@@ -43,10 +43,6 @@
 
 {% block breaking %}
 
-<div class="d-block d-sm-none">
-    This div is only visible on mobile devices.
-  </div>
-
 
 
 <div class="container-fluid mt-50 text-center">
@@ -78,7 +74,6 @@
 
 
 {% block content %}
-{% set 1 as adindex %}
 <!-- Trending Area Start -->
 <main>
   <!-- Trending Area Start -->
@@ -336,17 +331,12 @@
                 <div class="col-lg-3">
                     <div class="news-poster d-none d-lg-block">
                        
-                        {% with ad=homepageside|index:adindex %}
-                        <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" alt=""></a>
-                        
-                        
-                        {% endwith %}
-
-                       
-                       
-                       
+                        {% with ad=homepageside%}
+                        <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" alt=""></a> 
+                        {% endwith %} 
                     </div>
                 </div>
+                
             </div>
             {% endif %}
             <br><br>
@@ -355,10 +345,20 @@
             {%endif%}
             {%if key.grid == "gridtwo"%}
             <b><a href="{% url 'category' key.slug %}" style="color:#181019; text-indent: right;">View More</a></b>
+            <div class="container d-lg-none mt-10 mb-10">
+                {% with ad=mobilead%}
+                    <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" style="width: 100%;" alt="" ></a> 
+                {% endwith %}
+            </div>
             {%endif%}
+
+            
             
             {% with ad=categorybottom|index:forloop.counter0 %}
-            <a href = "{{ad.link}}" target="_blank" >{{ad.title}}</a>
+            <div class="col-xl-12 col-lg-12 col-md-12 mt-20">
+            <!-- <a href = "{{ad.link}}" target="_blank" >{{ad.title}}</a> -->
+            <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" alt="gg" style="width: 100%;"></a>
+            </div>
             {% endwith %}
            
            
