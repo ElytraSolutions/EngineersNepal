@@ -7,6 +7,14 @@
         <title> {% block title %} {% endblock title %} </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <meta property="og:title" content="Engineeers Nepal">
+        <meta property="og:description" content="Find Engineering News here.">
+        <meta property="og:image" content="{% static 'dallo.png' %}">
+        <!-- <meta property="og:url" content="URL of the page you want to share"> -->
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="Engineeers Nepal">
         <style>
             *{
                 font-family:mukta;
@@ -136,8 +144,8 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="header-info-left">
                                     <ul>     
-                                        <li><img src="{% static 'assets/img/icon/header_icon1.png' %}" alt="">{{dateeng}} </li>
-                                        <li><img src="{% static 'assets/img/icon/header_icon1.png' %}" alt="">{{datenep}}</li>
+                                        <li><img src="{% static 'calendarwhite.png' %}" alt="" style="width: 1.25vw;">{{dateeng}} </li>
+                                        <li><img src="{% static 'calendarwhite.png' %}" alt="" style="width: 1.25vw;">{{datenep}}</li>
                                     </ul>
                                 </div>
                                 <div class="header-info-right">
