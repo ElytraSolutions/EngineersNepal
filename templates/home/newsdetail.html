@@ -40,7 +40,7 @@
                             {% if adnewsbegin.status %}   
                                 <a href="{{adnewsbegin.link}}" target="_blank"><img src="{{adnewsbegin.photo.url}}" alt="" style='width:100%;'></a>
                             {% endif %}
-                                <div class="newscontent">
+                                <div id='newsss' class="newscontent">
 
                                 {{news.content|safe}}
 
@@ -102,3 +102,51 @@
 </main>
 
 {% endblock content %}
+
+
+{% block adscript %}
+
+<script>
+var ad = JSON.parse('{{ newsmid|safe }}');
+
+
+
+function insertad() {
+    var div = document.getElementById('newsss');
+    var paragraphs = div.getElementsByTagName('p');
+  
+    if ( 3 > paragraphs.length) {
+      return;
+    }
+  
+    var photo = document.createElement('img');
+    photo.src = '{{ newsmidd.photo.url }}' ;
+    photo.style.width = '100%';
+
+    var link = document.createElement('a');
+    link.href = '{{ newsmidd.link }}';
+    link.target = "_blank";
+    link.appendChild(photo);
+
+    var mydiv = document.createElement('div');
+    mydiv.className = 'mt-10, mb-20';
+    mydiv.appendChild(link);
+
+
+    
+    var targetParagraph = paragraphs[2];
+    targetParagraph.parentNode.insertBefore(mydiv, targetParagraph);
+  }
+
+  if (ad.status){
+
+    insertad(ad.link,ad.photo);
+
+  }
+
+  
+
+</script>
+
+
+{% endblock adscript %}
