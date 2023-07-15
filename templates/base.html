@@ -8,13 +8,16 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
+        {% block SEO %}
         <meta property="og:title" content="Engineeers Nepal">
         <meta property="og:description" content="Find Engineering News here.">
         <meta property="og:image" content="{% static 'dallo.png' %}">
         <!-- <meta property="og:url" content="URL of the page you want to share"> -->
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="Engineeers Nepal">
+        <meta name="twitter:image" content="{% static 'dallo.png' %}">
+        {% endblock SEO %}
+        
         <style>
             *{
                 font-family:mukta;
