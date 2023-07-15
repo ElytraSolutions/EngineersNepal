@@ -52,6 +52,8 @@
         </div>
     </div>
     <div class="news-poster d-none d-lg-block">
+        {% if newsside.status %}
         <a href="{{newsside.link}}" target="_blank" > <img src="{{newsside.photo.url}}" alt=""> </a>
+        {% endif %}
     </div>
 </div>

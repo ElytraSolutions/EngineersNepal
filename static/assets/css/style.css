@@ -2055,6 +2055,7 @@ hr {
 }
 .header-area .header-mid .header-banner img {
   width: 100%;
+
 }
 .header-area .header-bottom {
   box-shadow: 0px 0px 36px 0px rgba(0, 0, 0, 0.1);
@@ -2243,7 +2244,7 @@ hr {
   padding: 20px 20px;
 }
 .header-area .slicknav_btn {
-  top: -51px;
+  top: -41px;
   right: 17px;
 }
 .slicknav_menu .slicknav_nav a:hover {

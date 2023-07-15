@@ -163,7 +163,12 @@
                             </div>
                             <div class="col-xl-9 col-lg-9 col-md-9">
                                 <div class="header-banner f-right  ">
+                                    {% if homepagetop.status %}
                                     <a href="{{homepagetop.link}}" target="_blank"><img src="{{homepagetop.photo.url}}" alt=""></a>
+                                    {% else %}
+                                    <div style="height:6vw;"></div>
+                                    {% endif %}
+                                   
                                 </div>
                             </div>
                         </div>
@@ -179,7 +184,7 @@
                                 </div>
                                 <!-- Main-menu -->
                                 <div class="main-menu d-none d-md-block">
-                                    <nav>                  
+                                    <nav style=" height:100%; display:flex; align-items: center;">                  
                                         <ul id="navigation">   
                                             
                                             
@@ -261,7 +266,9 @@
     </header>
 
     <div class="container d-md-none mt-10">
+        {% if homepagetop.status %}
         <a href="{{homepagetop.link}}" target="_blank"><img src="{{homepagetop.photo.url}}" alt="" style="width: 100%;"></a>
+        {% endif %}
     </div>
 
     {% block breaking %}

@@ -338,7 +338,10 @@
                     <div class="news-poster d-none d-lg-block">
                        
                         {% with ad=key.desktop_ad %}
-                        <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" alt=""></a> 
+
+                        {% if ad.status %}
+                        <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" alt=""></a>
+                        {% endif %} 
                         {% endwith %} 
                     </div>
                 </div>
@@ -353,7 +356,9 @@
             <b><a href="{% url 'category' key.slug %}" style="color:#181019; text-indent: right;">View More</a></b>
             <div class="container d-lg-none mt-10 mb-10">
                 {% with ad=key.mobile_ad %}
+                    {% if ad.status %}
                     <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" style="width: 100%;" alt="" ></a> 
+                    {% endif %}
                 {% endwith %}
             </div>
             {%endif%}
@@ -361,10 +366,13 @@
             
             
             {% with ad=categorybottom|index:forloop.counter0 %}
+
+            {% if ad.status %}
             <div class="col-xl-12 col-lg-12 col-md-12 mt-20">
             <!-- <a href = "{{ad.link}}" target="_blank" >{{ad.title}}</a> -->
             <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" alt="gg" style="width: 100%;"></a>
             </div>
+            {% endif %}
             {% endwith %}
            
            

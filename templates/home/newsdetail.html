@@ -34,14 +34,20 @@
                                 <!-- <small><a  href="{% url 'delete-post' news.slug %}"><button style="background-color: red; border: none; color: white;">Delete <i class="fa fa-trash" aria-hidden="true"></i></button></a></small>                                           -->
                                 {% endif %}
                                 <hr>
+
+                            
                             </div>
+                            {% if adnewsbegin.status %}   
                                 <a href="{{adnewsbegin.link}}" target="_blank"><img src="{{adnewsbegin.photo.url}}" alt="" style='width:100%;'></a>
-                            <div class="newscontent">
+                            {% endif %}
+                                <div class="newscontent">
 
                                 {{news.content|safe}}
 
                         </div>
+                        {% if adnewsend.status %}
                         <a href="{{adnewsend.link}}" target="_blank"><img src="{{adnewsend.photo.url}}" alt="" style="width:100%;"></a>
+                        {% endif %}
                             <br><br><br><br>
                         <div class="social-share pt-30">
                             <div class="section-tittle">
@@ -75,7 +81,9 @@
                         </div> -->
                         <div class="col d-lg-none mt-10 mb-10">
                             {% with ad=newspagemobile%}
+                            {% if ad.status %}
                                 <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" style="width: 100%;" alt="" ></a> 
+                            {% endif %}
                             {% endwith %}
                         </div>  
     
