@@ -249,9 +249,9 @@
     $(window).on('scroll', function () {
       var scroll = $(window).scrollTop();
       if (scroll < 245) {
-        $(".header-flex").removeClass("sticky-flex");
+        $(".header-flex").removeClass("sticky-flex col-xl-12 col-lg-12");
       } else {
-        $(".header-flex").addClass("sticky-flex");
+        $(".header-flex").addClass("sticky-flex col-xl-12 col-lg-12");
       }
     });
 
