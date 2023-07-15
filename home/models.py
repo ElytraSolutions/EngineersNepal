@@ -38,6 +38,25 @@ class Author(models.Model):
     @property
     def fullname(self):
         return self.firstname+" "+ self.lastname
+    
+class advertisement(models.Model):
+    #title of the advertisement
+    title = models.CharField(max_length=100)
+    
+    #gif or image field
+    photo = models.ImageField(upload_to='post_ads')
+    #link to the post
+    link = models.URLField()
+    #date of creation
+    date_created = models.DateField(auto_now_add=True)
+   
+    #status of the advertisement
+    status = models.BooleanField(default=True)
+    
+    
+
+    def __str__(self):
+        return self.title
 
 
 class Category(models.Model):
@@ -50,6 +69,10 @@ class Category(models.Model):
     featured=models.BooleanField(default=False)
     priority=models.IntegerField(default=99)
     grid=models.CharField(max_length=10, choices=choices)
+
+    #advertisement that can be included in the category, which can be null also
+    desktop_ad=models.ForeignKey(advertisement, on_delete=models.SET_NULL, null=True, related_name='destop_ad')
+    mobile_ad=models.ForeignKey(advertisement, on_delete=models.SET_NULL, null=True, related_name='mobile_ad')
     def save(self, *args, **kwargs):
         super(Category, self).save()
         if not self.slug:
@@ -74,6 +97,8 @@ class Post(models.Model):
     breaking=models.BooleanField(default=False)
     breakingthumbnail=models.BooleanField(default=True)
 
+    
+
     def save(self, *args, **kwargs):
         super(Post, self).save()
         if not self.slug:
@@ -96,24 +121,7 @@ class Post(models.Model):
 
 
 
-class advertisement(models.Model):
-    #title of the advertisement
-    title = models.CharField(max_length=100)
-    #description of the advertisement
-    #gif or image field
-    photo = models.ImageField(upload_to='post_ads')
-    #link to the post
-    link = models.URLField()
-    #date of creation
-    date_created = models.DateField(auto_now_add=True)
-   
-    #status of the advertisement
-    status = models.BooleanField(default=True)
-    
-    
 
-    def __str__(self):
-        return self.title
 
 # model for vacany posts 
 class Vacancy(models.Model):

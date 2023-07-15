@@ -28,10 +28,14 @@ Submit by: <span class="job-title"><b>{{vacancy.date_expiry}}</b></span><br>
 Work type: <span class="job-title"><b>{{vacancy.place}}</b></span><br>
 Link: <a href="{{vacancy.link}}" target="_blank" style="color:blue;">{{vacancy.link}}</a>
 <br>
-<b><a href="{% url 'apply' vacancy.id %}" style="color:blue;">Apply Now</a></b>
+<div class="d-flex justify-content-center mt-20">
+<a href="{% url 'apply' vacancy.id %}" class="rounded btn btn-primary " style="background-color:brown;">Apply Now</a>
+</div>
 <br>
 {% if request.user.is_superuser %}
-<b><a href="{% url 'download' vacancy.id %}" style="color:blue;">Download Content</a></b>
+<div class="d-flex justify-content-center mt-20">
+    <a href="{% url 'download' vacancy.id %}" class="rounded btn btn-primary " style="background-color:rgb(42, 52, 165);">Download Data</a>
+</div>
 {% endif %}
 
 <div class="social-share pt-30">

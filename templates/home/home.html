@@ -46,6 +46,9 @@
 
 
 <div class="container-fluid mt-50 text-center">
+    <div class="trending-area fix">
+        <div class="container">
+            <div class="trending-main">
     {% for breaking_new in breaking_news %}
     <div class="row justify-content-center">
 
@@ -69,6 +72,9 @@
     </div>
     <hr>
     {% endfor %}
+            </div>
+        </div>
+    </div>
   </div>
 {% endblock breaking %}
 
@@ -331,7 +337,7 @@
                 <div class="col-lg-3">
                     <div class="news-poster d-none d-lg-block">
                        
-                        {% with ad=homepageside%}
+                        {% with ad=key.desktop_ad %}
                         <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" alt=""></a> 
                         {% endwith %} 
                     </div>
@@ -346,7 +352,7 @@
             {%if key.grid == "gridtwo"%}
             <b><a href="{% url 'category' key.slug %}" style="color:#181019; text-indent: right;">View More</a></b>
             <div class="container d-lg-none mt-10 mb-10">
-                {% with ad=mobilead%}
+                {% with ad=key.mobile_ad %}
                     <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" style="width: 100%;" alt="" ></a> 
                 {% endwith %}
             </div>

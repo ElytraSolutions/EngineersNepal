@@ -166,7 +166,7 @@ def homepage(request):
     trending_2=all_posts[1:6]
     categories=Category.objects.all().order_by('priority')
     videos=Videos.objects.all()
-    adhomeside=advertisement.objects.get(title='homepageside')
+   
     weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:6]
     breaking_news=all_posts.filter(breaking=True).order_by('-timestamp')
     developmentnews=all_posts.filter(categories__priority=2).order_by('-timestamp')[:6]
@@ -175,10 +175,7 @@ def homepage(request):
     # for advertisements 
     
     categorybottom = list(advertisement.objects.filter(title__startswith='categorybottom').order_by('title') ) 
-    mobilead = advertisement.objects.get(title='mobile') 
-
-    
-    homepageside = advertisement.objects.get(title='homepageside') 
+   
     
     
     for category in categories:
@@ -195,7 +192,7 @@ def homepage(request):
             categorybottom.append(categorybottom[i % n_cat_ad])
 
     context={'trending1':trending_1,'trending2':trending_2, 'featured_post':featured_post, 'weekly_top':weekly_top,
-             'categories':categories, 'category_dict':category_dict,'breaking_news':breaking_news,'developnews':developmentnews,'adhomeside':adhomeside,'categorybottom':categorybottom,'homepageside':homepageside,'mobilead':mobilead,}
+             'categories':categories, 'category_dict':category_dict,'breaking_news':breaking_news,'developnews':developmentnews,'categorybottom':categorybottom,}
     return render(request,'home/home.html',context)
 
 def newsdetail(request,slug):
