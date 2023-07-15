@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block SEO%}
+<meta property="og:image" content="{{news.thumbnail.url}}">
+<meta name="twitter:image" content="{{news.thumbnail.url}}">
 {% endblock SEO %}
 {% block title %}
 {{news.title}}
