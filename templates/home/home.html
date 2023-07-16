@@ -30,6 +30,16 @@
     color:rgba(100,25,25,.90);
 }
 
+@media screen and (max-width: 768px) {
+    .breaking_title{
+        font-size: 35px;
+    }
+    .image-wala img{
+        height: 30vh;
+    }
+}
+    
+
 .subcat{
     color:#676767;
 }
@@ -63,7 +73,7 @@
         <a href = "{% url 'newsdetail' breaking_new.slug %}"><img class="img-fuild"  src="{{breaking_new.thumbnail.url}}" alt=""></a> 
       </div>
       <div class = 'col-md-12 mt-20'>
-        <h1><a href="{% url 'newsdetail' breaking_new.slug %}">{{breaking_new.content|safe|slice:300}}...</a></h1>
+        <h1><a href="{% url 'newsdetail' breaking_new.slug %}">{{breaking_new.content|safe|slice:200}}...</a></h1>
         </div>
       {% endif %}
 
@@ -265,7 +275,7 @@
 
 {% for key,value in category_dict.items  %}
 {%if key.grid == "gridone"%}
-<div class="weekly-news-area pt-50" style="background-color: rgba(49,38,62,0.8);">
+<div class="weekly-news-area pt-50" style="background-color: #ddd;">
 {%endif%}
 {%if key.grid == "gridtwo"%}
 
@@ -278,7 +288,8 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-tittle mb-30">
-                        <h2 style="color: rgba(255,255,255,0.9);">{{key}}</h2>
+                        <a href="{% url 'category' key.slug %}" style="color: rgba(0, 0, 0, 0.9); text-indent: right;">
+                        <h2 style="transition: all 0.3s ease-out 0s;">{{key}}</h2></a>
                     </div>
                 </div>
             </div>
@@ -309,7 +320,9 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="section-tittle mb-30">
-                        <h2>{{key}}</h2>
+                        <a href="{% url 'category' key.slug %}" style="color: rgba(0, 0, 0, 0.9); text-indent: right;">
+                        <h2 style="transition: all 0.3s ease-out 0s;" >{{key}}</h2>
+                    </a>
                     </div>
                     <div class="whats-news-caption">
                         <div class="row">
@@ -350,10 +363,10 @@
             {% endif %}
             <br><br>
             {%if key.grid == "gridone"%}
-            <b><a href="{% url 'category' key.slug %}" style="color: rgba(255,255,255,0.9); text-indent: right;">View More</a></b>
+            <b><a href="{% url 'category' key.slug %}" style=" text-indent: right;">View More</a></b>
             {%endif%}
             {%if key.grid == "gridtwo"%}
-            <b><a href="{% url 'category' key.slug %}" style="color:#181019; text-indent: right;">View More</a></b>
+            <b><a href="{% url 'category' key.slug %}" style=" text-indent: right;">View More</a></b>
             <div class="container d-lg-none mt-10 mb-10">
                 {% with ad=key.mobile_ad %}
                     {% if ad.status %}

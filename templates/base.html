@@ -81,6 +81,50 @@
     color: #994636;
 }
 
+/* code for header tag to have font size 12px for screen width 991px to 768px */
+@media (max-width: 991px) {
+    #navigation a {
+        font-size: 12px;
+        padding:  10px 0;
+        padding-right: 10px;
+    }
+
+    .sticky-logo{
+        width: 35%;
+    }
+
+    .sticky-logo img{
+        width: 80%;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    #navigation a {
+        font-size: 12px;
+        padding:  10px 0;
+        padding-right: 10px;
+    }
+
+    .sticky-logo{
+        width: 45%;
+    }
+
+    .sticky-logo img{
+        width:100%;
+    }
+    
+}
+
+/* code to scale down the logo in header tag for the screen width 991px to 768px*/
+/* @media (max-width: 991px) {
+    .sticky-logo img{
+        width: 80%;
+    }
+} */
+
+
+
 
            
         </style>
@@ -190,10 +234,12 @@
                         <div class="row align-items-center">
                             <div class="col-xl-10 col-lg-10 col-md-12 header-flex">
                                 <!-- sticky -->
+
                                 <div class="sticky-logo">
                                     <a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" alt=""></a>
                                 </div>
                                 <!-- Main-menu -->
+
                                 <div class="main-menu d-none d-md-block">
                                     <nav style=" height:100%; display:flex; align-items: center;">                  
                                         <ul id="navigation">   
@@ -293,22 +339,28 @@
        <div class="footer-area footer-padding fix">
             <div class="container">
                 <div class="row d-flex justify-content-between">
-                    <div class="col-xl-5 col-lg-5 col-md-7 col-sm-12">
-                        <div class="single-footer-caption">
-                            <div class="single-footer-caption">
+                    <div class="col-xl-5 col-lg-5 col-md-7 col-sm-12 mb-30">
+                        
                                 <!-- logo -->
-                                <div class="footer-logo">
+                                <div class="footer-logo ">
                                     <a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" alt=""></a>
                                 </div>
-                                <div class="footer-tittle">
-                                <div class="footer-pera">
-                                        <p>Engineeers Nepal is one of the leading portal related to engineering education and profession in Nepal. 
-                                            It is one of the pioneeering institution of Nepal and It has one of the largest fan following in the Nepal. 
-                                            Engineers Nepal consists of a team of 10 people and has been actively working for the welfare of students and 
-                                            professionals in Nepal. It has been providing various services to the students and professionals of Nepal.
-                                        </p>
+                                <div class="mb-10 mt-20">
+                                    <p  style="font-weight: 600; color: black;margin: 0;"><strong>सूचना  विभाग दर्ता नं :</strong> <span style="border-radius: 5px;padding: 5px 10px; color: black;"> 1400/075-76</span></p>
+                                    <p  style="font-weight: 600; color: black;"><strong>Editior-in-Chief:</strong><span style="border-radius: 5px;padding: 5px 10px; color: black;">Damodar Thapa</span></p>
+                                    
+                                    <h5 style="color:black;font-weight:600 ;">सम्पर्क</h5>
+                                    <div style="border-radius: 5px;padding: 0x;">
+                                      <p class="card-text" style="color: black;">
+                                          Babarmahal-11, Kathmandu<br>
+                                          9851191124 
+                                    <br>
+                                    Email: <br>
+                                    <strong class="card-email">engineersnepal2018@gmail.com <br>info@engineersnepal.com </strong>
                                     </div>
-                                </div>
+  
+  
+                                  </div>
                                 <!-- social -->
                                 <div class="footer-social">
                                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -316,8 +368,7 @@
                                     <a href="#"><i class="fab fa-twitter"></i></a>
                                     <a href="#"><i class="fab fa-tiktok"></i></a>
                                 </div>
-                            </div>
-                        </div>
+                            
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-4  col-sm-6">
                         <div class="single-footer-caption">
@@ -341,28 +392,7 @@
                             </div>
                         </div>
                     </div>
-               <div class="col-xl-3 col-lg-3 col-md-5 col-sm-6">
-                        <div class="single-footer-caption mb-50">
-                            <div class="card" style="background-color: #717b68;border-radius: 10px;">
-                                <div class="card-body">
-                                  <p class="card-title" style="font-weight: 600; color: black;">सूचना  विभाग दर्ता नं : <strong  style="border-radius: 5px;padding: 5px 10px; color: black;"> 1400/075-76</strong></p>
-                                  <p class="card-title" style="font-weight: 600; color: black;">Editior-in-Chief: <br><strong style="border-radius: 5px;padding: 5px 10px; color: black;">Damodar Thapa</strong></p>
-                                  <hr>
-                                  <h5 class="card-title" style="color:black;font-weight:600 ;">सम्पर्क</h5>
-                                  <div style="border-radius: 5px;padding: 0 10px;">
-                                    <p class="card-text" style="color: black;">
-                                        Babarmahal-11, Kathmandu<br>
-                                        9851191124 
-                                  <br>
-                                  Email: <br>
-                                  <strong class="card-email">engineersnepal2018@gmail.com <br>info@engineersnepal.com </strong>
-                                  </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
+               
                 </div>
             </div>
         </div>
