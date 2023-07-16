@@ -73,8 +73,8 @@ class Category(models.Model):
     grid=models.CharField(max_length=10, choices=choices)
 
     #advertisement that can be included in the category, which can be null also
-    desktop_ad=models.ForeignKey(advertisement, on_delete=models.SET_NULL, null=True, related_name='destop_ad')
-    mobile_ad=models.ForeignKey(advertisement, on_delete=models.SET_NULL, null=True, related_name='mobile_ad')
+    desktop_ad=models.ForeignKey(advertisement, on_delete=models.SET_NULL, null=True,blank=True, related_name='destop_ad')
+    mobile_ad=models.ForeignKey(advertisement, on_delete=models.SET_NULL, null=True,blank=True, related_name='mobile_ad')
     def save(self, *args, **kwargs):
         super(Category, self).save()
         if not self.slug:
