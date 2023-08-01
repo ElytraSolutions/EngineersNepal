@@ -2447,6 +2447,7 @@ hr {
 }
 .trending-area .trending-main .trand-right-single .trand-right-img img:hover {
   transform: scale(1.10);
+  transition: all 0.5s ease-out 0s;
 }
 .trending-area .trending-main .trand-right-single .trand-right-img img {
   border-radius: 6px;
@@ -2525,6 +2526,7 @@ hr {
 }
 .single-bottom:hover .trend-bottom-img img {
   transform: scale(1.1);
+  transition: all 0.5s ease-out 0s;
 }
 .trending-tittle {
   padding-top: 31px;
@@ -2597,6 +2599,7 @@ hr {
 }
 .weekly-news-area .weekly-wrapper .weekly-single .weekly-img img:hover {
   transform: scale(1.025);   
+  transition: all 0.5s ease-out 0s;
 }
 .weekly-news-area .weekly-wrapper .weekly-single .weekly-caption {
   position: absolute;
@@ -2712,6 +2715,12 @@ hr {
   position: relative;
 }
 
+.whats-news-area .whats-news-caption .single-what-news,
+.about-area .whats-news-caption .single-what-news,
+.contact-section .whats-news-caption .single-what-news {
+  transform: scale(1.025);
+}
+
 .whats-news-area .whats-news-caption .single-what-news .what-img img,
 .about-area .whats-news-caption .single-what-news .what-img img,
 .contact-section .whats-news-caption .single-what-news .what-img img {
@@ -2722,6 +2731,7 @@ hr {
 }
 .whats-news-area .whats-news-caption .single-what-news .what-img img:hover {
   transform: scale(1.025);
+  transition: all 0.5s ease-out 0s;
 }
 /* .whats-news-area .whats-news-caption .single-what-news .what-cap,
 .about-area .whats-news-caption .single-what-news .what-cap,
@@ -2788,6 +2798,7 @@ hr {
 
 .weekly-news-area .whats-news-caption .single-what-news .what-img img:hover {
   transform: scale(1.025);
+  transition: all 0.5s ease-out 0s;
 }
 
 /* caption */
