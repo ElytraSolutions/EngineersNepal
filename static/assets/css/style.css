@@ -2301,6 +2301,12 @@ hr {
   width: 100%;
   border-radius: 7px;
 }
+.trending-area .trending-main .trending-top .trend-top-img img:hover {
+  box-shadow: 10px 10px 5px #000000;
+  -moz-box-shadow: 0px 10px 5px #000000;
+-webkit-box-shadow: 0px 10px 5px #000000;     
+}
+
 .trending-area .trending-main .trending-top .trend-top-img .trend-top-cap {
   position: absolute;
   bottom: 25px;
@@ -2357,7 +2363,6 @@ hr {
   transform: scale(1);
   transition: all 0.5s ease-out 0s;
 }
-
 @media screen and (max-width: 991px) {
   .trending-area
     .trending-main
