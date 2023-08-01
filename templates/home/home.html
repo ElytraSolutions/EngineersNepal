@@ -19,8 +19,9 @@
   }
 
   .image-wala img:hover{
-    opacity:0.85;
-    cursor: pointer;
+    box-shadow: 10px 10px 5px #D3D3D3;
+    -moz-box-shadow: 0px 10px 5px #D3D3D3;
+  -webkit-box-shadow: 0px 10px 5px #D3D3D3;   
   }
 .breaking_title{
     font-size:64px; 
@@ -133,7 +134,7 @@
                           <div class="row">
                             {% for trend in trending1 %}
                               <div class="col-lg-4">
-                              <div class="single-bottom mb-35">
+                              <div class="single-bottom additional_popup mb-35">
                                   <div class="trend-bottom-img mb-10">
                                     <a href="{% url 'newsdetail' trend.slug %}"><img src="{{trend.thumbnail.url}}" alt=""></a>
                                   </div>
@@ -214,7 +215,7 @@
                                 <div class="row"> 
                                   {% for trend in developnews %}
                                     <div class="col-lg-4">
-                                        <div class="single-what-news mb-35">
+                                        <div class="single-what-news mb-45 additional_popup">
                                             <div class="what-img mb-10">
                                                 <a href="{% url 'newsdetail' trend.slug %}"><img src="{{trend.thumbnail.url}}" alt=""></a>
                                             </div>
@@ -329,7 +330,7 @@
                     <div class="whats-news-caption">
                         <div class="row">
                             {% for weekly in value %}
-                              <div class=" col-lg-6 col-md-6">
+                              <div class=" col-lg-6 col-md-6  ">
                                 <div class="single-what-news mb-100">
                                     <div class="what-img">
                                         <a href="{% url 'newsdetail' weekly.slug %}"><img src="{{weekly.thumbnail.url}}" alt=""></a>

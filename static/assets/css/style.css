@@ -2301,6 +2301,10 @@ hr {
   width: 100%;
   border-radius: 7px;
 }
+.trending-area .trending-main .trending-top .trend-top-img img:hover {
+  transform: scale(1.125);
+}
+
 .trending-area .trending-main .trending-top .trend-top-img .trend-top-cap {
   position: absolute;
   bottom: 25px;
@@ -2357,7 +2361,14 @@ hr {
   transform: scale(1);
   transition: all 0.5s ease-out 0s;
 }
-
+.trending-area
+  .trending-main
+  .trending-bottom
+  .single-bottom
+  .trend-bottom-img
+  img:hover {
+    transform: scale(1.125);  
+}
 @media screen and (max-width: 991px) {
   .trending-area
     .trending-main
@@ -2434,6 +2445,13 @@ hr {
 .trending-area .trending-main .trand-right-single .trand-right-img img {
   border-radius: 6px;
 }
+.trending-area .trending-main .trand-right-single .trand-right-img img:hover {
+  transform: scale(1.10);
+  transition: all 0.5s ease-out 0s;
+}
+.trending-area .trending-main .trand-right-single .trand-right-img img {
+  border-radius: 6px;
+}
 .trending-area .trending-main .trand-right-single .trand-right-cap {
   padding-left: 18px;
 }
@@ -2506,21 +2524,9 @@ hr {
   color: #974535; 
   /* bibek changed */
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 .single-bottom:hover .trend-bottom-img img {
   transform: scale(1.1);
+  transition: all 0.5s ease-out 0s;
 }
 .trending-tittle {
   padding-top: 31px;
@@ -2590,6 +2596,10 @@ hr {
 .weekly-news-area .weekly-wrapper .weekly-single .weekly-img img {
   width: 100%;
   border-radius: 6px;
+}
+.weekly-news-area .weekly-wrapper .weekly-single .weekly-img img:hover {
+  transform: scale(1.025);   
+  transition: all 0.5s ease-out 0s;
 }
 .weekly-news-area .weekly-wrapper .weekly-single .weekly-caption {
   position: absolute;
@@ -2705,6 +2715,12 @@ hr {
   position: relative;
 }
 
+.whats-news-area .whats-news-caption .single-what-news,
+.about-area .whats-news-caption .single-what-news,
+.contact-section .whats-news-caption .single-what-news {
+  transform: scale(1.025);
+}
+
 .whats-news-area .whats-news-caption .single-what-news .what-img img,
 .about-area .whats-news-caption .single-what-news .what-img img,
 .contact-section .whats-news-caption .single-what-news .what-img img {
@@ -2712,6 +2728,10 @@ hr {
   height: 175px;
   width: 100%;
   object-fit: cover;
+}
+.whats-news-area .whats-news-caption .single-what-news .what-img img:hover {
+  transform: scale(1.025);
+  transition: all 0.5s ease-out 0s;
 }
 /* .whats-news-area .whats-news-caption .single-what-news .what-cap,
 .about-area .whats-news-caption .single-what-news .what-cap,
@@ -2776,7 +2796,10 @@ hr {
   width: 100%;
 }
 
-
+.weekly-news-area .whats-news-caption .single-what-news .what-img img:hover {
+  transform: scale(1.025);
+  transition: all 0.5s ease-out 0s;
+}
 
 /* caption */
 
@@ -5834,5 +5857,21 @@ del {
   flex: 1 1 auto;
 }
 
+.additional_popup{
+  padding: 5px;
+  margin: 5px;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.additional_popup:hover{
+  background-color: #f9f9ff;
+  cursor: pointer;
+  border-radius: 5px;
+  
+  box-shadow: 0px 0px 5px 0px #ccc;
+  transform: scale(1.05) !important;
+}
 
 /* custom added css */
+

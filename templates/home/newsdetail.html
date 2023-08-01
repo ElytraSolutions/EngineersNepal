@@ -20,27 +20,39 @@
                     <div class="col-lg-8">
                         <!-- Trending Tittle -->
                         <div class="about-right mb-90">
+                            <br>
+                            <h1>{{news.title}}</h1><br>
                             <div class="about-img">
-                                <img src="{{news.thumbnail.url}}" alt="" style="height:20%;">
+                                <img src="{{news.thumbnail.url}}" alt="" style="height:20%;" class="img-fluid">
                             </div>
                             <div class="section-tittle mb-30 pt-30">
-                                <h1>{{news.title}}</h1><br>
-                                <small>{{news.timestamp}}</small>
+                                <small>Posted: <b>{{news.timestamp}}</b></small>
+                                <!-- icon for views font awesome  -->
+                                <i class="fa fa-eye" aria-hidden="true" style="padding-left: 20px;">&nbsp;<small>Views: <b>{{news.views}}</b></small></i>
                                 <hr>
                                 <small><img src="{{news.author.profile_picture.url}}" style="width: 50px; height:50px; border-radius: 50%;">&nbsp;&nbsp;<a href="{% url 'adminpage' news.author.slug %}" style="color:black;"><b style="font-size: 20px;">{{news.author.fullname}}</b></a>
                                     {% comment %} &nbsp;&nbsp;<a href="{{ news.author.facebook_link }}" ><img src="{% static 'assets/img/news/icon-fb.png' %}" alt="image not found" style="width:20px;"></a>
                                     &nbsp;&nbsp;<a href="{{ news.author.twitter_link }}"><img src="{% static 'assets/img/news/icon-tw.png' %}" alt="image not found" style="width:20px;"></a> {% endcomment %}
-                                </small><br>
+                                </small>
                                 <!-- icon for delete post -->
                                 {% if news.author.user == user %}
                                 <!-- icon for update  -->
                                 <small style="padding-left: 60px;"><a href="{% url 'update-post' news.slug %}"><button style="background-color: green; border: none; color: white;">Update <i class="fas fa-edit" aria-hidden="true"></i></button></a></small>
                                 <!-- <small><a  href="{% url 'delete-post' news.slug %}"><button style="background-color: red; border: none; color: white;">Delete <i class="fa fa-trash" aria-hidden="true"></i></button></a></small>                                           -->
                                 {% endif %}
-                                <hr>
-
-                            
+                                <div class="social-share pt-30">
+                                    <div class="section-tittle">
+                                        <h5 class="mr-20">Share:</h5> 
+                                        <ul>
+                                            <li><a href='#' style="color:black;"> {% post_to_facebook object_or_url "Share to Facebook" %}</a></li>
+                                            <li><a href='#' style="color:black;"> {% post_to_twitter "{{news.title}}" object_or_url "Post to Twitter" %}</a></li>
+                                            <li><a href='#' style="color:black;"> {% post_to_linkedin object_or_url %}</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
+
+
                             {% if adnewsbegin.status %}   
                                 <a href="{{adnewsbegin.link}}" target="_blank"><img src="{{adnewsbegin.photo.url}}" alt="" style='width:100%;'></a>
                             {% endif %}
@@ -53,7 +65,7 @@
                         <a href="{{adnewsend.link}}" target="_blank"><img src="{{adnewsend.photo.url}}" alt="" style="width:100%;"></a>
                         {% endif %}
                             <br><br><br><br>
-                        <div class="social-share pt-30">
+                        {% comment %} <div class="social-share pt-30">
                             <div class="section-tittle">
                                 <h3 class="mr-20">Share:</h3> 
                                 <ul>
@@ -62,7 +74,7 @@
                                     <li><a href='#' style="color:black;"> {% post_to_linkedin object_or_url %}</a></li>
                                 </ul>
                             </div>
-                        </div>
+                        </div> {% endcomment %}
                         <br>
 
                         <!-- <h5 class="mr-20">About The Author</h5>
@@ -90,15 +102,15 @@
                             {% endif %}
                             {% endwith %}
                         </div>  
-    
                         <!-- <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="5"></div> -->
                         </div>
                         <!-- From -->
 
                     </div>
+                    {% include 'home/followus.html' %}
                                                   
 
-{% include 'home/followus.html' %}
+
                </div>
         </div>
     </div>
@@ -147,6 +159,18 @@ function insertad() {
     insertad(ad.link,ad.photo);
 
   }
+  function centerModal() {
+    $(this).css('display', 'block');
+    var $dialog = $(this).find(".modal-dialog");
+    var offset = ($(window).height() - $dialog.height()) / 2;
+    // Center modal vertically in window
+    $dialog.css("margin-top", offset);
+}
+
+$('.modal').on('show.bs.modal', centerModal);
+$(window).on("resize", function () {
+    $('.modal:visible').each(centerModal);
+});
 
   
 
