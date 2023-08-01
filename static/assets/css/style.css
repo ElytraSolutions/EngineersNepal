@@ -2302,9 +2302,7 @@ hr {
   border-radius: 7px;
 }
 .trending-area .trending-main .trending-top .trend-top-img img:hover {
-  box-shadow: 10px 10px 5px #000000;
-  -moz-box-shadow: 0px 10px 5px #000000;
--webkit-box-shadow: 0px 10px 5px #000000;     
+  transform: scale(1.125);
 }
 
 .trending-area .trending-main .trending-top .trend-top-img .trend-top-cap {
@@ -2362,6 +2360,14 @@ hr {
   border-radius: 5px;
   transform: scale(1);
   transition: all 0.5s ease-out 0s;
+}
+.trending-area
+  .trending-main
+  .trending-bottom
+  .single-bottom
+  .trend-bottom-img
+  img:hover {
+    transform: scale(1.125);  
 }
 @media screen and (max-width: 991px) {
   .trending-area
@@ -2439,6 +2445,12 @@ hr {
 .trending-area .trending-main .trand-right-single .trand-right-img img {
   border-radius: 6px;
 }
+.trending-area .trending-main .trand-right-single .trand-right-img img:hover {
+  transform: scale(1.10);
+}
+.trending-area .trending-main .trand-right-single .trand-right-img img {
+  border-radius: 6px;
+}
 .trending-area .trending-main .trand-right-single .trand-right-cap {
   padding-left: 18px;
 }
@@ -2511,19 +2523,6 @@ hr {
   color: #974535; 
   /* bibek changed */
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 .single-bottom:hover .trend-bottom-img img {
   transform: scale(1.1);
 }
@@ -2595,6 +2594,9 @@ hr {
 .weekly-news-area .weekly-wrapper .weekly-single .weekly-img img {
   width: 100%;
   border-radius: 6px;
+}
+.weekly-news-area .weekly-wrapper .weekly-single .weekly-img img:hover {
+  transform: scale(1.025);   
 }
 .weekly-news-area .weekly-wrapper .weekly-single .weekly-caption {
   position: absolute;
@@ -2718,6 +2720,9 @@ hr {
   width: 100%;
   object-fit: cover;
 }
+.whats-news-area .whats-news-caption .single-what-news .what-img img:hover {
+  transform: scale(1.025);
+}
 /* .whats-news-area .whats-news-caption .single-what-news .what-cap,
 .about-area .whats-news-caption .single-what-news .what-cap,
 .contact-section .whats-news-caption .single-what-news .what-cap {
@@ -2781,7 +2786,9 @@ hr {
   width: 100%;
 }
 
-
+.weekly-news-area .whats-news-caption .single-what-news .what-img img:hover {
+  transform: scale(1.025);
+}
 
 /* caption */
 
