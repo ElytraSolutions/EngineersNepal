@@ -17,7 +17,7 @@ from django.http import HttpResponse
 import csv
 # Create your views here.
 
-class PostCreate(CreateView, LoginRequiredMixin):
+class PostCreate(LoginRequiredMixin,CreateView):
     model=Post
     form_class=PostForm
     queryset=Post.objects.all()
@@ -30,7 +30,7 @@ class PostCreate(CreateView, LoginRequiredMixin):
         messages.success(self.request, f'Post created successfully')
         return super(PostCreate, self).form_valid(form)
     
-class PostUpdate(UpdateView, LoginRequiredMixin, SuccessMessageMixin):
+class PostUpdate(LoginRequiredMixin, UpdateView, SuccessMessageMixin):
     model=Post
     form_class=PostForm
     queryset=Post.objects.all()
@@ -39,7 +39,7 @@ class PostUpdate(UpdateView, LoginRequiredMixin, SuccessMessageMixin):
         slug=self.kwargs['slug']
         return reverse_lazy('newsdetail', kwargs={'slug':slug})
 
-class PostDelete(DeleteView, LoginRequiredMixin, SuccessMessageMixin):
+class PostDelete(LoginRequiredMixin,DeleteView,SuccessMessageMixin):
     model=Post
     success_url='/'
     success_message='Post deleted successsfully'
