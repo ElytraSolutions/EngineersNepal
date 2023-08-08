@@ -54,7 +54,7 @@
 
 
                             {% if adnewsbegin.status %}   
-                                <a href="{{adnewsbegin.link}}" target="_blank"><img src="{{adnewsbegin.photo.url}}" alt="" style='width:100%;'></a>
+                                <a href="{% url 'clicker' adnewsbegin.id %}" target="_blank"><img src="{{adnewsbegin.photo.url}}" alt="" style='width:100%;'></a>
                             {% endif %}
                                 <div id='newsss' class="newscontent">
 
@@ -62,7 +62,7 @@
 
                         </div>
                         {% if adnewsend.status %}
-                        <a href="{{adnewsend.link}}" target="_blank"><img src="{{adnewsend.photo.url}}" alt="" style="width:100%;"></a>
+                        <a href="{% url 'clicker' adnewsend.id %}" target="_blank"><img src="{{adnewsend.photo.url}}" alt="" style="width:100%;"></a>
                         {% endif %}
                             <br><br><br><br>
                         {% comment %} <div class="social-share pt-30">
@@ -98,7 +98,7 @@
                         <div class="col d-lg-none mt-10 mb-10">
                             {% with ad=newspagemobile%}
                             {% if ad.status %}
-                                <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" style="width: 100%;" alt="" ></a> 
+                                <a href="{% url 'clicker' ad.id %}" target="_blank"><img src="{{ad.photo.url}}" style="width: 100%;" alt="" ></a> 
                             {% endif %}
                             {% endwith %}
                         </div>  
@@ -114,8 +114,150 @@
                </div>
         </div>
     </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-5 col-md-6 col-12 pb-4">
+                    <h1>Comments</h1>
+                    <hr>
+                    {% if request.user.is_superuser %}
+                    <!-- fa icon for verifying -->
+                    <a href="{% url 'verify-comment' news.slug %}"> <i class="fa fa-check-circle" aria-hidden="true">Verify all</i>
+                    </a>
+                    {% for comment in commentsall %}
+                    <div class="comment mt-5 text-justify float-left">
+                        <img src="{% static 'defaultcomment.jpg' %}" alt="" class="rounded-circle" width="40" height="40">
+                            <h4>{{comment.name}}
+                            </h4>
+                        <span>- {{comment.date}}</span>
+                        <br>
+                        <p>{{comment.comment}}</p>
+                        {% if comment.verified %}
+                        <a href="{% url 'verifycomment' comment.id %}"> <i class="fa fa-check-circle" aria-hidden="true">Unverify</i> </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        {% else %}
+                        <a href="{% url 'verifycomment' comment.id %}"> <i class="fa fa-check-circle" aria-hidden="true">Verify</i> </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        {% endif %}
+                        <a href="{% url 'deletecomment' comment.id %}">  <i class="fa fa-trash" aria-hidden="true">Delete</i></a>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    {% for comment in comments %}
+                    <div class="comment mt-5 text-justify float-left">
+                        <img src="{% static 'defaultcomment.jpg' %}" alt="" class="rounded-circle" width="40" height="40">
+                            <h4>{{comment.name}}
+                            </h4>
+                        <span>- {{comment.date}}</span>
+                        <br>
+                        <p>{{comment.comment}}</p>
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+
+                </div>
+                <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+                    <form id="algin-form" method="POST" action="">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <h4>Leave a comment</h4>
+                            <label for="message">Message</label>
+                            {{form.comment}}
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                           {{form.name}}
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            {{form.email}}
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" id="post" class="btn" style="background: #994636;">Post Comment</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     <!-- About US End -->
 </main>
+<section class="whats-news-area pt-50 pb-20">
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-8">
+            <div class="row d-flex">
+                <div class="col">
+                    <div class="section-tittle mb-10">
+                        <h3 style="color:black;">Most Viewed Weekly</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <!-- Nav Card -->
+                    <div class="tab-content" id="nav-tabContent">
+                        <!-- card one -->
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">           
+                            <div class="whats-news-caption">
+                                <div class="row"> 
+                                  {% for trend in weekly_top %}
+                                    <div class="col-lg-4">
+                                        <div class="single-what-news mb-45 additional_popup">
+                                            <div class="what-img mb-10">
+                                                <a href="{% url 'newsdetail' trend.slug %}"><img src="{{trend.thumbnail.url}}" alt=""></a>
+                                            </div>
+                                            <div class="what-cap">
+                                                <span class="color1">{{trend.categories.title}}</span>
+                                                {% if trend.title|length < 64 %}
+                                                <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title}}</a></h4>
+                                                {% else %}
+                                                <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:64}}...</a></h4>
+                                                {% endif %}
+                                                {% comment %} <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:63}}...</a></h4> {% endcomment %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <!-- End Nav Card -->
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <!-- Section Tittle -->
+            <div class="row d-flex justify-content-between">
+                <div class="col">
+                    <div class="section-tittle mb-30">
+                        <h4 style="color:black;">{{news.categories.title}} More</h4>
+                    </div>
+                </div>
+            </div>
+            {% for trend in categoricalnews %}
+            <div class="trand-right-single d-flex">
+                <div class="trand-right-img">
+                  {% comment %} <a href="{% url 'newsdetail' trend.slug %}"><img src="{{trend.thumbnail.url}}" alt="" style="width:120px; height:100px;"></a> {% endcomment %}
+                  <a href="{% url 'newsdetail' trend.slug %}"><img src="{{trend.thumbnail.url}}" alt="" style="width:120px; height:100px;object-fit:cover;"></a>
+                </div>
+                <div class="trand-right-cap">
+                    <span class="color1">{{trend.categories.title}}</span>
+                    {% if trend.title|length < 40 %}
+                    <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title}}</a></h4>
+                    {% else %}
+                    <h4><a href="{% url 'newsdetail' trend.slug %}">{{trend.title|slice:40}}...</a></h4>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            <!-- New Poster -->
+            {% comment %} <div class="news-poster d-none d-lg-block">
+                <img src="{% static 'assets/img/hero/verticalgif.jpg' %}" alt="">
+            </div> {% endcomment %}
+
+        </div>
+        </div>
+    </div>
+  </section>
 
 {% endblock content %}
 
@@ -124,9 +266,6 @@
 
 <script>
 var ad = JSON.parse('{{ newsmid|safe }}');
-
-
-
 function insertad() {
     var div = document.getElementById('newsss');
     var paragraphs = div.getElementsByTagName('p');
@@ -140,7 +279,7 @@ function insertad() {
     photo.style.width = '100%';
 
     var link = document.createElement('a');
-    link.href = '{{ newsmidd.link }}';
+    link.href = '{% url "clicker" newsmidd.id %}';
     link.target = "_blank";
     link.appendChild(photo);
 

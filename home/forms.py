@@ -1,5 +1,5 @@
 from django import forms 
-from .models import Post, Author, AppliedUsers
+from .models import Post, Author, AppliedUsers, Comments
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -51,3 +51,12 @@ class ApplyForm(forms.ModelForm):
     class Meta:
         model=AppliedUsers
         fields=['fullname','email','phone','address','cv']
+
+
+class CommentForms(forms.ModelForm):
+    name=forms.CharField(max_length=50, widget=forms.TextInput(attrs={"class": "form-control", "name": "name", "id": "name","placeholder":"Enter your name"}))
+    email=forms.EmailField(widget=forms.TextInput(attrs={"class": "form-control", "name": "email", "id": "email","placeholder":"Enter your email", "type":"email"}))
+    comment=forms.CharField(widget=forms.Textarea(attrs={"class": "form-control", "name": "body", "id": "body","cols":"30","rows":"5","placeholder":"Enter your comment"}))
+    class Meta:
+        model=Comments
+        fields=['name', 'email', 'comment',]

@@ -42,7 +42,7 @@ class Author(models.Model):
 class advertisement(models.Model):
     #title of the advertisement
     title = models.CharField(max_length=100)
-    
+    hits=models.IntegerField(default=1)
     #gif or image field
     photo = models.ImageField(upload_to='post_ads')
     #link to the post
@@ -52,9 +52,18 @@ class advertisement(models.Model):
    
     #status of the advertisement
     status = models.BooleanField(default=True)
-    
-    
+    original_photo=None
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.__original_photo=self.photo
+    
+    def save(self, force_insert=False, force_update=False, *args, **kwargs):
+        if self.photo != self.__original_photo:
+            self.hits=1
+        super().save(force_insert, force_update, *args, **kwargs)
+        self.__original_photo=self.photo
+        
     def __str__(self):
         return self.title
     
@@ -180,4 +189,13 @@ class Epapers(models.Model):
         return str(self.date_created)+" epaper"
     
 
+class Comments(models.Model):
+    post=models.ForeignKey(Post, on_delete=models.CASCADE)
+    name=models.CharField(max_length=100)
+    email=models.EmailField()
+    comment=models.TextField()
+    date=models.DateField(auto_now_add=True)
+    verified=models.BooleanField(default=False)
+    def __str__(self):
+        return self.name+" "+self.post.title
 

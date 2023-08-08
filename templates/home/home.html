@@ -356,7 +356,7 @@
                         {% with ad=key.desktop_ad %}
 
                         {% if ad.status %}
-                        <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" alt=""></a>
+                        <a href="{% url 'clicker' ad.id %}" target="_blank"><img src="{{ad.photo.url}}" alt=""></a>
                         {% endif %} 
                         {% endwith %} 
                     </div>
@@ -373,7 +373,7 @@
             <div class="container d-lg-none mt-10 mb-10">
                 {% with ad=key.mobile_ad %}
                     {% if ad.status %}
-                    <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" style="width: 100%;" alt="" ></a> 
+                    <a href="{% url 'clicker' ad.id %}" target="_blank"><img src="{{ad.photo.url}}" style="width: 100%;" alt="" ></a> 
                     {% endif %}
                 {% endwith %}
             </div>
@@ -386,7 +386,7 @@
             {% if ad.status %}
             <div class="col-xl-12 col-lg-12 col-md-12 mt-20">
             <!-- <a href = "{{ad.link}}" target="_blank" >{{ad.title}}</a> -->
-            <a href="{{ ad.link }}" target="_blank"><img src="{{ad.photo.url}}" alt="gg" style="width: 100%;"></a>
+            <a href="{% url 'clicker' ad.id %}" target="_blank"><img src="{{ad.photo.url}}" alt="gg" style="width: 100%;"></a>
             </div>
             {% endif %}
             {% endwith %}
