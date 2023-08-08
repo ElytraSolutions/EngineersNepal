@@ -2,7 +2,7 @@ from django.urls import path
 from django.contrib.auth.views import LoginView, LogoutView
 from datetime import datetime
 from .views import (PostCreate, PostUpdate, PostDelete, SignUpView, profile,
-categoryview, AdminView, searchview,contact, aboutus,newsdetail, homepage, vacancyhome, vacancy, tender, apply, epaperview, videos, downloadcsv)
+categoryview, AdminView, searchview,contact, aboutus,newsdetail, homepage, vacancyhome, vacancy, tender, apply, epaperview, videos, downloadcsv, verifycomments, deletecomment, verifycomment, clickhandler)
 from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('',homepage,name='home'),
@@ -30,5 +30,9 @@ urlpatterns = [
     path('apply/<int:id>', apply, name='apply'), 
     path('epaper/<int:id>/', epaperview, name='epaper'), 
     path('videos/', videos, name='videos'), 
-    path('download/<int:id>/', downloadcsv, name='download')
+    path('download/<int:id>/', downloadcsv, name='download'), 
+    path('clicks/<int:id>/', clickhandler, name='clicker'), 
+    path('verify-comment/<int:id>', verifycomment, name='verifycomment'),
+    path('delete-comment/<int:id>', deletecomment, name='deletecomment'),
+    path('verify-comments/<slug:slug>', verifycomments, name='verify-comment'), 
 ]

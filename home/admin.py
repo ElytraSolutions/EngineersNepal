@@ -22,7 +22,7 @@ admin.site.register(Videos)
 admin.site.register(TenderDocuments)
 admin.site.register(AppliedUsers)
 admin.site.register(Epapers)
-
+admin.site.register(Comments)
 
 
 

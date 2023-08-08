@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.detail import DetailView
-from .models import Post, Author, Category, Vacancy, Videos, TenderDocuments, Epapers, AppliedUsers, advertisement
+from .models import Post, Author, Category, Vacancy, Videos, TenderDocuments, Epapers, AppliedUsers, advertisement, Comments
 from .forms import ContactUSForm, ApplyForm
 from datetime import datetime, timedelta
-from .forms import PostForm, UserUpdateForm, ProfileUpdateForm, UserRegisterForm
+from .forms import PostForm, UserUpdateForm, ProfileUpdateForm, UserRegisterForm, CommentForms
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
@@ -197,16 +197,61 @@ def homepage(request):
 
 def newsdetail(request,slug):
     post=Post.objects.get(slug=slug)
+    postcategory=post.categories
+    from_date=datetime.now()-timedelta(days=7)
+    commentform=CommentForms(request.POST or None)
+    # categoricalnews=Post.objects.filter(categories==postcategory)
+    if request.method=='POST':
+        print("ashok")
+        if commentform.is_valid():
+            print("ashok")
+            name=commentform.cleaned_data['name']
+            email=commentform.cleaned_data['email']
+            comment=commentform.cleaned_data['comment']
+            post=Post.objects.get(slug=slug)
+            Comments.objects.create(name=name, email=email, comment=comment, post=post)
+            messages.success(request, f'Comment added successfully')
+            return redirect('newsdetail', slug=slug)
+    comments=Comments.objects.filter(post=post, verified=True).order_by('-date')
+    commentsall=Comments.objects.filter(post=post).order_by('-date')
     adnewsbegin=advertisement.objects.get(title='newspageup')
     adnewsend=advertisement.objects.get(title='newspagedown')
     adnewsside=advertisement.objects.get(title='newspageside')
+    all_posts=Post.objects.filter(approved=True).order_by('-timestamp')
+    categoricalnews=all_posts.filter(categories__slug=postcategory.slug)[:5]
+    weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:6]
+
+
     if not request.session.get('Counted'):
         post.views+=1
         post.save()
         request.session['Counted']=True
-    context={'news':post,'adnewsbegin':adnewsbegin,'adnewsend':adnewsend,'adnewsside':adnewsside,}
+    context={'news':post,'adnewsbegin':adnewsbegin,'adnewsend':adnewsend,'adnewsside':adnewsside,'comments':comments,'form':commentform,'commentsall':commentsall,'weekly_top':weekly_top,'categoricalnews':categoricalnews}
     return render(request,'home/newsdetail.html',context)
     
+
+def verifycomments(request, slug):
+    post=Post.objects.get(slug=slug)
+    comments=Comments.objects.filter(post=post).order_by('-date')
+    for comment in comments:
+        comment.verified=True
+        comment.save()
+    return redirect('newsdetail', slug=slug)
+
+# verify single comment 
+def verifycomment(request, id):
+    comment=Comments.objects.get(id=id)
+    comment.verified=not comment.verified
+    comment.save()
+    return redirect('newsdetail', slug=comment.post.slug)
+
+# delete single comment 
+def deletecomment(request, id):
+    comment=Comments.objects.get(id=id)
+    messages.success(request, f'Comment deleted successfully !!!')
+    comment.delete()
+    return redirect('newsdetail', slug=comment.post.slug)
+
 
 def vacancy(request, id):
     # filter vacancies by id
@@ -276,3 +321,10 @@ def downloadcsv(request, id):
     return response
 
 
+
+# click handling of ad 
+def clickhandler(request, id):
+    ad=advertisement.objects.get(id=id)
+    ad.hits+=1
+    ad.save()
+    return redirect(ad.link)
