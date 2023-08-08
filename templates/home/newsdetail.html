@@ -124,13 +124,13 @@
                     <a href="{% url 'verify-comment' news.slug %}"> <i class="fa fa-check-circle" aria-hidden="true">Verify all</i>
                     </a>
                     {% for comment in commentsall %}
-                    <div class="comment mt-5 text-justify float-left">
+                    <div class="comment mt-5 text-justify float-left" style="width: 100%;">
                         <img src="{% static 'defaultcomment.jpg' %}" alt="" class="rounded-circle" width="40" height="40">
                             <h4>{{comment.name}}
                             </h4>
                         <span>- {{comment.date}}</span>
                         <br>
-                        <p>{{comment.comment}}</p>
+                        <p >{{comment.comment}}</p>
                         {% if comment.verified %}
                         <a href="{% url 'verifycomment' comment.id %}"> <i class="fa fa-check-circle" aria-hidden="true">Unverify</i> </a>&nbsp;&nbsp;&nbsp;&nbsp;
                         {% else %}
@@ -141,7 +141,7 @@
                     {% endfor %}
                     {% else %}
                     {% for comment in comments %}
-                    <div class="comment mt-5 text-justify float-left">
+                    <div class="comment mt-5  text-justify float-left" style="width: 100%;">
                         <img src="{% static 'defaultcomment.jpg' %}" alt="" class="rounded-circle" width="40" height="40">
                             <h4>{{comment.name}}
                             </h4>
