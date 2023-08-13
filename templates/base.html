@@ -41,6 +41,7 @@
             .newscontent blockquote {
                 background: #f9f9f9;
                 border-left: 10px solid #ccc;
+                font-size: 20px !important;
                 margin: 1.5em 10px;
                 padding: 0.5em 10px;
                 quotes: "\201C""\201D""\2018""\2019";
@@ -56,8 +57,13 @@
               .newscontent blockquote p {
                 display: inline;
                 text-align:justify;
+                font-size: 30px !important;
               }
-              
+              .newscontent blockquote span {
+                font-size: 30px;
+                font-weight: 350px;
+              }
+                        
             /* .newscontent blockquote::after {
                 font-family: mukta, sans-serif;
                 content: close-quote;
@@ -150,6 +156,45 @@
         width: 80%;
     }
 } */
+.comment {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.comment img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-details {
+    flex: 1;
+}
+
+.comment h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.comment span {
+    color: #777;
+}
+
+.comment p {
+    margin-top: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+}
 
 
 
