@@ -115,6 +115,9 @@
         </div>
     </div>
         <div class="container">
+<<<<<<< HEAD
+                <div class="col-lg-8 col-md-8 col-sm-10 col-12 mt-4" style="width: 100%;">
+=======
             <div class="row">
                 <div class="col-sm-5 col-md-6 col-12 pb-4">
                     <h1>Comments</h1>
@@ -154,10 +157,12 @@
 
                 </div>
                 <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+>>>>>>> 79e7bb92e1b4c1c6960c25e0cce919b0f005816e
                     <form id="algin-form" method="POST" action="">
                         {% csrf_token %}
                         <div class="form-group">
-                            <h4>Leave a comment</h4>
+                            <h1>Leave a comment</h1>
+                            <hr>
                             <label for="message">Message</label>
                             {{form.comment}}
                         </div>
@@ -175,11 +180,50 @@
                         </div>
                     </form>
                 </div>
+                <br>
+                <div class="col-lg-8 col-md-8 col-sm-10 col-12 mt-4">
+                    <h1>Comments</h1>
+                    <hr>
+                    {% if request.user.is_superuser %}
+                    <!-- fa icon for verifying -->
+                    <a href="{% url 'verify-comment' news.slug %}"> <i class="fa fa-check-circle" aria-hidden="true">Verify all</i>
+                    </a>
+                    {% for comment in commentsall %}
+                    <div class="comment mt-5 text-justify">
+                        <img src="{% static 'defaultcomment.jpg' %}" alt="">
+                        <div class="comment-details">
+                            <h4>{{comment.name}}
+                            </h4>
+                            <span> - {{comment.date}}</span>
+                        <p>{{comment.comment}}</p>
+
+                        {% if comment.verified %}
+                        <a href="{% url 'verifycomment' comment.id %}"> <i class="fa fa-check-circle" aria-hidden="true"> Unverify</i> </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        {% else %}
+                        <a href="{% url 'verifycomment' comment.id %}"> <i class="fa fa-check-circle" aria-hidden="true"> Verify</i> </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        {% endif %}
+                        <a href="{% url 'deletecomment' comment.id %}">  <i class="fa fa-trash" aria-hidden="true"> Delete</i></a>
+                    </div>
+                </div>
+                    {% endfor %}
+                    {% else %}
+                    {% for comment in comments %}
+                    <div class="comment mt-5 text-justify">
+                        <img src="{% static 'defaultcomment.jpg' %}" alt="">
+                        <div class="comment-details">
+                            <h4>{{comment.name}}</h4>
+                            <p>{{comment.comment}}</p>
+                        </div>
+                    </div>                                     
+                    {% endfor %}
+                    {% endif %}
+
+                </div>
             </div>
         </div>
     <!-- About US End -->
-</main>
-<section class="whats-news-area pt-50 pb-20">
+    <br>
+    <section class="whats-news-area">
     <div class="container">
         <div class="row">
         <div class="col-lg-8">
@@ -258,6 +302,8 @@
         </div>
     </div>
   </section>
+
+</main>
 
 {% endblock content %}
 

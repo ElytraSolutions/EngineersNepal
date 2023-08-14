@@ -202,9 +202,7 @@ def newsdetail(request,slug):
     commentform=CommentForms(request.POST or None)
     # categoricalnews=Post.objects.filter(categories==postcategory)
     if request.method=='POST':
-        print("ashok")
         if commentform.is_valid():
-            print("ashok")
             name=commentform.cleaned_data['name']
             email=commentform.cleaned_data['email']
             comment=commentform.cleaned_data['comment']
@@ -219,7 +217,7 @@ def newsdetail(request,slug):
     adnewsside=advertisement.objects.get(title='newspageside')
     all_posts=Post.objects.filter(approved=True).order_by('-timestamp')
     categoricalnews=all_posts.filter(categories__slug=postcategory.slug)[:5]
-    weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:6]
+    weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:5]
 
 
     if not request.session.get('Counted'):
