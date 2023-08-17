@@ -217,7 +217,7 @@ def newsdetail(request,slug):
     adnewsside=advertisement.objects.get(title='newspageside')
     all_posts=Post.objects.filter(approved=True).order_by('-timestamp')
     categoricalnews=all_posts.filter(categories__slug=postcategory.slug)[:5]
-    weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:5]
+    weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:6]
 
 
     if not request.session.get('Counted'):
