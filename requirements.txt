@@ -11,3 +11,4 @@ Pillow==9.5.0
 python-dotenv==1.0.0
 sqlparse==0.4.4
 tzdata==2023.3
+whitenoise==6.5.0
