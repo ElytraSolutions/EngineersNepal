@@ -1,5 +1,7 @@
 db.sqlite3
 media/
 media_root/
+static_root/
 *.pyc
 **/*.pyc
+.env
