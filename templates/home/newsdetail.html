@@ -147,26 +147,38 @@
                     <a href="{% url 'verify-comment' news.slug %}"> <i class="fa fa-check-circle" aria-hidden="true">Verify all</i>
                     </a>
                     {% for comment in commentsall %}
-                    <div class="comment mt-5 text-justify">
-                        <img src="{% static 'defaultcomment.jpg' %}" alt="">
+                    <div class="comment-container mt-5 text-justify">
+                        <div class="comment">
+                            <div class="profile-initial">{{ comment.name|first|upper }}</div>
                         <div class="comment-details">
                             <h4>{{comment.name}}
                             </h4>
                             <span> - {{comment.date}}</span>
                         <p>{{comment.comment}}</p>
+                   
 
                         {% if comment.verified %}
-                        <a href="{% url 'verifycomment' comment.id %}"> <i class="fa fa-check-circle" aria-hidden="true"> Unverify</i> </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{% url 'verifycomment' comment.id %}"> <i class="fa fa-close" aria-hidden="true"><b> Unverify </b></i> </a>&nbsp;&nbsp;&nbsp;&nbsp;
                         {% else %}
-                        <a href="{% url 'verifycomment' comment.id %}"> <i class="fa fa-check-circle" aria-hidden="true"> Verify</i> </a>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="{% url 'verifycomment' comment.id %}"> <i class="fa fa-check-circle" aria-hidden="true"><b> Verify </b></i> </a>&nbsp;&nbsp;&nbsp;&nbsp;
                         {% endif %}
-                        <a href="{% url 'deletecomment' comment.id %}">  <i class="fa fa-trash" aria-hidden="true"> Delete</i></a>
+                        <a href="{% url 'deletecomment' comment.id %}">  <i class="fa fa-trash" aria-hidden="true"><b> Delete </b></i></a>
                     </div>
                 </div>
+            </div>
                     {% endfor %}
                     {% else %}
                     {% for comment in comments %}
                     <div class="comment-container mt-5 text-justify">
+                        <div class="comment">
+                            <div class="profile-initial">{{ comment.name|first|upper }}</div>
+                            <div class="comment-details">
+                                <h4>{{ comment.name }}</h4>
+                                <span>{{ comment.date }}</span>
+                                <p>{{ comment.comment }}</p>
+                            </div>
+                        </div>
+                    {% comment %} <div class="comment-container mt-5 text-justify">
                         <div class="comment">
                             <img src="{% static 'defaultcomment.jpg' %}" alt="">
                             <div class="comment-details">
@@ -174,11 +186,8 @@
                                 <span>{{comment.date}}</span>
                                 <p>{{comment.comment}}</p>
                             </div>
-                        </div>
-                        
-                        <!-- Add more comment divs for additional comments -->
-                        
-                    </div>                                    
+                        </div>                        
+                    </div>                                     {% endcomment %}
                     {% endfor %}
                     {% endif %}
 
