@@ -153,7 +153,9 @@
                         <div class="comment-details">
                             <h4>{{comment.name}}
                             </h4>
-                            <span> - {{comment.date}}</span>
+                            <div class="name-date">
+                            <span><i> - {{comment.date|timesince}} ago</i></span>
+                            </div>
                         <p>{{comment.comment}}</p>
                    
 
@@ -174,7 +176,7 @@
                             <div class="profile-initial">{{ comment.name|first|upper }}</div>
                             <div class="comment-details">
                                 <h4>{{ comment.name }}</h4>
-                                <span>{{ comment.date }}</span>
+                                <span><i> - {{comment.date|timesince}} ago</i></span>
                                 <p>{{ comment.comment }}</p>
                             </div>
                         </div>
