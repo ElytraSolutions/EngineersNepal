@@ -167,7 +167,7 @@ def homepage(request):
     categories=Category.objects.all().order_by('priority')
     videos=Videos.objects.all()
    
-    weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:6]
+    weekly_top=all_posts.filter(timestamp__range=[from_date, datetime.now()]).order_by('-views')[:5]
     breaking_news=all_posts.filter(breaking=True).order_by('-timestamp')
     developmentnews=all_posts.filter(categories__priority=2).order_by('-timestamp')[:6]
     
