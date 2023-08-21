@@ -19,7 +19,17 @@ def set(val=None):
 @register.filter
 @stringfilter
 def upto(value, delimiter=None):
-   return value.split(delimiter)[0]
+    parts = value.split(delimiter)
+    print(parts)
+    if len(parts) == 2:  # If there are two parts (hours and minutes)
+        return parts[0]
+    elif len(parts) == 1:  # If there's only one part (minutes or hours)
+        if delimiter == ",":
+            return parts[0]
+        else:
+            return parts[0]
+    
+    return value  # If the input format is not recognized
 upto.is_safe=True
 
 
