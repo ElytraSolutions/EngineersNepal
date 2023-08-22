@@ -144,7 +144,6 @@ def contact(request):
             subject = Contactform.cleaned_data['subject']
             message_body=Contactform.cleaned_data['message_body']
             name=Contactform.cleaned_data['name']
-            print(name, message_body, subject, email)
         else:
          Contactform = ContactUSForm(request.POST)    
             
@@ -300,7 +299,6 @@ def videos(request):
 def downloadcsv(request, id):
     # Retrieve the data from the model
     vacancy=Vacancy.objects.get(id=id)
-    print(vacancy)
     queryset = AppliedUsers.objects.filter(vacancy=vacancy)
     # Prepare the CSV response
     response = HttpResponse(content_type='text/csv')
@@ -326,3 +324,9 @@ def clickhandler(request, id):
     ad.hits+=1
     ad.save()
     return redirect(ad.link)
+
+def custom_404(request, exception):
+    return render(request,'404.html', status=404)
+
+def custom_500(request):
+    return render(request, '500.html', status=500)

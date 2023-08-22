@@ -20,7 +20,6 @@ def set(val=None):
 @stringfilter
 def upto(value, delimiter=None):
     parts = value.split(delimiter)
-    print(parts)
     if len(parts) == 2:  # If there are two parts (hours and minutes)
         return parts[0]
     elif len(parts) == 1:  # If there's only one part (minutes or hours)

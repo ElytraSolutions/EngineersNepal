@@ -2492,10 +2492,11 @@ hr {
 }
 .whats-news-area .trand-right-single .trand-right-img img {
   border-radius: 6px;
+  transition: all 0.5s ease-out 0s;
 }
 .whats-news-area .trand-right-single .trand-right-img img:hover {
-  transform: scale(1.1) !important;
-  transition: all 0.5s ease-out 0s !important;
+  transform: scale(1.1);
+  transition: all 0.5s ease-out 0s;
 }
 .whats-news-area .trand-right-single .trand-right-cap {
   padding-left: 18px;
