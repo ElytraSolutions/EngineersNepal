@@ -21,7 +21,8 @@ from django.conf import settings
 from django.views.static import serve
 from django.urls import re_path
 
-
+handler404='home.views.custom_404'
+handler500='home.views.custom_500'
 urlpatterns = [
     path('', include('home.urls')),
     path('admin/', admin.site.urls),

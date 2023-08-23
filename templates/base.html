@@ -46,7 +46,31 @@
                 list-style-type:disc;
                 display:list-item !important;
             }
-
+            .follow-icons {
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+                gap: 15px;
+            }
+            
+            .follow-icon {
+                display: flex;
+                align-items: center;
+            }
+            
+            .follow-icon img {
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                background-color: #f0f0f0; /* Add a background color for circular shape */
+                margin-right: 10px;
+            }
+            
+            .follow-icon p {
+                margin: 0;
+            }
+            
+            
             .newscontent blockquote {
                 background: #f9f9f9;
                 border-left: 10px solid #ccc;
@@ -432,7 +456,7 @@
 
     {% block content %}
     {% endblock content %}
-   <footer>
+   {% comment %} <footer>
        <!-- Footer Start-->
        <div class="footer-area footer-padding fix">
             <div class="container">
@@ -507,7 +531,6 @@
                     <div class="row d-flex align-items-center justify-content-between">
                         <div class="col-lg-6">
                             <div class="footer-copy-right">
-                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
   Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved |<a href="#" target="_blank">BloomByte</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                             </div>
@@ -526,7 +549,129 @@
            </div>
        </div>
        <!-- Footer End-->
-   </footer>
+   </footer> {% endcomment %}
+   <footer>
+    <!-- Footer Start-->
+    <div class="footer-area footer-padding fix">
+         <div class="container">
+             <div class="row">
+                 <!-- First Column -->
+                 <div class="col-md-5 col-lg-4 col-xl-4 mb-30">
+                    <div class="footer-logo ">
+                        <a href="{% url 'home' %}"><img src="{% static 'logo.png' %}" alt=""></a>
+                    </div>
+                    <div class="mb-10 mt-20">
+                        <h5>Engineers Nepal Multimedia Pvt. Ltd.</h5>
+                        <p  style="font-weight: 600; color: black;margin: 0;"><strong>सूचना  विभाग दर्ता नं :</strong> <span style="border-radius: 5px;padding: 5px 10px; color: black;"> 1400/075-76</span></p>
+                        {% comment %} <p  style="font-weight: 600; color: black;"><strong>Editior-in-Chief:</strong><span style="border-radius: 5px;padding: 5px 10px; color: black;">Damodar Thapa</span></p> {% endcomment %}
+                        <br>
+                        {% comment %} <h5 style="color:black;font-weight:600 ;">सम्पर्क</h5> {% endcomment %}
+                        <div style="border-radius: 5px;padding: 0x;">
+                          <p class="card-text" style="color: black;">
+                              Babarmahal-11, Kathmandu<br>
+                              +977-9851191124 
+                        <br>
+                        <strong class="card-email">engineersnepal2018@gmail.com <br>info@engineersnepal.com </strong>
+                        </div>
+                        <h5 style="color:black;font-weight:600 ;">For Advertisment: </h5>
+                        <p>01-5544598, 9801123339, 9851123339</p>
+
+
+                      </div>
+                 </div>
+ 
+                 <!-- Second Column -->
+                 <div class="col-md-3 col-lg-4 col-xl-4 mb-30">
+                    <!-- Follow Us section -->
+                     <div class="footer-social">
+                         <h4>Social Media</h4><br>
+                         <div class="follow-icons">
+                            <div class="follow-icon">
+                                <a href="https://www.facebook.com/EngineersNepalOfficial" target="_blank">
+                                    <img src="{% static 'assets\img\news\icon-fb.png' %}" alt="Facebook"></a>
+                                    <a href="https://www.facebook.com/EngineersNepalOfficial" target="_blank"><p><strong>Like us on Facebook</strong></p></a>
+                            </div>
+                            <div class="follow-icon">
+                                <a href="https://www.instagram.com/engineers_nepal/" target="_blank">
+                                    <img src="{% static 'assets\img\news\icon-ins.png' %}" alt="Instagram"></a>
+                                    <a href="https://www.instagram.com/engineers_nepal/" target="_blank"> <p><strong>Follow us on Instagram </strong></p></a>
+                            </div>
+                            <div class="follow-icon">
+                                <a href="https://twitter.com/engineers_nepal" target="_blank">
+                                    <img src="{% static 'assets\img\news\icon-tw.png' %}" alt="Twitter"></a>
+                                    <a href="https://twitter.com/engineers_nepal" target="_blank"><p><strong>Follow us on Twitter</strong></p></a>
+                            </div>
+                            <div class="follow-icon">
+                                <a href="#">
+                                    <img src="{% static 'assets\img\news\icon-yo.png' %}" alt="Youtube"></a>
+                                    <a href="#"><p><strong>Subscribe Youtube Channel</strong></p></a>
+                            </div>
+                        </div>
+                
+                         {% comment %} <a href="https://www.facebook.com/EngineersNepalOfficial" target="_blank"><i class="fab fa-facebook-f">Follow on Facebook</i></a>
+                         <a href="https://www.instagram.com/engineers_nepal/" target="_blank"><i class="fab fa-instagram"></i></a>
+                         <a href="https://twitter.com/engineers_nepal" target="_blank"><i class="fab fa-twitter"></i></a>
+                         <a href="#"><i class="fab fa-tiktok"></i></a> {% endcomment %}
+                     </div>
+                 </div>
+ 
+                 <!-- Third Column -->
+                 <div class="col-md-4 col-lg-4 col-xl-4 mb-30">
+                    <div class="single-footer-caption">
+                        <div class="footer-tittle">
+                            <h4 style="font-size: 1.5rem; font-weight: 600 !important;">Menu</h4>
+                            <!-- Form -->
+                            <div class="footer-form">
+                                <div id="mc_embed_signup">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="navigation2">
+                                                <!-- dropdown values for the category under above list item -->
+                                                <li><a href="{% url 'category' newer.slug %}"><b>{{newer.title}}</b></a></li>
+                                                <li><a href="{% url 'category' engedu.slug %}">{{engedu.title}}</a></li>
+                                                {% for kauli in aalu %}
+                                                <li><a href="{% url 'category' kauli.slug %}"><b>{{kauli.title}}</b></a></li>
+                                                {% endfor %}
+                                                <li><a href="{% url 'videos'}"><b>Videos </b></a></li>
+                                                <!-- Other menu items... -->
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="navigation2">
+                                                {% for category in development %}
+                                                <li><a href="{% url 'category' category.slug %}"><b>{{category.title}}</b></a></li>
+                                                {% endfor %}
+                                                <li><a href="{% url 'vacancyhome' %}">Vacancy</a></li>
+                                                <li><a href="{% url 'category' engsug.slug %}">{{engsug.title}}</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <h5>Editor in Chief: Damodar Thapa </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+             </div>
+         </div>
+     </div>
+    <!-- footer-bottom area -->
+    <div class="footer-bottom-area">
+        <div class="container">
+            <div class="footer-border">
+                 <div class="row d-flex align-items-center justify-content-between">
+                         <div class="footer-copy-right text-center">
+                             <p> &copy; &nbsp; Engineers Nepal Multimedia Pvt. Ltd. - 2018 | All rights reserved
+                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></p>
+                         </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End-->
+ </footer>
+ 
    
 	<!-- JS here -->
 	

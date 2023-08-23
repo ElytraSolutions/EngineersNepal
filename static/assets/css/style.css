@@ -2302,7 +2302,8 @@ hr {
   border-radius: 7px;
 }
 .trending-area .trending-main .trending-top .trend-top-img img:hover {
-  transform: scale(1.125);
+  transform: scale(1.025);
+  transition: all 0.5s ease-out 0s;
 }
 
 .trending-area .trending-main .trending-top .trend-top-img .trend-top-cap {
@@ -2449,9 +2450,6 @@ hr {
   transform: scale(1.10);
   transition: all 0.5s ease-out 0s;
 }
-.trending-area .trending-main .trand-right-single .trand-right-img img {
-  border-radius: 6px;
-}
 .trending-area .trending-main .trand-right-single .trand-right-cap {
   padding-left: 18px;
 }
@@ -2494,6 +2492,11 @@ hr {
 }
 .whats-news-area .trand-right-single .trand-right-img img {
   border-radius: 6px;
+  transition: all 0.5s ease-out 0s;
+}
+.whats-news-area .trand-right-single .trand-right-img img:hover {
+  transform: scale(1.1);
+  transition: all 0.5s ease-out 0s;
 }
 .whats-news-area .trand-right-single .trand-right-cap {
   padding-left: 18px;
@@ -3397,6 +3400,8 @@ hr {
   font-size: 16px;
   line-height: 2;
   margin-bottom: 12px;
+  align-items: center;
+  text-align: center;
 }
 .footer-bottom-area .footer-copy-right p i {
   color: white;

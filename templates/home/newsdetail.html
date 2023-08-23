@@ -7,6 +7,7 @@
 {{news.title}}
 {% endblock title %}
 {% load static %}
+{% load custom_filters %}
 {% load social_share %}
 {% block content %}
 
@@ -151,10 +152,10 @@
                         <div class="comment">
                             <div class="profile-initial">{{ comment.name|first|upper }}</div>
                         <div class="comment-details">
-                            <h4>{{comment.name}}
+                            <h4>{{comment.name}}&nbsp;&nbsp;&nbsp;&nbsp;
                             </h4>
                             <div class="name-date">
-                            <span><i> - {{comment.date|timesince}} ago</i></span>
+                            <span><i> - {{comment.date|timesince|upto:','}} ago</i></span>
                             </div>
                         <p>{{comment.comment}}</p>
                    
@@ -176,7 +177,7 @@
                             <div class="profile-initial">{{ comment.name|first|upper }}</div>
                             <div class="comment-details">
                                 <h4>{{ comment.name }}</h4>
-                                <span><i> - {{comment.date|timesince}} ago</i></span>
+                                <span><i> - {{comment.date|timesince|upto:',' }} ago</i></span>
                                 <p>{{ comment.comment }}</p>
                             </div>
                         </div>
