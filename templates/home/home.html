@@ -121,7 +121,7 @@
                       <div class="trending-top mb-30">
                         <a href="{% url 'newsdetail' featured_post.slug %}">
                           <div class="trend-top-img">
-                            <img src="{{featured_post.thumbnail.url}}" alt=""> 
+                            <img src="{{featured_post.thumbnail.url}}" alt="" class="featuredimg"> 
                               <div class="trend-top-cap">
                                   <span>{{featured_post.categories.title}}</span>
                                   <h2 style="color: white;font-weight: 700;">{{featured_post.title|slice:120}}</h2>
