@@ -248,7 +248,7 @@
             <div class="trand-right-single d-flex">
                 <div class="trand-right-img">
                   {% comment %} <a href="{% url 'newsdetail' trend.slug %}"><img src="{{trend.thumbnail.url}}" alt="" style="width:120px; height:100px;"></a> {% endcomment %}
-                  <a href="{% url 'newsdetail' trend.slug %}"><img src="{{trend.thumbnail.url}}" alt="" style="width:120px; height:100px;object-fit:cover;"></a>
+                  <a href="{% url 'newsdetail' trend.slug %}"><img src="{{trend.thumbnail.url}}" alt="" style="width:120px; height:100px;object-fit:cover;" class="mostviewimage"></a>
                 </div>
                 <div class="trand-right-cap">
                     <span class="color1">{{trend.categories.title}}</span>

@@ -43,10 +43,13 @@
                 align-items: left;
                 gap: 15px;
             }
-            
             .follow-icon {
                 display: flex;
                 align-items: center;
+            }
+            .follow-icon:hover {
+                transition: box-shadow 0.3s ease;
+                transform: scale(1.015);
             }
             
             .follow-icon img {
@@ -237,6 +240,11 @@
     margin-top: 15px;
     font-size: 18px;
     line-height: 1.6;
+}
+.mostviewimage:hover{
+    transform: scale(1.10);
+    transition: all 0.5s ease-out 0s;
+  
 }
 
            
@@ -610,7 +618,7 @@
                  <div class="col-md-4 col-lg-4 col-xl-4 mb-30">
                     <div class="single-footer-caption">
                         <div class="footer-tittle">
-                            <h4 style="font-size: 1.5rem; font-weight: 600 !important;">Menu</h4>
+                            <h4 style="font-size: 1.5rem; font-weight: 600 !important;">Navigation</h4>
                             <!-- Form -->
                             <div class="footer-form">
                                 <div id="mc_embed_signup">
