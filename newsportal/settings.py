@@ -29,9 +29,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'engineersnepal.com','141.148.206.219','127.0.0.1',"www.engineersnepal.com"]
+ALLOWED_HOSTS = ['localhost', '0.0.0.0', 'engineersnepal.com','141.148.206.219','127.0.0.1',"www.engineersnepal.com"]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:80/', 'https://engineersnepal.com','http://141.148.206.219','http://localhost:8000/']
+CSRF_TRUSTED_ORIGINS = ['http://localhost:80/', 'https://engineersnepal.com','http://141.148.206.219','http://localhost:8000/' ,'http://0.0.0.0:80']
 
 # Application definition
 
