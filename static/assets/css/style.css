@@ -3316,9 +3316,9 @@ hr {
 }
 .footer-area .footer-tittle ul li a {
   color: black;
-  font-weight: 300;
+  font-weight: 400 !important;
 }
-.footer-area .footer-tittle ul li a:hover {
+.footer-area .footer-tittle ul li a strong:hover {
   color: #fc3f00;
   padding-left: 5px;
 }

@@ -73,6 +73,13 @@
                 margin: 0;
             }
             
+            .featuredimg
+            {
+                transition: box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.0), transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1.0);
+                transform: scale(1);
+                
+            }
+            
             
             .newscontent blockquote {
                 background: #f9f9f9;
@@ -635,22 +642,22 @@
                                         <div class="col-md-6">
                                             <ul class="navigation2">
                                                 <!-- dropdown values for the category under above list item -->
-                                                <li><a href="{% url 'category' newer.slug %}"><b>{{newer.title}}</b></a></li>
-                                                <li><a href="{% url 'category' engedu.slug %}">{{engedu.title}}</a></li>
+                                                <li><a href="{% url 'category' newer.slug %}"><strong>{{newer.title}}</strong></a></li>
+                                                <li><a href="{% url 'category' engedu.slug %}"><strong>{{engedu.title}}</strong></a></li>
                                                 {% for kauli in aalu %}
-                                                <li><a href="{% url 'category' kauli.slug %}"><b>{{kauli.title}}</b></a></li>
+                                                <li><a href="{% url 'category' kauli.slug %}"><strong>{{kauli.title}} </strong></a></li>
                                                 {% endfor %}
-                                                <li><a href="{% url 'videos'}"><b>Videos </b></a></li>
+                                                <li><a href="{% url 'videos'}"><strong>Videos </strong></a></li>
                                                 <!-- Other menu items... -->
                                             </ul>
                                         </div>
                                         <div class="col-md-6">
                                             <ul class="navigation2">
                                                 {% for category in development %}
-                                                <li><a href="{% url 'category' category.slug %}"><b>{{category.title}}</b></a></li>
+                                                <li><a href="{% url 'category' category.slug %}"><strong>{{category.title}}</strong></a></li>
                                                 {% endfor %}
-                                                <li><a href="{% url 'vacancyhome' %}">Vacancy</a></li>
-                                                <li><a href="{% url 'category' engsug.slug %}">{{engsug.title}}</a></li>
+                                                <li><a href="{% url 'vacancyhome' %}"><strong>Vacancy</strong></a></li>
+                                                <li><a href="{% url 'category' engsug.slug %}"><strong>{{engsug.title}}</strong></a></li>
                                             </ul>
                                         </div>
                                     </div>
