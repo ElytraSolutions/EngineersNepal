@@ -8,6 +8,7 @@ django-js-asset==2.0.0
 django-social-share==2.3.0
 nepali-datetime==1.0.7
 Pillow==9.5.0
+PyMySQL==1.1.0
 python-dotenv==1.0.0
 sqlparse==0.4.4
 tzdata==2023.3
